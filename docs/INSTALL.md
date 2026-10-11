@@ -1,11 +1,11 @@
-# Install map-data-fetcher
+# Install Naver Maps MCP Server
 
 Supported release platform: Linux x86-64.
 
 Install the latest release for the current user with:
 
 ```bash
-curl -fsSL https://github.com/YatinKare/map-data-fetcher/releases/latest/download/install.sh | bash
+curl -fsSL https://github.com/YatinKare/Naver-Maps-MCP/releases/latest/download/install.sh | bash
 ```
 
 The installer creates a private bearer token on first install and enables the user systemd service
@@ -18,5 +18,5 @@ These are system dependencies and are not included in the release archive.
 The MCP endpoint listens on `127.0.0.1:3000/mcp`.
 
 To use the endpoint, configure an MCP client with that URL and the bearer token
-stored in `~/.config/map-data-fetcher/gateway.env`. The service unit is
-installed at `~/.config/systemd/user/map-data-fetcher.service`.
+stored in `~/.config/naver-maps-mcp/gateway.env`. The service unit is
+installed at `~/.config/systemd/user/naver-maps-mcp.service`.

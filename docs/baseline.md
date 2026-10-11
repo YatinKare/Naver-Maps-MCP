@@ -1,6 +1,6 @@
 # Naver headless baseline
 
-The canonical baseline is documented in [PR #22](https://github.com/YatinKare/map-data-fetcher/pull/22).
+The canonical baseline is documented in [PR #22](https://github.com/YatinKare/Naver-Maps-MCP/pull/22).
 The measurements below come from the successful body-validated run on 2026-09-12.
 
 ## Environment

@@ -19,7 +19,7 @@ COORDINATE_QUERY="${COORDINATE_QUERY:-카페}"
 COORDINATE_LONGITUDE="${COORDINATE_LONGITUDE:-126.9784}"
 COORDINATE_LATITUDE="${COORDINATE_LATITUDE:-37.5667}"
 JAR_PATH="${2:-}"
-GATEWAY_BIN="${GATEWAY_BIN:-$REPO_ROOT/build/baseline/map-data-gateway}"
+GATEWAY_BIN="${GATEWAY_BIN:-$REPO_ROOT/build/baseline/naver-maps-mcp}"
 READY_TIMEOUT_SECONDS="${READY_TIMEOUT_SECONDS:-60}"
 REQUEST_TIMEOUT_SECONDS="${REQUEST_TIMEOUT_SECONDS:-120}"
 GATEWAY_JAVA_IDLE_TIMEOUT="${GATEWAY_JAVA_IDLE_TIMEOUT:-5s}"
@@ -267,7 +267,7 @@ validate_external_mcp() {
   request_file="$WORK_DIR/external-mcp-initialize.json"
   response_file="$WORK_DIR/external-mcp-initialize-response.json"
   jq -cn --arg protocol "$MCP_PROTOCOL_VERSION" \
-    '{jsonrpc:"2.0",id:100,method:"initialize",params:{protocolVersion:$protocol,capabilities:{},clientInfo:{name:"map-data-fetcher-external-check",version:"1"}}}' \
+    '{jsonrpc:"2.0",id:100,method:"initialize",params:{protocolVersion:$protocol,capabilities:{},clientInfo:{name:"naver-maps-mcp-external-check",version:"1"}}}' \
     > "$request_file"
 
   local auth_args=()
@@ -508,7 +508,7 @@ main() {
   mcp_init_request="$WORK_DIR/mcp-initialize.json"
   mcp_init_response="$WORK_DIR/mcp-initialize-response.json"
   jq -cn --arg protocol "$MCP_PROTOCOL_VERSION" \
-    '{jsonrpc:"2.0",id:1,method:"initialize",params:{protocolVersion:$protocol,capabilities:{},clientInfo:{name:"map-data-fetcher-run-script",version:"1"}}}' \
+    '{jsonrpc:"2.0",id:1,method:"initialize",params:{protocolVersion:$protocol,capabilities:{},clientInfo:{name:"naver-maps-mcp-run-script",version:"1"}}}' \
     > "$mcp_init_request"
   unauthenticated_response="$WORK_DIR/mcp-unauthenticated-response.json"
   unauthenticated_http_code="$(curl --silent --show-error \

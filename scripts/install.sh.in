@@ -2,12 +2,12 @@
 set -euo pipefail
 
 RELEASE_TAG='@RELEASE_TAG@'
-REPOSITORY='YatinKare/map-data-fetcher'
-ASSET="map-data-fetcher-${RELEASE_TAG}-linux-amd64.tar.gz"
+REPOSITORY='YatinKare/Naver-Maps-MCP'
+ASSET="naver-maps-mcp-${RELEASE_TAG}-linux-amd64.tar.gz"
 RELEASE_URL="https://github.com/${REPOSITORY}/releases/download/${RELEASE_TAG}"
 
 die() {
-  printf 'map-data-fetcher installer: %s\n' "$1" >&2
+  printf 'naver-maps-mcp installer: %s\n' "$1" >&2
   exit 1
 }
 
@@ -25,7 +25,7 @@ done
 TEMP_DIR="$(mktemp -d)"
 trap 'rm -rf -- "$TEMP_DIR"' EXIT
 
-printf 'Downloading map-data-fetcher %s...\n' "$RELEASE_TAG"
+printf 'Downloading naver-maps-mcp %s...\n' "$RELEASE_TAG"
 curl --fail --location --silent --show-error \
   "$RELEASE_URL/$ASSET" -o "$TEMP_DIR/$ASSET"
 curl --fail --location --silent --show-error \
@@ -34,23 +34,28 @@ curl --fail --location --silent --show-error \
 printf 'Verifying download...\n'
 (cd "$TEMP_DIR" && sha256sum --check "$ASSET.sha256")
 tar -xzf "$TEMP_DIR/$ASSET" -C "$TEMP_DIR"
-BUNDLE_DIR="$TEMP_DIR/map-data-fetcher-${RELEASE_TAG}-linux-amd64"
+BUNDLE_DIR="$TEMP_DIR/naver-maps-mcp-${RELEASE_TAG}-linux-amd64"
 [[ -d "$BUNDLE_DIR" ]] || die 'release archive has an unexpected layout'
 
-BIN_DIR="$HOME/.local/libexec/map-data-fetcher"
-DATA_DIR="$HOME/.local/share/map-data-fetcher"
-CONFIG_DIR="$HOME/.config/map-data-fetcher"
+BIN_DIR="$HOME/.local/libexec/naver-maps-mcp"
+DATA_DIR="$HOME/.local/share/naver-maps-mcp"
+CONFIG_DIR="$HOME/.config/naver-maps-mcp"
 SYSTEMD_DIR="$HOME/.config/systemd/user"
 ENV_FILE="$CONFIG_DIR/gateway.env"
+PREVIOUS_ENV_FILE="$HOME/.config/map-data-fetcher/gateway.env"
+PREVIOUS_SERVICE='map-data-fetcher.service'
 
-install -Dm755 "$BUNDLE_DIR/bin/map-data-gateway" \
-  "$BIN_DIR/map-data-gateway"
-install -Dm644 "$BUNDLE_DIR/lib/map-data-fetcher.jar" \
-  "$DATA_DIR/map-data-fetcher.jar"
-install -Dm644 "$BUNDLE_DIR/systemd/map-data-fetcher.service" \
-  "$SYSTEMD_DIR/map-data-fetcher.service"
 install -d -m 700 "$CONFIG_DIR"
+if [[ ! -e "$ENV_FILE" && -f "$PREVIOUS_ENV_FILE" ]]; then
+  install -m 600 "$PREVIOUS_ENV_FILE" "$ENV_FILE"
+fi
 
+install -Dm755 "$BUNDLE_DIR/bin/naver-maps-mcp" \
+  "$BIN_DIR/naver-maps-mcp"
+install -Dm644 "$BUNDLE_DIR/lib/naver-maps-mcp.jar" \
+  "$DATA_DIR/naver-maps-mcp.jar"
+install -Dm644 "$BUNDLE_DIR/systemd/naver-maps-mcp.service" \
+  "$SYSTEMD_DIR/naver-maps-mcp.service"
 if [[ ! -e "$ENV_FILE" ]]; then
   TOKEN="$(od -An -N32 -tx1 /dev/urandom | tr -d ' \n')"
   [[ "$TOKEN" =~ ^[[:xdigit:]]{64}$ ]] || die 'could not generate an authentication token'
@@ -61,17 +66,21 @@ chmod 600 "$ENV_FILE"
 
 if command -v systemctl >/dev/null 2>&1 \
   && systemctl --user show-environment >/dev/null 2>&1; then
-  systemctl --user daemon-reload
-  systemctl --user enable map-data-fetcher.service
-  if systemctl --user is-active --quiet map-data-fetcher.service; then
-    systemctl --user restart map-data-fetcher.service
-  else
-    systemctl --user start map-data-fetcher.service
+  if systemctl --user is-active --quiet "$PREVIOUS_SERVICE"; then
+    systemctl --user stop "$PREVIOUS_SERVICE"
   fi
-  printf 'Installed and started map-data-fetcher.service.\n'
+  systemctl --user disable "$PREVIOUS_SERVICE" 2>/dev/null || true
+  systemctl --user daemon-reload
+  systemctl --user enable naver-maps-mcp.service
+  if systemctl --user is-active --quiet naver-maps-mcp.service; then
+    systemctl --user restart naver-maps-mcp.service
+  else
+    systemctl --user start naver-maps-mcp.service
+  fi
+  printf 'Installed and started naver-maps-mcp.service.\n'
 else
   printf 'Installed files. Start the service in a user systemd session with:\n'
-  printf '  systemctl --user daemon-reload && systemctl --user enable --now map-data-fetcher.service\n'
+  printf '  systemctl --user daemon-reload && systemctl --user enable --now naver-maps-mcp.service\n'
 fi
 
 printf '\nMCP endpoint: http://127.0.0.1:3000/mcp\n'

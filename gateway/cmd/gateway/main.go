@@ -8,14 +8,14 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/YatinKare/map-data-fetcher/gateway/internal/config"
-	"github.com/YatinKare/map-data-fetcher/gateway/internal/server"
-	"github.com/YatinKare/map-data-fetcher/gateway/internal/version"
+	"github.com/YatinKare/Naver-Maps-MCP/gateway/internal/config"
+	"github.com/YatinKare/Naver-Maps-MCP/gateway/internal/server"
+	"github.com/YatinKare/Naver-Maps-MCP/gateway/internal/version"
 )
 
 func main() {
 	if len(os.Args) == 2 && (os.Args[1] == "--version" || os.Args[1] == "-version") {
-		fmt.Printf("map-data-gateway %s\n", version.Version)
+		fmt.Printf("naver-maps-mcp %s\n", version.Version)
 		return
 	}
 

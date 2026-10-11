@@ -3,8 +3,6 @@
 This project runs a lightweight Go Streamable HTTP MCP server in front of a
 lazy Java/Selenium worker for Naver Maps searches.
 
-> originally a fork from [D2D-CAPSTONE/map-data-fetcher](https://github.com/D2D-CAPSTONE/map-data-fetcher)
-
 ## Runtime architecture
 
 - Go MCP server: `127.0.0.1:3000`
@@ -77,12 +75,12 @@ MCP request logging is disabled by default. Toggle it on or off at runtime by
 sending `SIGUSR1` to the gateway process. For the systemd user service, run:
 
 ```bash
-systemctl --user kill -s SIGUSR1 map-data-fetcher.service
+systemctl --user kill -s SIGUSR1 naver-maps-mcp.service
 ```
 
 When enabled, request summaries go to standard error through Go's default
 logger and are collected by systemd. View them with
-`journalctl --user -u map-data-fetcher.service`.
+`journalctl --user -u naver-maps-mcp.service`.
 
 ## Local verification
 
@@ -127,7 +125,7 @@ EXTERNAL_MCP_URL='https://node.example.ts.net:10000/naver/mcp' bash tests/run-sc
 
 ## Deployment configuration
 
-`deploy/systemd/map-data-fetcher.service` keeps the Go process running as a
+`deploy/systemd/naver-maps-mcp.service` keeps the Go process running as a
 user service. Set `GATEWAY_AUTH_MODE=required` and store
 `GATEWAY_AUTH_TOKEN` in the service's private environment file for bearer
 authentication. Set `GATEWAY_AUTH_MODE=none` for a public no-auth deployment;
@@ -142,7 +140,7 @@ through Tailscale or another public proxy.
 On Linux x86-64, install the latest release for the current user with:
 
 ```bash
-curl -fsSL https://github.com/YatinKare/map-data-fetcher/releases/latest/download/install.sh | bash
+curl -fsSL https://github.com/YatinKare/Naver-Maps-MCP/releases/latest/download/install.sh | bash
 ```
 
 The worker supports Linux x86-64, Java 17 or newer, and current stable Chrome

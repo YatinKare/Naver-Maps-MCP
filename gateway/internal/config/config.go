@@ -14,7 +14,7 @@ const (
 	AuthModeNone               = "none"
 	defaultHost                = "127.0.0.1"
 	defaultPort                = 3000
-	defaultServiceName         = "map-data-gateway"
+	defaultServiceName         = "naver-maps-mcp"
 	defaultShutdownTimeout     = 5 * time.Second
 	defaultJavaBaseURL         = "http://127.0.0.1:8080"
 	defaultJavaBin             = "java"

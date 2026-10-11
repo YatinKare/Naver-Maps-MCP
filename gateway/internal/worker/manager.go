@@ -13,7 +13,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/YatinKare/map-data-fetcher/gateway/internal/config"
+	"github.com/YatinKare/Naver-Maps-MCP/gateway/internal/config"
 )
 
 // Supervisor controls the lifecycle of the Java worker behind the gateway.

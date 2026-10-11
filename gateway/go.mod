@@ -1,4 +1,4 @@
-module github.com/YatinKare/map-data-fetcher/gateway
+module github.com/YatinKare/Naver-Maps-MCP/gateway
 
 go 1.25.0
 
