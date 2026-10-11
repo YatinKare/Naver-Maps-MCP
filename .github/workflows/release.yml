@@ -73,7 +73,7 @@ jobs:
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Naver Maps MCP Server ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
           body_path: docs/releases/${{ github.ref_name }}.md
           generate_release_notes: false
           files: |
