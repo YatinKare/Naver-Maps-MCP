@@ -12,22 +12,22 @@ Build and install the two runtime artifacts and the user-service unit:
 
 ```bash
 bash tests/build-baseline
-install -Dm755 build/baseline/map-data-gateway \
-  "$HOME/.local/libexec/map-data-fetcher/map-data-gateway"
-install -Dm644 build/libs/map-data-fetcher-0.0.1-SNAPSHOT.jar \
-  "$HOME/.local/share/map-data-fetcher/map-data-fetcher.jar"
-install -Dm644 deploy/systemd/map-data-fetcher.service \
-  "$HOME/.config/systemd/user/map-data-fetcher.service"
+install -Dm755 build/baseline/naver-maps-mcp \
+  "$HOME/.local/libexec/naver-maps-mcp/naver-maps-mcp"
+install -Dm644 build/libs/naver-maps-mcp-0.0.1-SNAPSHOT.jar \
+  "$HOME/.local/share/naver-maps-mcp/naver-maps-mcp.jar"
+install -Dm644 deploy/systemd/naver-maps-mcp.service \
+  "$HOME/.config/systemd/user/naver-maps-mcp.service"
 ```
 
 Create the private environment file referenced by the unit. Bearer
 authentication is enabled by default:
 
 ```bash
-install -d -m 700 "$HOME/.config/map-data-fetcher"
-touch "$HOME/.config/map-data-fetcher/gateway.env"
-chmod 600 "$HOME/.config/map-data-fetcher/gateway.env"
-${EDITOR:-nano} "$HOME/.config/map-data-fetcher/gateway.env"
+install -d -m 700 "$HOME/.config/naver-maps-mcp"
+touch "$HOME/.config/naver-maps-mcp/gateway.env"
+chmod 600 "$HOME/.config/naver-maps-mcp/gateway.env"
+${EDITOR:-nano} "$HOME/.config/naver-maps-mcp/gateway.env"
 ```
 
 Add these lines in the editor:
@@ -46,13 +46,13 @@ and start during boot without an interactive login:
 
 ```bash
 systemctl --user daemon-reload
-systemctl --user enable --now map-data-fetcher.service
+systemctl --user enable --now naver-maps-mcp.service
 loginctl enable-linger "$USER"
 ```
 
-Check it with `systemctl --user status map-data-fetcher.service` and
-`journalctl --user -u map-data-fetcher.service`. After installing rebuilt
-artifacts, run `systemctl --user restart map-data-fetcher.service`.
+Check it with `systemctl --user status naver-maps-mcp.service` and
+`journalctl --user -u naver-maps-mcp.service`. After installing rebuilt
+artifacts, run `systemctl --user restart naver-maps-mcp.service`.
 
 ## Configure Tailscale
 
@@ -113,5 +113,5 @@ to the whole port, so only use this command for the dedicated port.
 Then stop the Go process:
 
 ```bash
-systemctl --user disable --now map-data-fetcher.service
+systemctl --user disable --now naver-maps-mcp.service
 ```

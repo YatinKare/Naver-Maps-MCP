@@ -27,7 +27,7 @@ HEAD_COMMIT="$(git -C "$REPO_ROOT" rev-parse HEAD)"
   || die "checkout must be exactly at tag $RELEASE_TAG"
 
 RELEASE_VERSION="${RELEASE_TAG#v}"
-ARCHIVE_NAME="map-data-fetcher-${RELEASE_TAG}-linux-amd64"
+ARCHIVE_NAME="naver-maps-mcp-${RELEASE_TAG}-linux-amd64"
 DIST_DIR="$REPO_ROOT/dist"
 STAGE_DIR="$DIST_DIR/$ARCHIVE_NAME"
 SOURCE_DATE_EPOCH="$(git -C "$REPO_ROOT" log -1 --format=%ct "$RELEASE_TAG")"
@@ -38,8 +38,8 @@ mkdir -p "$STAGE_DIR/bin" "$STAGE_DIR/lib" "$STAGE_DIR/systemd" "$STAGE_DIR/conf
 printf 'Building Java worker %s...\n' "$RELEASE_VERSION"
 bash "$REPO_ROOT/gradlew" --no-daemon -PreleaseVersion="$RELEASE_VERSION" clean bootJar
 install -Dm644 \
-  "$REPO_ROOT/build/libs/map-data-fetcher-${RELEASE_VERSION}.jar" \
-  "$STAGE_DIR/lib/map-data-fetcher.jar"
+  "$REPO_ROOT/build/libs/naver-maps-mcp-${RELEASE_VERSION}.jar" \
+  "$STAGE_DIR/lib/naver-maps-mcp.jar"
 
 printf 'Building static Linux x86-64 gateway %s...\n' "$RELEASE_TAG"
 (
@@ -47,13 +47,13 @@ printf 'Building static Linux x86-64 gateway %s...\n' "$RELEASE_TAG"
   CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
     -trimpath \
     -buildvcs=false \
-    -ldflags="-s -w -X github.com/YatinKare/map-data-fetcher/gateway/internal/version.Version=${RELEASE_TAG}" \
-    -o "$STAGE_DIR/bin/map-data-gateway" \
+    -ldflags="-s -w -X github.com/YatinKare/Naver-Maps-MCP/gateway/internal/version.Version=${RELEASE_TAG}" \
+    -o "$STAGE_DIR/bin/naver-maps-mcp" \
     ./cmd/gateway
 )
 
-install -Dm644 "$REPO_ROOT/deploy/systemd/map-data-fetcher.service" \
-  "$STAGE_DIR/systemd/map-data-fetcher.service"
+install -Dm644 "$REPO_ROOT/deploy/systemd/naver-maps-mcp.service" \
+  "$STAGE_DIR/systemd/naver-maps-mcp.service"
 install -Dm644 "$REPO_ROOT/config/gateway.env.example" \
   "$STAGE_DIR/config/gateway.env.example"
 install -Dm644 "$REPO_ROOT/docs/INSTALL.md" "$STAGE_DIR/README.md"

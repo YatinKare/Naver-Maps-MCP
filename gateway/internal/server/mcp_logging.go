@@ -14,7 +14,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/YatinKare/map-data-fetcher/gateway/internal/mcpserver"
+	"github.com/YatinKare/Naver-Maps-MCP/gateway/internal/mcpserver"
 	"github.com/google/jsonschema-go/jsonschema"
 )
 

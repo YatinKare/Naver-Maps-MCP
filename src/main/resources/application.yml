@@ -1,6 +1,6 @@
 spring:
   application:
-    name: map-data-fetcher
+    name: naver-maps-mcp
 
 server:
   address: ${SERVER_ADDRESS:127.0.0.1}

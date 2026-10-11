@@ -4,7 +4,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 REPO_ROOT="$(cd -- "$SCRIPT_DIR/.." && pwd -P)"
 GO_BIN="${GO_BIN:-$(command -v go || true)}"
-GATEWAY_OUTPUT="${GATEWAY_OUTPUT:-$REPO_ROOT/build/baseline/map-data-gateway}"
+GATEWAY_OUTPUT="${GATEWAY_OUTPUT:-$REPO_ROOT/build/baseline/naver-maps-mcp}"
 
 die() {
   printf 'build-baseline: %s\n' "$1" >&2

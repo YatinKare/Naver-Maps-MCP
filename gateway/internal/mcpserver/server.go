@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/YatinKare/map-data-fetcher/gateway/internal/worker"
+	"github.com/YatinKare/Naver-Maps-MCP/gateway/internal/worker"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
 )
 
@@ -197,7 +197,7 @@ type naverCoordinateSearchTool struct {
 
 // NewHandler creates the stateless Streamable HTTP MCP handler.
 func NewHandler(client NaverSearchClient, version string, logger ToolOutcomeLogger) http.Handler {
-	server := mcp.NewServer(&mcp.Implementation{Name: "map-data-fetcher", Version: version}, nil)
+	server := mcp.NewServer(&mcp.Implementation{Name: "Naver Maps MCP Server", Version: version}, nil)
 	tool := &naverSearchTool{client: client, logger: logger}
 	coordinateTool := &naverCoordinateSearchTool{client: client, logger: logger}
 	destructiveHint := false

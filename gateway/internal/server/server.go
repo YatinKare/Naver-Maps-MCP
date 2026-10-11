@@ -10,9 +10,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/YatinKare/map-data-fetcher/gateway/internal/config"
-	"github.com/YatinKare/map-data-fetcher/gateway/internal/mcpserver"
-	"github.com/YatinKare/map-data-fetcher/gateway/internal/worker"
+	"github.com/YatinKare/Naver-Maps-MCP/gateway/internal/config"
+	"github.com/YatinKare/Naver-Maps-MCP/gateway/internal/mcpserver"
+	"github.com/YatinKare/Naver-Maps-MCP/gateway/internal/worker"
 )
 
 const healthPath = "/healthz"

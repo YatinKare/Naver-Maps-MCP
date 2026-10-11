@@ -30,6 +30,10 @@ tasks.named('compileJava') {
     dependsOn tasks.named('spotlessApply')
 }
 
+tasks.named('bootJar') {
+    archiveBaseName.set('naver-maps-mcp')
+}
+
 spotless {
     java {
         importOrder(

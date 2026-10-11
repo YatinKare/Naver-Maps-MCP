@@ -38,7 +38,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          archive="map-data-fetcher-${GITHUB_REF_NAME}-linux-amd64.tar.gz"
+          archive="naver-maps-mcp-${GITHUB_REF_NAME}-linux-amd64.tar.gz"
           (cd dist && sha256sum --check "${archive}.sha256")
 
           smoke_dir="$(mktemp -d)"
@@ -53,8 +53,8 @@ jobs:
           trap cleanup EXIT
 
           tar -xzf "dist/$archive" -C "$smoke_dir"
-          gateway="$smoke_dir/map-data-fetcher-${GITHUB_REF_NAME}-linux-amd64/bin/map-data-gateway"
-          [[ "$("$gateway" --version)" == "map-data-gateway ${GITHUB_REF_NAME}" ]]
+          gateway="$smoke_dir/naver-maps-mcp-${GITHUB_REF_NAME}-linux-amd64/bin/naver-maps-mcp"
+          [[ "$("$gateway" --version)" == "naver-maps-mcp ${GITHUB_REF_NAME}" ]]
 
           GATEWAY_AUTH_MODE=none GATEWAY_PORT=18765 "$gateway" \
             >"$smoke_dir/gateway.log" 2>&1 &
@@ -73,9 +73,10 @@ jobs:
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          name: Naver Maps MCP Server ${{ github.ref_name }}
           body_path: docs/releases/${{ github.ref_name }}.md
           generate_release_notes: false
           files: |
-            dist/map-data-fetcher-${{ github.ref_name }}-linux-amd64.tar.gz
-            dist/map-data-fetcher-${{ github.ref_name }}-linux-amd64.tar.gz.sha256
+            dist/naver-maps-mcp-${{ github.ref_name }}-linux-amd64.tar.gz
+            dist/naver-maps-mcp-${{ github.ref_name }}-linux-amd64.tar.gz.sha256
             dist/install.sh
