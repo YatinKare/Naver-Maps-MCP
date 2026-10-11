@@ -1,7 +1,9 @@
-## map-data-fetcher
+## Naver MCP
 
 This project runs a lightweight Go Streamable HTTP MCP server in front of a
 lazy Java/Selenium worker for Naver Maps searches.
+
+> originally a fork from [D2D-CAPSTONE/map-data-fetcher](https://github.com/D2D-CAPSTONE/map-data-fetcher)
 
 ## Runtime architecture
 
