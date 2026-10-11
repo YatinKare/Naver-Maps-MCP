@@ -1,4 +1,4 @@
-## Naver MCP
+# Naver Maps MCP Server
 
 This project runs a lightweight Go Streamable HTTP MCP server in front of a
 lazy Java/Selenium worker for Naver Maps searches.
