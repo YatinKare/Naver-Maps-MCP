@@ -143,8 +143,8 @@ On Linux x86-64, install the latest release for the current user with:
 curl -fsSL https://github.com/YatinKare/map-data-fetcher/releases/latest/download/install.sh | bash
 ```
 
-The worker requires Java 17 or newer, Chrome or Chromium, and a matching
-ChromeDriver.
+The worker supports Linux x86-64, Java 17 or newer, and current stable Chrome
+or Chromium with a matching ChromeDriver major version.
 See [the install guide](docs/INSTALL.md) for the endpoint and configuration
 locations.
 

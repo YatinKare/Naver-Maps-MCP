@@ -73,7 +73,8 @@ jobs:
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          generate_release_notes: true
+          body_path: docs/releases/${{ github.ref_name }}.md
+          generate_release_notes: false
           files: |
             dist/map-data-fetcher-${{ github.ref_name }}-linux-amd64.tar.gz
             dist/map-data-fetcher-${{ github.ref_name }}-linux-amd64.tar.gz.sha256
