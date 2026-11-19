@@ -89,7 +89,7 @@ public class NaverBrowserSession {
     String path = uri.getPath() == null ? "" : uri.getPath();
     boolean navigation =
         (host.equals("map.naver.com") && path.startsWith("/p/"))
-            || (host.equals("pcmap.place.naver.com") && path.startsWith("/place/list"))
+            || (host.equals("pcmap.place.naver.com") && path.endsWith("/list"))
             || host.equals("nid.naver.com");
     if (!matchingSearchResponse && !(documentResponse && navigation)) {
       return;
