@@ -28,6 +28,11 @@ public class NaverBrowserSession {
     this.userDataDir = userDataDir;
   }
 
+  /** The resolved property also covers CLI/system configuration, not just environment variables. */
+  public boolean hasPersistentProfile() {
+    return userDataDir != null && !userDataDir.isBlank();
+  }
+
   public void beforeSearch() {
     if (Instant.now().isBefore(retryAfter)) {
       throw failure("rate_limited", "Naver rate-limit cooldown is active; wait before retrying");
@@ -35,7 +40,7 @@ public class NaverBrowserSession {
   }
 
   public void configure(ChromeOptions options) {
-    if (userDataDir == null || userDataDir.isBlank()) {
+    if (!hasPersistentProfile()) {
       return;
     }
     try {
