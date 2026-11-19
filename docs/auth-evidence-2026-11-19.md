@@ -40,6 +40,14 @@ Validation completed without unit tests:
 - `bash -n scripts/naver-session-login.sh` and `git diff --check` passed.
 - A Luna High implementation helper created the operator script and recovery
   guide; a separate Luna High reviewer reported no concrete blockers.
+- An isolated loopback gateway built from this auth source successfully handled
+  real MCP `initialize` and `tools/list` requests and discovered both tools.
+  With `NAVER_MAP_SELENIUM_USER_DATA_DIR=relative-profile`, an actual
+  `naver_map_search` request started the real Java worker and returned the
+  actionable `session_configuration` message through the MCP gateway. See the
+  [actual MCP response](evidence/auth-2026-11-19-invalid-profile.json). The path
+  was rejected before `new ChromeDriver`, so this check made no NAVER requests.
+  The isolated gateway and worker were stopped after the check.
 
 The exact built Java JAR SHA-256 is
 `b094c8a6fc12815e8f49a81fb8ccdbdfe1629205a0a6f84ce8dc6dcda2ce679b`.
