@@ -35,6 +35,23 @@ run; preserve its history and rely on current release evidence rather than
 reintroducing obsolete deployment machinery. Tag-only release CI does not
 provide a pull-request check for this change.
 
+## Related closed error issues
+
+An independent Luna High read-only audit reviewed
+[#20: Selenium/CDP compatibility](https://github.com/YatinKare/Naver-Maps-MCP/issues/20),
+[#43: capture resilience/diagnostics](https://github.com/YatinKare/Naver-Maps-MCP/issues/43),
+and [#53: concurrent-search busy errors](https://github.com/YatinKare/Naver-Maps-MCP/issues/53).
+It found no additional evidenced code defect. Closed issue state does not
+prove all historical acceptance checks passed; #43's repeated cold/warm live
+search criteria remain unconfirmed by this audit. Current capture recovery
+is tracked under #68 rather than closing or reopening issues speculatively.
+
+The [#47 release record](https://github.com/YatinKare/Naver-Maps-MCP/issues/47)
+records checksum, version, and gateway-health checks, while live NAVER and
+tunnel validation remained unverified. Successful release CI therefore does
+not establish successful browser capture. The full integration runner was
+not used as a release test.
+
 ## Portability validation
 
 No unit tests were created or run. The developer runner retains its keyword,
