@@ -115,6 +115,9 @@ def main():
     parser.add_argument("--show-results", action="store_true",
                         help="Print two public places for an actual live recording")
     parser.add_argument("--compare", type=Path)
+    parser.add_argument("--workload", action="append", choices=[
+        "keyword_page1", "keyword_page2", "coordinate_page1", "coordinate_page2"],
+        help="Select workloads; defaults to all four in fixed order")
     parser.add_argument("--gateway-bin", type=Path,
                         help="Record SHA-256 of the exact gateway artifact under measurement")
     parser.add_argument("--worker-jar", type=Path,
@@ -180,6 +183,8 @@ def main():
          {"query": "카페", "longitude": 126.9784, "latitude": 37.5667, "page": 1}),
         ("coordinate_page2", "naver_map_coordinate_search",
          {"query": "카페", "longitude": 126.9784, "latitude": 37.5667, "page": 2})]
+    if args.workload:
+        workloads = [workload for workload in workloads if workload[0] in args.workload]
     report["workload_sha256"] = hashlib.sha256(json.dumps(workloads, sort_keys=True).encode()).hexdigest()
     calls = ([workloads[0]] if args.cold_first else []) + workloads * args.rounds
     previous_ids = {}

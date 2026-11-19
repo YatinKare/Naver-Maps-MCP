@@ -29,6 +29,7 @@ public class NaverBrowserPool {
   private boolean leased;
   private Thread leaseOwner;
   private boolean preserveProfile;
+  private boolean cleanupPending;
   private long lastReleasedNanos;
   private int successfulUses;
   private boolean closed;
@@ -61,6 +62,14 @@ public class NaverBrowserPool {
    */
   public synchronized ChromeDriver acquire(
       Supplier<ChromeDriver> driverFactory, boolean preserveConfiguredProfile) {
+    while (cleanupPending && !closed) {
+      try {
+        wait();
+      } catch (InterruptedException exception) {
+        Thread.currentThread().interrupt();
+        throw new IllegalStateException("Interrupted while waiting for browser cleanup", exception);
+      }
+    }
     if (closed) {
       throw new IllegalStateException("Naver browser pool is shutting down");
     }
@@ -91,8 +100,8 @@ public class NaverBrowserPool {
   }
 
   /**
-   * Releases the lease. Failed searches always discard Chrome; successful reusable sessions are
-   * parked at about:blank and stripped of ephemeral Naver cookies/local storage when appropriate.
+   * Releases the lease. Failed searches always discard Chrome; successful reusable sessions queue
+   * tab cleanup on the pool executor so response delivery does not wait for browser housekeeping.
    */
   public synchronized void release(boolean success) {
     if (closed) {
@@ -114,7 +123,37 @@ public class NaverBrowserPool {
       discardBrowser();
       return;
     }
+    cleanupPending = true;
+    try {
+      reaper.execute(() -> cleanupReleasedBrowser(released, keepProfileState));
+    } catch (RuntimeException schedulingFailure) {
+      cleanupPending = false;
+      discardBrowser();
+      notifyAll();
+    }
+  }
 
+  @PreDestroy
+  public synchronized void shutdown() {
+    closed = true;
+    reaper.shutdownNow();
+    // Shutdown is allowed to end the active process; the service is stopping and cannot transfer
+    // it.
+    leased = false;
+    leaseOwner = null;
+    cleanupPending = false;
+    discardBrowser();
+    notifyAll();
+  }
+
+  private synchronized void cleanupReleasedBrowser(ChromeDriver released, boolean keepProfileState) {
+    if (closed || driver != released || !cleanupPending) {
+      cleanupPending = false;
+      notifyAll();
+      return;
+    }
+
+    boolean cleaned = false;
     try {
       String oldTab = released.getWindowHandle();
       released.switchTo().newWindow(WindowType.TAB);
@@ -131,31 +170,32 @@ public class NaverBrowserPool {
         }
       }
       released.manage().logs().get(LogType.PERFORMANCE).getAll();
-      successfulUses++;
-      if (successfulUses >= 20) {
-        discardBrowser();
-        return;
-      }
-      lastReleasedNanos = System.nanoTime();
+      cleaned = true;
     } catch (RuntimeException cleanupFailure) {
       discardBrowser();
+    } finally {
+      if (cleaned && driver == released) {
+        successfulUses++;
+        if (successfulUses >= 20) {
+          discardBrowser();
+        } else {
+          lastReleasedNanos = System.nanoTime();
+        }
+      } else if (driver == released) {
+        discardBrowser();
+      }
+      cleanupPending = false;
+      notifyAll();
     }
-  }
-
-  @PreDestroy
-  public synchronized void shutdown() {
-    closed = true;
-    reaper.shutdownNow();
-    // Shutdown is allowed to end the active process; the service is stopping and cannot transfer
-    // it.
-    leased = false;
-    leaseOwner = null;
-    discardBrowser();
   }
 
   private void reapIdleBrowser() {
     synchronized (this) {
-      if (!closed && !leased && driver != null && isIdleExpired(System.nanoTime())) {
+      if (!closed
+          && !leased
+          && !cleanupPending
+          && driver != null
+          && isIdleExpired(System.nanoTime())) {
         discardBrowser();
       }
     }

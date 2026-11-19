@@ -186,7 +186,9 @@ public class NaverMapSearchService {
       options.setBinary(chromeBinary);
     }
     session.configure(options);
-    options.setPageLoadStrategy(PageLoadStrategy.EAGER);
+    // Capture and input waits below provide explicit readiness; unrelated DOM resources need
+    // not delay the start of network capture. No result is returned before matching data exists.
+    options.setPageLoadStrategy(PageLoadStrategy.NONE);
     options.addArguments(
         "--disable-gpu",
         "--no-sandbox",
@@ -204,7 +206,6 @@ public class NaverMapSearchService {
 
     ChromeDriver driver = new ChromeDriver(options);
     driver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT);
-    driver.manage().window().maximize();
     return driver;
   }
 
