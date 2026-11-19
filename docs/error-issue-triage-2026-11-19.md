@@ -80,7 +80,9 @@ do not establish a successful live NAVER search or portability to every Linux
 installation. Full live integration is coordinated with auth and performance
 work to avoid repeated NAVER load while #68 is under investigation. The parent
 explicitly accepted discovery/preflight evidence for this runner fix after its
-released-artifact keyword baseline timed out at the client (120100 ms).
+isolated keyword call timed out at the client (120100 ms). The parent later
+confirmed that attempt used a legacy snapshot JAR, so it is excluded from
+release comparisons. This PR makes no release-baseline latency claim.
 
 A fresh `tests/build-baseline` invocation from `/tmp` reached Gradle startup but
 hit the 240-second observation bound during severe shared host memory/IO
