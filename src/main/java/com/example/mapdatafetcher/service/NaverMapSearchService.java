@@ -19,6 +19,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchFrameException;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
@@ -53,24 +54,28 @@ public class NaverMapSearchService {
   private final ObjectMapper objectMapper;
   private final NaverMapSeleniumProperties properties;
   private final NaverBrowserSession session;
+  private final NaverBrowserPool browsers;
 
   public NaverMapSearchService(
       ObjectMapper objectMapper,
       NaverMapSeleniumProperties properties,
-      NaverBrowserSession session) {
+      NaverBrowserSession session,
+      NaverBrowserPool browsers) {
     this.objectMapper = objectMapper;
     this.properties = properties;
     this.session = session;
+    this.browsers = browsers;
   }
 
-  public JsonNode search(NaverMapSearchRequest request) {
+  public synchronized JsonNode search(NaverMapSearchRequest request) {
     LOGGER.info("Starting Naver keyword search for page {}", request.page());
     SearchTiming timing = new SearchTiming("keyword", request.page());
     ChromeDriver driver = null;
+    boolean succeeded = false;
     String stage = "browser_startup";
     try {
       session.beforeSearch();
-      driver = createDriver();
+      driver = browsers.acquire(this::createDriver, session.hasPersistentProfile());
       driver.executeCdpCommand("Network.enable", Map.of());
       int targetPage = request.page();
       stage = "page_navigation";
@@ -78,8 +83,9 @@ public class NaverMapSearchService {
       driver.get(buildSearchUrl(request.q()));
       timing.stage("response_capture");
       session.checkPage(driver);
-      JsonNode result = captureSearchResults(driver, targetPage);
+      JsonNode result = captureSearchResults(driver, targetPage, request.q());
       LOGGER.info("Naver keyword search completed for page {}", targetPage);
+      succeeded = true;
       return result;
     } catch (CaptureException exception) {
       LOGGER.warn(
@@ -101,19 +107,22 @@ public class NaverMapSearchService {
       throw failure;
     } finally {
       timing.stage("browser_shutdown");
-      quitQuietly(driver);
+      if (driver != null) {
+        browsers.release(succeeded);
+      }
       timing.log(LOGGER);
     }
   }
 
-  public JsonNode searchByCoordinate(NaverMapCoordinateSearchRequest request) {
+  public synchronized JsonNode searchByCoordinate(NaverMapCoordinateSearchRequest request) {
     LOGGER.info("Starting Naver coordinate search for page {}", request.page());
     SearchTiming timing = new SearchTiming("coordinate", request.page());
     ChromeDriver driver = null;
+    boolean succeeded = false;
     String stage = "browser_startup";
     try {
       session.beforeSearch();
-      driver = createDriver();
+      driver = browsers.acquire(this::createDriver, session.hasPersistentProfile());
       driver.executeCdpCommand("Network.enable", Map.of());
       int targetPage = request.page();
       stage = "page_navigation";
@@ -124,8 +133,9 @@ public class NaverMapSearchService {
       timing.stage(stage);
       submitSearchKeyword(driver, request.query());
       timing.stage("response_capture");
-      JsonNode result = captureSearchResults(driver, targetPage);
+      JsonNode result = captureSearchResults(driver, targetPage, request.query());
       LOGGER.info("Naver coordinate search completed for page {}", targetPage);
+      succeeded = true;
       return result;
     } catch (CaptureException exception) {
       LOGGER.warn(
@@ -147,7 +157,9 @@ public class NaverMapSearchService {
       throw failure;
     } finally {
       timing.stage("browser_shutdown");
-      quitQuietly(driver);
+      if (driver != null) {
+        browsers.release(succeeded);
+      }
       timing.log(LOGGER);
     }
   }
@@ -165,17 +177,6 @@ public class NaverMapSearchService {
       cause = cause.getCause();
     }
     return new CaptureException("capture_error", stage, "Capture stage failed", exception);
-  }
-
-  private void quitQuietly(ChromeDriver driver) {
-    if (driver == null) {
-      return;
-    }
-    try {
-      driver.quit();
-    } catch (WebDriverException exception) {
-      LOGGER.debug("Failed to close Naver search browser cleanly", exception);
-    }
   }
 
   private ChromeDriver createDriver() {
@@ -242,11 +243,13 @@ public class NaverMapSearchService {
                 .orElse(null));
   }
 
-  private JsonNode captureSearchResults(ChromeDriver driver, int targetPage) throws Exception {
+  private JsonNode captureSearchResults(ChromeDriver driver, int targetPage, String expectedQuery)
+      throws Exception {
     JsonNode firstPageResponse;
     try {
       firstPageResponse =
-          objectMapper.readTree(waitForSearchResponseBody(driver, properties.responseUrlKeyword()));
+          objectMapper.readTree(
+              waitForSearchResponseBody(driver, properties.responseUrlKeyword(), 0, expectedQuery));
     } catch (CaptureException exception) {
       throw exception;
     } catch (Exception exception) {
@@ -436,13 +439,14 @@ public class NaverMapSearchService {
     return null;
   }
 
-  private String waitForSearchResponseBody(ChromeDriver driver, String responseUrlKeyword)
-      throws Exception {
-    return waitForSearchResponseBody(driver, responseUrlKeyword, 0);
+  private String waitForSearchResponseBody(
+      ChromeDriver driver, String responseUrlKeyword, int targetPage) throws Exception {
+    return waitForSearchResponseBody(driver, responseUrlKeyword, targetPage, null);
   }
 
   private String waitForSearchResponseBody(
-      ChromeDriver driver, String responseUrlKeyword, int targetPage) throws Exception {
+      ChromeDriver driver, String responseUrlKeyword, int targetPage, String expectedQuery)
+      throws Exception {
     Instant deadline = Instant.now().plus(SEARCH_RESPONSE_TIMEOUT);
     Set<String> finishedRequestIds = new HashSet<>();
     Set<String> failedRequestIds = new HashSet<>();
@@ -596,6 +600,16 @@ public class NaverMapSearchService {
         return bodyText;
       }
 
+      if (targetPage == 0) {
+        JsonNode hydrated = readHydratedFirstPage(driver, expectedQuery);
+        if (hydrated != null) {
+          checkHydrationResponseStatus(driver);
+          var envelope = objectMapper.createObjectNode();
+          envelope.putObject("result").putObject("place").set("list", hydrated);
+          return envelope.toString();
+        }
+      }
+
       try {
         Thread.sleep(200L);
       } catch (InterruptedException exception) {
@@ -633,6 +647,46 @@ public class NaverMapSearchService {
         failedResponsePaths);
     throw new CaptureException(
         "timeout", failureStage, "Timed out while waiting for Naver search response", null);
+  }
+
+  private JsonNode readHydratedFirstPage(ChromeDriver driver, String expectedQuery)
+      throws Exception {
+    driver.switchTo().defaultContent();
+    try {
+      List<WebElement> frames = driver.findElements(By.cssSelector("iframe#searchIframe"));
+      if (frames.isEmpty()) {
+        session.checkPage(driver);
+        return null;
+      }
+      driver.switchTo().frame(frames.get(0));
+      session.checkPage(driver);
+      String body = NaverHydration.read(driver, expectedQuery);
+      return body == null ? null : objectMapper.readTree(body);
+    } catch (NoSuchFrameException | StaleElementReferenceException exception) {
+      // The frame is still navigating; the existing bounded capture loop will observe it again.
+      return null;
+    } finally {
+      driver.switchTo().defaultContent();
+    }
+  }
+
+  private void checkHydrationResponseStatus(ChromeDriver driver) throws Exception {
+    // The document can finish while its hydration state is being read. Check those last events
+    // before returning so a critical HTTP restriction cannot be hidden by the new data path.
+    for (LogEntry entry : driver.manage().logs().get(LogType.PERFORMANCE)) {
+      JsonNode message = objectMapper.readTree(entry.getMessage()).path("message");
+      if (!"Network.responseReceived".equals(message.path("method").asText())) {
+        continue;
+      }
+      JsonNode params = message.path("params");
+      String url = params.path("response").path("url").asText();
+      session.checkResponse(
+          url,
+          params.path("response").path("status").asInt(-1),
+          url.contains(properties.responseUrlKeyword())
+              || url.contains(properties.graphqlResponseUrlKeyword()),
+          "Document".equals(params.path("type").asText()));
+    }
   }
 
   private int matchingPageOperation(JsonNode payload, int targetPage) {
