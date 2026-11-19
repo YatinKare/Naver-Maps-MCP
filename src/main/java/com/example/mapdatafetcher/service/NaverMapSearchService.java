@@ -65,6 +65,7 @@ public class NaverMapSearchService {
 
   public JsonNode search(NaverMapSearchRequest request) {
     LOGGER.info("Starting Naver keyword search for page {}", request.page());
+    SearchTiming timing = new SearchTiming("keyword", request.page());
     ChromeDriver driver = null;
     String stage = "browser_startup";
     try {
@@ -73,7 +74,9 @@ public class NaverMapSearchService {
       driver.executeCdpCommand("Network.enable", Map.of());
       int targetPage = request.page();
       stage = "page_navigation";
+      timing.stage(stage);
       driver.get(buildSearchUrl(request.q()));
+      timing.stage("response_capture");
       session.checkPage(driver);
       JsonNode result = captureSearchResults(driver, targetPage);
       LOGGER.info("Naver keyword search completed for page {}", targetPage);
@@ -97,12 +100,15 @@ public class NaverMapSearchService {
           exception);
       throw failure;
     } finally {
+      timing.stage("browser_shutdown");
       quitQuietly(driver);
+      timing.log(LOGGER);
     }
   }
 
   public JsonNode searchByCoordinate(NaverMapCoordinateSearchRequest request) {
     LOGGER.info("Starting Naver coordinate search for page {}", request.page());
+    SearchTiming timing = new SearchTiming("coordinate", request.page());
     ChromeDriver driver = null;
     String stage = "browser_startup";
     try {
@@ -111,10 +117,13 @@ public class NaverMapSearchService {
       driver.executeCdpCommand("Network.enable", Map.of());
       int targetPage = request.page();
       stage = "page_navigation";
+      timing.stage(stage);
       driver.get(buildCoordinateUrl(request.longitude(), request.latitude()));
       session.checkPage(driver);
       stage = "search_input";
+      timing.stage(stage);
       submitSearchKeyword(driver, request.query());
+      timing.stage("response_capture");
       JsonNode result = captureSearchResults(driver, targetPage);
       LOGGER.info("Naver coordinate search completed for page {}", targetPage);
       return result;
@@ -137,7 +146,9 @@ public class NaverMapSearchService {
           exception);
       throw failure;
     } finally {
+      timing.stage("browser_shutdown");
       quitQuietly(driver);
+      timing.log(LOGGER);
     }
   }
 
