@@ -99,10 +99,12 @@ Install Java 17 or newer, Go (for the build), Chrome or Chromium, a ChromeDriver
 with the same browser major version, `curl`, `jq`, GNU coreutils, and procps.
 Java is selected from `JAVA_BIN`, then `JAVA_HOME/bin/java`, then `PATH`;
 ChromeDriver is selected from `CHROMEDRIVER_BIN` or `PATH`. The browser is
-found on `PATH` as `google-chrome`, `google-chrome-stable`, `chromium`, or
-`chromium-browser`. The worker uses Selenium’s standard browser discovery;
-ensure its default browser matches the version reported by preflight when
-several are installed.
+selected from `CHROME_BIN` or found on `PATH` as `google-chrome`,
+`google-chrome-stable`, `chromium`, or `chromium-browser`. The runner passes
+that exact browser path to the worker as `NAVER_MAP_SELENIUM_CHROME_BINARY`,
+so preflight and searches use the same installation. The worker also accepts
+that environment variable directly; an unset/blank value keeps Selenium’s
+default browser discovery.
 
 `--check` validates dependencies and build artifacts without starting a gateway
 or contacting NAVER. Both scripts can be invoked by absolute path from another
@@ -110,7 +112,7 @@ directory. For custom installations or existing artifacts:
 
 ```bash
 JAVA_BIN=/opt/jdk/bin/java CHROMEDRIVER_BIN=/opt/chromedriver \
-  GATEWAY_BIN=/opt/naver/bin/naver-maps-mcp \
+  CHROME_BIN=/opt/chrome/chrome GATEWAY_BIN=/opt/naver/bin/naver-maps-mcp \
   bash tests/run-script --check '노원역 맛집' /opt/naver/lib/naver-maps-mcp.jar
 ```
 

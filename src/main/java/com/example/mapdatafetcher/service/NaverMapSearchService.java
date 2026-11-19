@@ -154,6 +154,10 @@ public class NaverMapSearchService {
 
   private ChromeDriver createDriver() {
     ChromeOptions options = new ChromeOptions();
+    String chromeBinary = System.getenv("NAVER_MAP_SELENIUM_CHROME_BINARY");
+    if (chromeBinary != null && !chromeBinary.isBlank()) {
+      options.setBinary(chromeBinary);
+    }
     options.setPageLoadStrategy(PageLoadStrategy.EAGER);
     options.addArguments(
         "--disable-gpu",

@@ -13,6 +13,7 @@ if [[ "${1:-}" == "--check" ]]; then
 fi
 JAVA_BIN="${JAVA_BIN:-${JAVA_HOME:+$JAVA_HOME/bin/java}}"
 CHROMEDRIVER_BIN="${CHROMEDRIVER_BIN:-chromedriver}"
+CHROME_BIN="${CHROME_BIN:-}"
 PORT="${PORT:-8080}"
 GATEWAY_PORT="${GATEWAY_PORT:-3000}"
 GATEWAY_AUTH_MODE="${GATEWAY_AUTH_MODE:-none}"
@@ -63,6 +64,10 @@ resolve_executable() {
 }
 
 resolve_chrome() {
+  if [[ -n "$CHROME_BIN" ]]; then
+    resolve_executable "$CHROME_BIN" 'Chrome/Chromium (set CHROME_BIN)'
+    return
+  fi
   local candidate
   for candidate in google-chrome google-chrome-stable chromium chromium-browser; do
     if command -v "$candidate" >/dev/null 2>&1; then
@@ -466,7 +471,7 @@ validate_tool_outcome_logs() {
 
 main() {
   local command_name
-  for command_name in uname jq curl free ps awk basename cut date dirname find grep head \
+  for command_name in uname jq curl free ps awk basename cat cut date dirname find grep head \
     mkdir mktemp nproc rm sed seq sleep tr wc; do
     require_command "$command_name"
   done
@@ -532,6 +537,7 @@ main() {
     GATEWAY_JAVA_BIN="$JAVA_BIN" \
     GATEWAY_JAVA_JAR="$jar_path" \
     GATEWAY_JAVA_CHROMEDRIVER="$CHROMEDRIVER_BIN" \
+    NAVER_MAP_SELENIUM_CHROME_BINARY="$chrome_bin" \
     GATEWAY_JAVA_HEADLESS=true \
     GATEWAY_JAVA_IDLE_TIMEOUT="$GATEWAY_JAVA_IDLE_TIMEOUT" \
     "$gateway_bin" \

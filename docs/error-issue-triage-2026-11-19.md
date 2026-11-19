@@ -54,6 +54,14 @@ not used as a release test.
 
 ## Portability validation
 
+A Luna High review of the runner found a missing `cat` prerequisite and a
+possible mismatch between the browser checked on `PATH` and Selenium’s default
+browser. Both are fixed: preflight checks `cat`, and the runner passes the
+validated browser executable through `NAVER_MAP_SELENIUM_CHROME_BINARY` to an
+explicit `ChromeOptions.setBinary` hook. The parent approved that surgical
+service hook and auth was notified; browser lifecycle remains parent-owned.
+`CHROME_BIN` can select a custom browser path or command name.
+
 No unit tests were created or run. The developer runner retains its keyword,
 coordinate, pagination, lazy startup, idle shutdown, and restart integration
 steps. `--check` returns before gateway startup or any NAVER request.
@@ -66,8 +74,13 @@ Manual checks against real local installations:
   `156.0.8078.47`.
 - Invocation by absolute path from `/tmp`, with `JAVA_BIN=java` and
   `CHROMEDRIVER_BIN=chromedriver`: passed, resolving commands from `PATH`.
-- Invalid explicit Java and ChromeDriver paths: failed immediately with the
-  relevant executable name and override guidance, before any gateway startup.
+- Invalid explicit Java, ChromeDriver, and browser paths: failed immediately
+  with the relevant executable name and override guidance, before any gateway
+  startup. A real `CHROME_BIN=google-chrome` preflight also passed.
+- Inspection of `buildJavaCommand` confirms the worker inherits the gateway's
+  environment, preserving the selected browser path. The new four-line Java
+  browser hook awaits the parent's combined integration build; no fresh runtime
+  success is claimed for that hook.
 
 Direct MCP integration against the running local v0.1.1 service also passed:
 `initialize` negotiated protocol `2025-11-25`, and `tools/list` returned both
