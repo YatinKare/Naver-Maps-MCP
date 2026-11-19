@@ -183,12 +183,17 @@ func (c *JavaClient) getNaverJSON(
 
 func validWorkerFailureLabels(category, stage string) bool {
 	validCategories := map[string]bool{
-		"capture_error":    true,
-		"request_aborted":  true,
-		"page_unavailable": true,
-		"invalid_response": true,
-		"timeout":          true,
-		"cancelled":        true,
+		"capture_error":         true,
+		"request_aborted":       true,
+		"page_unavailable":      true,
+		"invalid_response":      true,
+		"timeout":               true,
+		"cancelled":             true,
+		"rate_limited":          true,
+		"access_denied":         true,
+		"login_required":        true,
+		"verification_required": true,
+		"session_configuration": true,
 	}
 	validStages := map[string]bool{
 		"browser_startup":   true,
@@ -197,6 +202,7 @@ func validWorkerFailureLabels(category, stage string) bool {
 		"response_matching": true,
 		"response_body":     true,
 		"pagination":        true,
+		"authentication":    true,
 	}
 	return validCategories[category] && validStages[stage]
 }

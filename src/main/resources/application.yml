@@ -13,3 +13,4 @@ naver:
       response-url-keyword: /p/api/search/allSearch
       graphql-response-url-keyword: https://pcmap-api.place.naver.com/graphql
       headless: false
+      user-data-dir: ${NAVER_MAP_SELENIUM_USER_DATA_DIR:}
