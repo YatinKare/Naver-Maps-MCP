@@ -115,16 +115,21 @@ def main():
     parser.add_argument("--show-results", action="store_true",
                         help="Print two public places for an actual live recording")
     parser.add_argument("--compare", type=Path)
+    parser.add_argument("--gateway-bin", type=Path,
+                        help="Record SHA-256 of the exact gateway artifact under measurement")
+    parser.add_argument("--worker-jar", type=Path,
+                        help="Record SHA-256 of the exact worker artifact under measurement")
     parser.add_argument("--discovery-only", action="store_true",
                         help="Initialize and list tools without contacting NAVER")
     args = parser.parse_args()
     if args.rounds < 1 or args.interval < 0 or args.timeout <= 0:
         parser.error("rounds/timeout must be positive; interval nonnegative")
+    repo = Path(__file__).resolve().parents[1]
     report = {
         "label": args.label,
         "started_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        "checkout_revision": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
-        "dirty": bool(subprocess.check_output(["git", "status", "--porcelain"], text=True)),
+        "checkout_revision": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip(),
+        "dirty": bool(subprocess.check_output(["git", "status", "--porcelain"], cwd=repo, text=True)),
         "environment": {"platform": platform.platform(), "cpu_count": os.cpu_count()},
         "rounds": args.rounds, "interval_seconds": args.interval, "samples": [],
         "schema_version": 2,
@@ -132,6 +137,13 @@ def main():
         "warm_state_assumption": "caller keeps worker alive between successful calls; interval below idle timeout",
         "method": "real tools/call; monotonic time around HTTP through complete response body",
     }
+    report["artifacts"] = {
+        name: {"filename": artifact.name, "sha256": hashlib.sha256(artifact.read_bytes()).hexdigest()}
+        for name, artifact in (("gateway", args.gateway_bin), ("worker", args.worker_jar))
+        if artifact is not None}
+    report["host_pressure_start"] = {
+        name: Path("/proc/pressure", name).read_text().strip()
+        for name in ("cpu", "memory", "io") if Path("/proc/pressure", name).exists()}
     args.output.parent.mkdir(parents=True, exist_ok=True)
 
     def save():
