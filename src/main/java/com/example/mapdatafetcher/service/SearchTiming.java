@@ -35,11 +35,19 @@ final class SearchTiming {
     durations.forEach((name, nanos) -> millis.put(name, TimeUnit.NANOSECONDS.toMillis(nanos)));
     if (RequestContextHolder.getRequestAttributes() instanceof ServletRequestAttributes request
         && request.getResponse() != null) {
-      request.getResponse().setHeader("Server-Timing", millis.entrySet().stream()
-          .map(entry -> entry.getKey() + ";dur=" + entry.getValue())
-          .collect(Collectors.joining(", ")));
+      request
+          .getResponse()
+          .setHeader(
+              "Server-Timing",
+              millis.entrySet().stream()
+                  .map(entry -> entry.getKey() + ";dur=" + entry.getValue())
+                  .collect(Collectors.joining(", ")));
     }
-    logger.info("Naver capture timing: operation={}, page={}, total_ms={}, stages_ms={}",
-        operation, page, TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - started), millis);
+    logger.info(
+        "Naver capture timing: operation={}, page={}, total_ms={}, stages_ms={}",
+        operation,
+        page,
+        TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - started),
+        millis);
   }
 }
