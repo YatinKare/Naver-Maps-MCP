@@ -146,7 +146,8 @@ public class NaverBrowserPool {
     notifyAll();
   }
 
-  private synchronized void cleanupReleasedBrowser(ChromeDriver released, boolean keepProfileState) {
+  private synchronized void cleanupReleasedBrowser(
+      ChromeDriver released, boolean keepProfileState) {
     if (closed || driver != released || !cleanupPending) {
       cleanupPending = false;
       notifyAll();
@@ -176,7 +177,9 @@ public class NaverBrowserPool {
     } finally {
       if (cleaned && driver == released) {
         successfulUses++;
-        if (successfulUses >= 20) {
+        // Recycle before a browser can grow indefinitely, without adding a cold start to the
+        // normal p95 path of an active burst. Idle browsers still close after 45 seconds.
+        if (successfulUses >= 64) {
           discardBrowser();
         } else {
           lastReleasedNanos = System.nanoTime();
