@@ -1,0 +1,998 @@
+{
+  "utc": "2026-11-20T05:57:08.956722+00:00",
+  "arguments": {
+    "query": "카페",
+    "longitude": 126.9784,
+    "latitude": 37.5667,
+    "page": 2
+  },
+  "timing": {
+    "wall_ms": 5304.289,
+    "http_status": 200,
+    "matched_payload_bytes": 47620
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 4,
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "[{\"id\":\"37870852\",\"name\":\"커피미업 소공점\",\"category\":[\"카페\"],\"road_address\":\"소공로 100\",\"coordinates\":{\"longitude\":126.9799088,\"latitude\":37.5637426},\"tel\":\"070-4115-4535\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20260401_211/1775009928502fgzKD_JPEG/1000051606.jpg\"},{\"id\":\"1438566956\",\"name\":\"파란만잔 광화문점\",\"category\":[\"카페\"],\"road_address\":\"세종대로21길 58 1층\",\"coordinates\":{\"longitude\":126.9761976,\"latitude\":37.5689289},\"tel\":\"02-730-3035\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20211222_122/1640164186401ICXcH_PNG/11.png\"},{\"id\":\"35326691\",\"name\":\"스타벅스 새문안로점\",\"category\":[\"카페\"],\"road_address\":\"새문안로 92 (신문로1가) 광화문오피시아빌딩\",\"coordinates\":{\"longitude\":126.975127,\"latitude\":37.5698567},\"tel\":\"1522-3232\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20190828_93/1566953601239OT9MQ_PNG/xX7Wv642gXMoTI0DAv0hRymS.png\"},{\"id\":\"12952314\",\"name\":\"투썸플레이스 서소문점\",\"category\":[\"카페\"],\"road_address\":\"서소문로 135 연호빌딩\",\"coordinates\":{\"longitude\":126.9757747,\"latitude\":37.5639492},\"tel\":\"02-773-2388\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20260319_26/1773900664005daWob_JPEG/IMG_3830.jpeg\"},{\"id\":\"1453926348\",\"name\":\"배스킨라빈스 광화문점\",\"category\":[\"아이스크림\"],\"road_address\":\"종로5길 7 Tower8 1층\",\"coordinates\":{\"longitude\":126.980798,\"latitude\":37.570439},\"tel\":\"0507-2087-1186\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20260623_9/17822042241988W41u_JPEG/1000060726.jpg\"},{\"id\":\"1682935288\",\"name\":\"빠우 시청점\",\"category\":[\"도넛\"],\"road_address\":\"남대문로9길 40 센터플레이스 1층 102호\",\"coordinates\":{\"longitude\":126.9800958,\"latitude\":37.56701},\"tel\":\"0507-1476-8914\",\"thumbnail_url\":\"https://naverbooking-phinf.pstatic.net/20251128_24/1764288405820VFp9c_JPEG/DSC00021.jpg\"},{\"id\":\"2085083963\",\"name\":\"아운티제니 명동점\",\"category\":[\"카페\"],\"road_address\":\"남대문로7길 16 1층\",\"coordinates\":{\"longitude\":126.981266,\"latitude\":37.5641702},\"tel\":\"070-7507-6661\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20260811_116/1786415344894Kvu1v_JPEG/%F8%B8_20260811111529_1_13.jpg\"},{\"id\":\"1219296929\",\"name\":\"블루보틀 광화문 카페\",\"category\":[\"카페,디저트\"],\"road_address\":\"청계천로 11 1층\",\"coordinates\":{\"longitude\":126.9788008,\"latitude\":37.5694188},\"tel\":\"02-1533-6906\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20210826_300/1629941815164fGmMH_JPEG/7RVvxdUxYs3VdVxdSJWXZYuO.jpg\"},{\"id\":\"1999413846\",\"name\":\"파리바게뜨 서울시청점\",\"category\":[\"베이커리\"],\"road_address\":\"남대문로9길 40 110호\",\"coordinates\":{\"longitude\":126.9805624,\"latitude\":37.5669797},\"tel\":\"0507-1307-0578\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20250728_32/1753673633782JLqCE_JPEG/IMG_9971.jpeg\"},{\"id\":\"1652689768\",\"name\":\"백미당 을지로점\",\"category\":[\"카페\"],\"road_address\":\"남대문로9길 24 패스트파이브타워 1층\",\"coordinates\":{\"longitude\":126.9812606,\"latitude\":37.5670828},\"tel\":\"02-3789-3500\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20240909_198/1725861520866yH5eP_PNG/KakaoTalk_20240903_163632660_02.png\"},{\"id\":\"1196269047\",\"name\":\"카페 트러블\",\"category\":[\"카페\"],\"road_address\":\"세종대로21길 75 1층\",\"coordinates\":{\"longitude\":126.9756591,\"latitude\":37.5695162},\"tel\":\"0507-2093-4210\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20261102_266/1793586796249G8gfK_JPEG/IMG_7462.jpg\"},{\"id\":\"1112851690\",\"name\":\"벤스쿠키 D타워점\",\"category\":[\"베이커리\"],\"road_address\":\"종로3길 17 1층 SOHO길 104호\",\"coordinates\":{\"longitude\":126.9789145,\"latitude\":37.5709958},\"tel\":\"02-2251-8020\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20180502_196/1525239469292dSbRl_JPEG/GVos1DpK-MYMNgdiqSD03uHs.jpg\"},{\"id\":\"1030680729\",\"name\":\"메가MGC커피 광화문역점\",\"category\":[\"카페\"],\"road_address\":\"새문안로5길 11-1\",\"coordinates\":{\"longitude\":126.9747657,\"latitude\":37.5712991},\"tel\":\"0503-5260-9755\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20260114_182/17683670235677kK4Q_PNG/%BE%F7%C3%BC%BB%E7%C1%F8.png\"},{\"id\":\"2145244549\",\"name\":\"픽베이크 롯데본점\",\"category\":[\"카페,디저트\"],\"road_address\":\"남대문로 81 롯데백화점본점B1\",\"coordinates\":{\"longitude\":126.9814694,\"latitude\":37.5647582}},{\"id\":\"37402394\",\"name\":\"포시즌스 호텔 서울 마루\",\"category\":[\"카페,디저트\"],\"road_address\":\"새문안로 97 로비층\",\"coordinates\":{\"longitude\":126.9753817,\"latitude\":37.5707185},\"tel\":\"02-6388-5500\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20161008_294/1475906078075XEBvo_JPEG/176958548457498_2.jpeg\"},{\"id\":\"1189685924\",\"name\":\"백미당 D타워점\",\"category\":[\"카페\"],\"road_address\":\"종로3길 17 D타워 3층\",\"coordinates\":{\"longitude\":126.9787995,\"latitude\":37.5712256},\"tel\":\"02-2251-8340\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20240909_24/172586190224033nby_PNG/KakaoTalk_20240903_163632660_02.png\"},{\"id\":\"1071701669\",\"name\":\"더벤티 서울시청점\",\"category\":[\"카페\"],\"road_address\":\"남대문로9길 40 센터플레이스 1층 101-1호\",\"coordinates\":{\"longitude\":126.9800659,\"latitude\":37.5670115},\"tel\":\"02-6031-8954\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20240103_297/1704241881526AIzwR_JPEG/1._%B4%F5%BA%A5%C6%BC_%C4%BF%C7%C7_BI.jpg\"},{\"id\":\"1312068302\",\"name\":\"스타벅스 광화문고려빌딩점\",\"category\":[\"카페\"],\"road_address\":\"새문안로 91 (신문로1가) 1~2층\",\"coordinates\":{\"longitude\":126.97491,\"latitude\":37.5704611},\"tel\":\"1522-3232\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20190828_93/1566953601239OT9MQ_PNG/xX7Wv642gXMoTI0DAv0hRymS.png\"},{\"id\":\"11781400\",\"name\":\"크리스피크림도넛 롯데백화점본점\",\"category\":[\"도넛\"],\"road_address\":\"을지로 30 롯데백화점 본점 지하1층\",\"coordinates\":{\"longitude\":126.9818622,\"latitude\":37.5645836},\"tel\":\"02-772-3636\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20261107_258/1793983157008Vvuvg_JPEG/86158252-D8AA-4DA1-8CAA-164085B626B8.jpg\"},{\"id\":\"1579501314\",\"name\":\"커피빈 종로구청앞점\",\"category\":[\"카페\"],\"road_address\":\"종로3길 34\",\"coordinates\":{\"longitude\":126.9794119,\"latitude\":37.5718398},\"tel\":\"02-739-6151\",\"thumbnail_url\":\"https://naverbooking-phinf.pstatic.net/20251022_97/1761108177316uttWn_JPEG/%B7%CE%B0%ED_%B3%D7%C0%CC%B9%F6_%B4%EB%C7%A5_%B7%CE%B0%ED_%C0%CC%B9%CC%C1%F6-02.jpg\"},{\"id\":\"2031472463\",\"name\":\"더커피 스타필드 에비뉴 그랑서울점\",\"category\":[\"카페,디저트\"],\"road_address\":\"종로 33 스타필드 에비뉴 그랑서울 B1\",\"coordinates\":{\"longitude\":126.9817698,\"latitude\":37.5704324},\"tel\":\"0507-1363-2087\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20251014_35/1760399634448t8BFt_JPEG/%B4%D9%BF%EE%B7%CE%B5%E5.jpg\"},{\"id\":\"2019658976\",\"name\":\"더정 우롱티프로젝트 종로그랑서울점\",\"category\":[\"카페,디저트\"],\"road_address\":\"종로 33 지하1층 B106호\",\"coordinates\":{\"longitude\":126.9814392,\"latitude\":37.57096},\"tel\":\"0507-1402-0648\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20251025_53/1761356538122Nw1SR_PNG/IMG_1155.png\"},{\"id\":\"37542796\",\"name\":\"다만프레르 SFC점\",\"category\":[\"홍차전문점\"],\"road_address\":\"세종대로 136 파이넨스빌딩 지하1층\",\"coordinates\":{\"longitude\":126.9782701,\"latitude\":37.5684246},\"tel\":\"02-6730-1323\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20180821_215/1534813993881O94bS_PNG/ktYhh_CTWabv0WfpEsNeiEFs.png\"},{\"id\":\"34677836\",\"name\":\"폴 바셋 롯데백화점 본점\",\"category\":[\"카페\"],\"road_address\":\"남대문로 81 롯데백화점 본점 지하 1층\",\"coordinates\":{\"longitude\":126.9817026,\"latitude\":37.5645786},\"tel\":\"02-726-4250\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20250122_231/1737527881448uu03E_JPEG/%C6%FA%B9%D9%BC%C2_%B7%CE%B0%ED.jpg\"},{\"id\":\"1282557369\",\"name\":\"배스킨라빈스 시청역점\",\"category\":[\"아이스크림\"],\"road_address\":\"서소문로 141 1층\",\"coordinates\":{\"longitude\":126.9763969,\"latitude\":37.5642965},\"tel\":\"0507-0288-8292\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20260623_223/1782201818025eoBwS_JPEG/1000052170.jpg\"},{\"id\":\"1933738068\",\"name\":\"스타벅스 세종대로점\",\"category\":[\"카페\"],\"road_address\":\"세종대로 135-5 (태평로1가)\",\"coordinates\":{\"longitude\":126.9764331,\"latitude\":37.5685951},\"tel\":\"1522-3232\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20190828_93/1566953601239OT9MQ_PNG/xX7Wv642gXMoTI0DAv0hRymS.png\"},{\"id\":\"1140346755\",\"name\":\"뚜레쥬르 무교점\",\"category\":[\"베이커리\"],\"road_address\":\"남대문로9길 40 114호, 115호 중 일부\",\"coordinates\":{\"longitude\":126.9800767,\"latitude\":37.5672057},\"tel\":\"02-6031-8820\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20250812_90/1755010435510vShOp_JPEG/20250811_111246.jpg\"},{\"id\":\"11493056\",\"name\":\"던킨 북창점\",\"category\":[\"도넛\"],\"road_address\":\"남대문로1길 60 문치과빌딩\",\"coordinates\":{\"longitude\":126.9777876,\"latitude\":37.5637345},\"tel\":\"02-754-3494\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20150831_276/14409924612244iXlm_JPEG/11493056_0.jpg\"},{\"id\":\"55416068\",\"name\":\"매머드커피 소공점\",\"category\":[\"카페\"],\"road_address\":\"남대문로7길 13\",\"coordinates\":{\"longitude\":126.9811132,\"latitude\":37.5638154},\"tel\":\"070-8871-4096\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20240415_262/1713160301177FCOBx_JPEG/IMG_0870.JPG\"},{\"id\":\"1130895245\",\"name\":\"매머드익스프레스 시청점\",\"category\":[\"카페\"],\"road_address\":\"세종대로 91\",\"coordinates\":{\"longitude\":126.9766305,\"latitude\":37.5645154},\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20200512_172/1589242555266FgHW8_JPEG/wAexuhnlu9vnqw3fxpQIx6dT.jpeg.jpg\"},{\"id\":\"1652129756\",\"name\":\"부스틴 광화문점\",\"category\":[\"카페\"],\"road_address\":\"세종대로21길 52 1층\",\"coordinates\":{\"longitude\":126.9760391,\"latitude\":37.5687785},\"tel\":\"0507-1332-9359\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20220831_204/1661930290788AazH7_PNG/KakaoTalk_20220821_182712202.png\"},{\"id\":\"1889323833\",\"name\":\"메가MGC커피 서울시청점\",\"category\":[\"카페\"],\"road_address\":\"다동길 34 1층\",\"coordinates\":{\"longitude\":126.9811834,\"latitude\":37.5678268},\"tel\":\"0507-1361-0656\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20220401_291/1648799275395oEB3a_PNG/%B8%DE%B0%A1%C4%BF%C7%C7.png\"},{\"id\":\"1516114509\",\"name\":\"스타벅스 시청역11번출구점\",\"category\":[\"카페\"],\"road_address\":\"서소문로 129 (서소문동)\",\"coordinates\":{\"longitude\":126.9753836,\"latitude\":37.563755},\"tel\":\"1522-3232\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20190828_93/1566953601239OT9MQ_PNG/xX7Wv642gXMoTI0DAv0hRymS.png\"},{\"id\":\"11689904\",\"name\":\"커피빈 무교점\",\"category\":[\"카페\"],\"road_address\":\"세종대로 136 서울파이낸스센터 B1\",\"coordinates\":{\"longitude\":126.978064,\"latitude\":37.568536},\"tel\":\"02-753-2374\",\"thumbnail_url\":\"https://naverbooking-phinf.pstatic.net/20251021_61/17610301905121OhD4_JPEG/%B7%CE%B0%ED_%B3%D7%C0%CC%B9%F6_%B4%EB%C7%A5_%B7%CE%B0%ED_%C0%CC%B9%CC%C1%F6-02.jpg\"},{\"id\":\"1621403132\",\"name\":\"아티제 종로그랑서울2점\",\"category\":[\"카페\"],\"road_address\":\"종로 33 B1F 132호,133호,134호\",\"coordinates\":{\"longitude\":126.9814392,\"latitude\":37.57096},\"tel\":\"02-2158-7571\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20200302_19/1583113111634WXGFz_JPEG/EXc-yT63YThkEBqi3LDLloBp.JPG.jpg\"},{\"id\":\"1771297209\",\"name\":\"메가MGC커피 종로르메이에르점\",\"category\":[\"카페\"],\"road_address\":\"종로 19 르메이에르 종로타운 1층 109-1호\",\"coordinates\":{\"longitude\":126.9795064,\"latitude\":37.5709455},\"tel\":\"0507-2085-1704\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20240315_191/1710487162464Yhogr_JPEG/KakaoTalk_20240315_161632297.jpg\"},{\"id\":\"2055996139\",\"name\":\"슈퍼말차 광화문SFC\",\"category\":[\"카페\"],\"road_address\":\"세종대로 136 파이낸스빌딩 지하1층 113호\",\"coordinates\":{\"longitude\":126.9784418,\"latitude\":37.5684756},\"tel\":\"070-4837-0690\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20260112_1/1768197750014owXg1_JPEG/SUPERMATCHA_IMG_Store_SFCmall_1_%281%29.jpg\"},{\"id\":\"2030407213\",\"name\":\"부흥당케이크\",\"category\":[\"케이크전문\"],\"road_address\":\"남대문로 117 지하1층 6호\",\"coordinates\":{\"longitude\":126.9823232,\"latitude\":37.5677864},\"tel\":\"0507-1408-3641\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20250528_245/1748360534381XNYKc_PNG/IMG_7133.png\"},{\"id\":\"2070627172\",\"name\":\"오늘온\",\"category\":[\"카페\"],\"road_address\":\"을지로1길 15 1층 오늘온\",\"coordinates\":{\"longitude\":126.9797591,\"latitude\":37.5668349},\"tel\":\"0507-1440-0455\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20261025_121/1792899084509f5p9R_JPEG/%B8%C1%B0%ED_%B0%A1%B5%E6_%BB%F7%B5%E5%C0%A7%C4%A1_%B1%A4%B0%ED_%C6%F7%BD%BA%C5%CD.jpg\"},{\"id\":\"1020106910\",\"name\":\"쇼토 롯데백화점본점\",\"category\":[\"베이커리\"],\"road_address\":\"남대문로 81 롯데백화점본점 B1\",\"coordinates\":{\"longitude\":126.9814735,\"latitude\":37.5648991},\"thumbnail_url\":\"https://naverbooking-phinf.pstatic.net/20250110_83/1736483410031bDrF1_JPEG/KakaoTalk_20241126_211219753.jpg\"},{\"id\":\"1025986376\",\"name\":\"뚜레쥬르 종로구청점\",\"category\":[\"베이커리\"],\"road_address\":\"종로5길 34\",\"coordinates\":{\"longitude\":126.9805862,\"latitude\":37.5717866},\"tel\":\"02-6747-8265\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20250813_266/17550484266608gyBG_JPEG/%B6%D1%B7%B9%C1%EA%B8%A3_%B7%CE%B0%ED_%B3%D7%C0%CC%B9%F6.jpg\"},{\"id\":\"1832547079\",\"name\":\"오로시젤라또 종로점\",\"category\":[\"아이스크림\"],\"road_address\":\"종로5길 7 107, 108, 109호\",\"coordinates\":{\"longitude\":126.9805518,\"latitude\":37.5706324},\"tel\":\"0507-1337-7487\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20240326_10/1711441383108XkTzX_JPEG/_S1A0406.jpg\"},{\"id\":\"1714991428\",\"name\":\"커피빈 무교CBTL점\",\"category\":[\"카페\"],\"road_address\":\"세종대로 136 파이낸스빌딩 지하2층\",\"coordinates\":{\"longitude\":126.9782701,\"latitude\":37.5684246},\"tel\":\"02-3789-7750\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20251020_207/1760952614803nagkS_JPEG/%B7%CE%B0%ED_%B3%D7%C0%CC%B9%F6_%B4%EB%C7%A5_%B7%CE%B0%ED_%C0%CC%B9%CC%C1%F6-02.jpg\"},{\"id\":\"38277148\",\"name\":\"오설록 롯데백화점본점\",\"category\":[\"차\"],\"road_address\":\"남대문로 81 롯데백화점 본점\",\"coordinates\":{\"longitude\":126.9814491,\"latitude\":37.565012},\"tel\":\"02-726-4027\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20250314_284/174193538889035oT0_JPEG/20250314_154352.jpg\"},{\"id\":\"1413698459\",\"name\":\"해피베어데이 롯데백화점 본점\",\"category\":[\"카페,디저트\"],\"road_address\":\"남대문로 81 B1\",\"coordinates\":{\"longitude\":126.9815271,\"latitude\":37.5649407},\"tel\":\"0507-1350-3064\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20260422_96/1776845484355OpvnI_PNG/%B8%F0%B9%D9%C0%CF%C4%BF%B9%F6.png\"},{\"id\":\"1216353164\",\"name\":\"카페 소포라\",\"category\":[\"카페,디저트\"],\"road_address\":\"덕수궁길 114\",\"coordinates\":{\"longitude\":126.9740129,\"latitude\":37.5676181},\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20250805_228/1754358423569IqXkp_JPEG/IMG_9964.jpeg\"},{\"id\":\"1105473067\",\"name\":\"바캉스커피\",\"category\":[\"카페,디저트\"],\"road_address\":\"남대문로9길 12 9층(생활맥주건물)\",\"coordinates\":{\"longitude\":126.9817523,\"latitude\":37.5668689},\"tel\":\"070-8803-2326\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20231205_112/17017672957146PhUU_JPEG/R0001772.jpeg\"},{\"id\":\"36257137\",\"name\":\"할리스 세종로점\",\"category\":[\"카페\"],\"road_address\":\"세종대로 161\",\"coordinates\":{\"longitude\":126.97638,\"latitude\":37.5707418},\"tel\":\"02-720-5582\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20210302_125/161464487124061agC_JPEG/K15utTFWXeuNEny1JMXiV57W.jpg\"},{\"id\":\"2005902449\",\"name\":\"우지커피 종로르메이에르점\",\"category\":[\"카페,디저트\"],\"road_address\":\"종로 19 제1층 108-1호\",\"coordinates\":{\"longitude\":126.9798606,\"latitude\":37.5708344},\"tel\":\"0507-1382-1809\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20250924_39/1758675454573ASUEs_JPEG/1._%BF%EC%C1%F6%C4%BF%C7%C7_%BD%C9%BA%BC_%B5%B9%C3%E2%B0%A3%C6%C7.JPG\"},{\"id\":\"1398357785\",\"name\":\"복호두 광화문점\",\"category\":[\"호두과자\"],\"road_address\":\"종로 19 1층 107-2호\",\"coordinates\":{\"longitude\":126.9795134,\"latitude\":37.5707814}},{\"id\":\"73548053\",\"name\":\"쌍쌍운종가\",\"category\":[\"카페\"],\"road_address\":\"종로5길 19-10 쌍쌍운종가\",\"coordinates\":{\"longitude\":126.9803179,\"latitude\":37.5713879},\"tel\":\"02-720-9302\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20240122_270/1705889054036VHbpc_JPEG/20240121_124004.jpg\"},{\"id\":\"37402395\",\"name\":\"포시즌스 호텔 서울 컨펙션즈 바이 포시즌스\",\"category\":[\"베이커리\"],\"road_address\":\"새문안로 97 로비층\",\"coordinates\":{\"longitude\":126.9753817,\"latitude\":37.5707185},\"tel\":\"02-6388-5500\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20161008_123/1475903279022J0yYr_JPEG/176958543776177_1.jpeg\"},{\"id\":\"1462284548\",\"name\":\"스타벅스 그랑서울점\",\"category\":[\"카페\"],\"road_address\":\"종로 33 (청진동)\",\"coordinates\":{\"longitude\":126.9812093,\"latitude\":37.5707867},\"tel\":\"1522-3232\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20190828_93/1566953601239OT9MQ_PNG/xX7Wv642gXMoTI0DAv0hRymS.png\"},{\"id\":\"31564561\",\"name\":\"오뗄두스 SFC 점\",\"category\":[\"카페\"],\"road_address\":\"세종대로 136 서울 파이낸스 센터 B-202호\",\"coordinates\":{\"longitude\":126.9782701,\"latitude\":37.5684246},\"tel\":\"070-4221-5705\"},{\"id\":\"1069280985\",\"name\":\"고려당 롯데백화점 본점\",\"category\":[\"베이커리\"],\"road_address\":\"남대문로 81 롯데백화점 본점 지하 1층\",\"coordinates\":{\"longitude\":126.9812426,\"latitude\":37.5650803},\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20260425_200/17771125544680mXOT_JPEG/0422_%B0%ED%B7%C1%B4%E7_%B7%D4%B5%A5%BA%BB%C1%A1_0108.jpg\"},{\"id\":\"1381561233\",\"name\":\"바나프레소 무교점\",\"category\":[\"카페\"],\"road_address\":\"남대문로9길 40\",\"coordinates\":{\"longitude\":126.9801284,\"latitude\":37.5670094},\"tel\":\"070-8998-8971\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20261012_50/1791795171896POyKf_JPEG/samsung1080n.jpg\"},{\"id\":\"1470968348\",\"name\":\"더벤티 종로르메이에르점\",\"category\":[\"카페\"],\"road_address\":\"종로 19 르메이에르종로타운1 107-1호\",\"coordinates\":{\"longitude\":126.9795042,\"latitude\":37.5707452},\"tel\":\"070-7766-0714\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20240103_297/1704241881526AIzwR_JPEG/1._%B4%F5%BA%A5%C6%BC_%C4%BF%C7%C7_BI.jpg\"},{\"id\":\"2067740280\",\"name\":\"섬타르 종로광화문점\",\"category\":[\"카페,디저트\"],\"road_address\":\"종로 33 지하1층 B104호\",\"coordinates\":{\"longitude\":126.9814392,\"latitude\":37.57096},\"tel\":\"02-2158-7548\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20251102_198/1762041635353RAlb6_JPEG/IMG_2362.jpeg\"},{\"id\":\"1215433366\",\"name\":\"빽다방 종로새문안점\",\"category\":[\"테이크아웃커피\"],\"road_address\":\"새문안로 83 1층\",\"coordinates\":{\"longitude\":126.9739796,\"latitude\":37.5703543},\"tel\":\"0507-1435-1782\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20250420_116/1745108455054sizd7_JPEG/IMG_0092.jpeg\"},{\"id\":\"2027859645\",\"name\":\"푸가 광화문점\",\"category\":[\"카페\"],\"road_address\":\"종로 19 르메이에르종로타운 115-2\",\"coordinates\":{\"longitude\":126.9798606,\"latitude\":37.5708344},\"tel\":\"02-736-1318\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20260626_168/1782469166891LUmlQ_JPEG/KakaoTalk_20260626_191517442.jpg\"},{\"id\":\"17902390\",\"name\":\"가을\",\"category\":[\"카페\"],\"road_address\":\"세종대로23길 21 2층 가을\",\"coordinates\":{\"longitude\":126.9752513,\"latitude\":37.5715273},\"tel\":\"02-730-7537\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20191018_125/1571349882833pbVWK_JPEG/0CoTEslhp2ZExPABfJ4z5B9q.jpg\"},{\"id\":\"2053577327\",\"name\":\"밀도 롯데백화점 본점\",\"category\":[\"베이커리\"],\"road_address\":\"남대문로 81 롯데백화점 본점 B1 밀도\",\"coordinates\":{\"longitude\":126.9813645,\"latitude\":37.5647504},\"tel\":\"0507-1352-4026\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20261029_139/17932509763672nGcp_JPEG/%BD%BA%C5%A9%B8%B0%BC%A6_2026-10-29_141518.jpg\"},{\"id\":\"2051608008\",\"name\":\"박스커피 서울시청점\",\"category\":[\"카페,디저트\"],\"road_address\":\"무교로 12 정오빌딩 1층\",\"coordinates\":{\"longitude\":126.9793533,\"latitude\":37.5670336},\"tel\":\"02-420-0386\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20251204_289/17648264292878SHgp_PNG/%B9%DA%BD%BA%C4%BF%C7%C7%B7%CE%B0%ED.png\"},{\"id\":\"1500625716\",\"name\":\"카페그레이스\",\"category\":[\"카페,디저트\"],\"road_address\":\"세종대로19길 16\",\"coordinates\":{\"longitude\":126.9763926,\"latitude\":37.5671196},\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20191105_295/1572955805692n4loc_JPEG/GGlQ09mNJ1k1mo0NHjCNdWUg.jpg\"},{\"id\":\"1631382577\",\"name\":\"드림라이크커피\",\"category\":[\"카페\"],\"road_address\":\"무교로 39 1층\",\"coordinates\":{\"longitude\":126.979193,\"latitude\":37.5695268},\"tel\":\"02-737-2237\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20210419_90/16188142710139n1fK_JPEG/D3iMlCm1ytRQGIqJf0v8e0hy.jpg\"},{\"id\":\"1011896219\",\"name\":\"에슬로우커피 시청점\",\"category\":[\"카페\"],\"road_address\":\"남대문로9길 40 1층\",\"coordinates\":{\"longitude\":126.9804016,\"latitude\":37.5670122},\"tel\":\"0507-2093-7368\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20230918_44/1695046384946WzI2I_JPEG/2023-09-18-22-50-48-320.jpg\"},{\"id\":\"1431181473\",\"name\":\"헤이키커피 광화문점\",\"category\":[\"카페,디저트\"],\"road_address\":\"세종대로21길 63 1층\",\"coordinates\":{\"longitude\":126.9758085,\"latitude\":37.5691609},\"tel\":\"0503-5260-9915\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20241001_79/1727787181587DNYGc_PNG/%C7%EC%C0%CC%C5%B0%B7%CE%B0%ED%C0%CC%B9%CC%C1%F6.png\"},{\"id\":\"1250672826\",\"name\":\"매머드익스프레스 광화문역점\",\"category\":[\"카페\"],\"road_address\":\"새문안로5길 14 1층 매머드커피\",\"coordinates\":{\"longitude\":126.9749689,\"latitude\":37.5714286},\"tel\":\"0507-1498-8855\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20220525_222/1653440614158Wzo3V_JPEG/1653440596630-0.jpg\"},{\"id\":\"483853439\",\"name\":\"빌리엔젤 종각역점\",\"category\":[\"케이크전문\"],\"road_address\":\"삼봉로 94\",\"coordinates\":{\"longitude\":126.9823505,\"latitude\":37.5718562},\"tel\":\"02-2160-8488\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20190820_110/156629756193987PHf_JPEG/DPeClG3HoEl2wWnxykU-gF3i.jpg\"},{\"id\":\"1542626449\",\"name\":\"커피사피엔스 종로 르메이에르점\",\"category\":[\"카페\"],\"road_address\":\"종로 19 1층 120-2호\",\"coordinates\":{\"longitude\":126.980159,\"latitude\":37.5707238},\"tel\":\"0507-2093-4703\",\"thumbnail_url\":\"https://ldb-phinf.pstatic.net/20250117_215/1737097924981VinEO_JPEG/%C4%BF%C7%C7%BB%E7%C7%C7%BF%A3%BD%BA-04.jpg\"}]"
+        }
+      ],
+      "structuredContent": [
+        {
+          "id": "37870852",
+          "name": "커피미업 소공점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "소공로 100",
+          "coordinates": {
+            "longitude": 126.9799088,
+            "latitude": 37.5637426
+          },
+          "tel": "070-4115-4535",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20260401_211/1775009928502fgzKD_JPEG/1000051606.jpg"
+        },
+        {
+          "id": "1438566956",
+          "name": "파란만잔 광화문점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "세종대로21길 58 1층",
+          "coordinates": {
+            "longitude": 126.9761976,
+            "latitude": 37.5689289
+          },
+          "tel": "02-730-3035",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20211222_122/1640164186401ICXcH_PNG/11.png"
+        },
+        {
+          "id": "35326691",
+          "name": "스타벅스 새문안로점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "새문안로 92 (신문로1가) 광화문오피시아빌딩",
+          "coordinates": {
+            "longitude": 126.975127,
+            "latitude": 37.5698567
+          },
+          "tel": "1522-3232",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20190828_93/1566953601239OT9MQ_PNG/xX7Wv642gXMoTI0DAv0hRymS.png"
+        },
+        {
+          "id": "12952314",
+          "name": "투썸플레이스 서소문점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "서소문로 135 연호빌딩",
+          "coordinates": {
+            "longitude": 126.9757747,
+            "latitude": 37.5639492
+          },
+          "tel": "02-773-2388",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20260319_26/1773900664005daWob_JPEG/IMG_3830.jpeg"
+        },
+        {
+          "id": "1453926348",
+          "name": "배스킨라빈스 광화문점",
+          "category": [
+            "아이스크림"
+          ],
+          "road_address": "종로5길 7 Tower8 1층",
+          "coordinates": {
+            "longitude": 126.980798,
+            "latitude": 37.570439
+          },
+          "tel": "0507-2087-1186",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20260623_9/17822042241988W41u_JPEG/1000060726.jpg"
+        },
+        {
+          "id": "1682935288",
+          "name": "빠우 시청점",
+          "category": [
+            "도넛"
+          ],
+          "road_address": "남대문로9길 40 센터플레이스 1층 102호",
+          "coordinates": {
+            "longitude": 126.9800958,
+            "latitude": 37.56701
+          },
+          "tel": "0507-1476-8914",
+          "thumbnail_url": "https://naverbooking-phinf.pstatic.net/20251128_24/1764288405820VFp9c_JPEG/DSC00021.jpg"
+        },
+        {
+          "id": "2085083963",
+          "name": "아운티제니 명동점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "남대문로7길 16 1층",
+          "coordinates": {
+            "longitude": 126.981266,
+            "latitude": 37.5641702
+          },
+          "tel": "070-7507-6661",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20260811_116/1786415344894Kvu1v_JPEG/%F8%B8_20260811111529_1_13.jpg"
+        },
+        {
+          "id": "1219296929",
+          "name": "블루보틀 광화문 카페",
+          "category": [
+            "카페,디저트"
+          ],
+          "road_address": "청계천로 11 1층",
+          "coordinates": {
+            "longitude": 126.9788008,
+            "latitude": 37.5694188
+          },
+          "tel": "02-1533-6906",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20210826_300/1629941815164fGmMH_JPEG/7RVvxdUxYs3VdVxdSJWXZYuO.jpg"
+        },
+        {
+          "id": "1999413846",
+          "name": "파리바게뜨 서울시청점",
+          "category": [
+            "베이커리"
+          ],
+          "road_address": "남대문로9길 40 110호",
+          "coordinates": {
+            "longitude": 126.9805624,
+            "latitude": 37.5669797
+          },
+          "tel": "0507-1307-0578",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20250728_32/1753673633782JLqCE_JPEG/IMG_9971.jpeg"
+        },
+        {
+          "id": "1652689768",
+          "name": "백미당 을지로점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "남대문로9길 24 패스트파이브타워 1층",
+          "coordinates": {
+            "longitude": 126.9812606,
+            "latitude": 37.5670828
+          },
+          "tel": "02-3789-3500",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20240909_198/1725861520866yH5eP_PNG/KakaoTalk_20240903_163632660_02.png"
+        },
+        {
+          "id": "1196269047",
+          "name": "카페 트러블",
+          "category": [
+            "카페"
+          ],
+          "road_address": "세종대로21길 75 1층",
+          "coordinates": {
+            "longitude": 126.9756591,
+            "latitude": 37.5695162
+          },
+          "tel": "0507-2093-4210",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20261102_266/1793586796249G8gfK_JPEG/IMG_7462.jpg"
+        },
+        {
+          "id": "1112851690",
+          "name": "벤스쿠키 D타워점",
+          "category": [
+            "베이커리"
+          ],
+          "road_address": "종로3길 17 1층 SOHO길 104호",
+          "coordinates": {
+            "longitude": 126.9789145,
+            "latitude": 37.5709958
+          },
+          "tel": "02-2251-8020",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20180502_196/1525239469292dSbRl_JPEG/GVos1DpK-MYMNgdiqSD03uHs.jpg"
+        },
+        {
+          "id": "1030680729",
+          "name": "메가MGC커피 광화문역점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "새문안로5길 11-1",
+          "coordinates": {
+            "longitude": 126.9747657,
+            "latitude": 37.5712991
+          },
+          "tel": "0503-5260-9755",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20260114_182/17683670235677kK4Q_PNG/%BE%F7%C3%BC%BB%E7%C1%F8.png"
+        },
+        {
+          "id": "2145244549",
+          "name": "픽베이크 롯데본점",
+          "category": [
+            "카페,디저트"
+          ],
+          "road_address": "남대문로 81 롯데백화점본점B1",
+          "coordinates": {
+            "longitude": 126.9814694,
+            "latitude": 37.5647582
+          }
+        },
+        {
+          "id": "37402394",
+          "name": "포시즌스 호텔 서울 마루",
+          "category": [
+            "카페,디저트"
+          ],
+          "road_address": "새문안로 97 로비층",
+          "coordinates": {
+            "longitude": 126.9753817,
+            "latitude": 37.5707185
+          },
+          "tel": "02-6388-5500",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20161008_294/1475906078075XEBvo_JPEG/176958548457498_2.jpeg"
+        },
+        {
+          "id": "1189685924",
+          "name": "백미당 D타워점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "종로3길 17 D타워 3층",
+          "coordinates": {
+            "longitude": 126.9787995,
+            "latitude": 37.5712256
+          },
+          "tel": "02-2251-8340",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20240909_24/172586190224033nby_PNG/KakaoTalk_20240903_163632660_02.png"
+        },
+        {
+          "id": "1071701669",
+          "name": "더벤티 서울시청점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "남대문로9길 40 센터플레이스 1층 101-1호",
+          "coordinates": {
+            "longitude": 126.9800659,
+            "latitude": 37.5670115
+          },
+          "tel": "02-6031-8954",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20240103_297/1704241881526AIzwR_JPEG/1._%B4%F5%BA%A5%C6%BC_%C4%BF%C7%C7_BI.jpg"
+        },
+        {
+          "id": "1312068302",
+          "name": "스타벅스 광화문고려빌딩점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "새문안로 91 (신문로1가) 1~2층",
+          "coordinates": {
+            "longitude": 126.97491,
+            "latitude": 37.5704611
+          },
+          "tel": "1522-3232",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20190828_93/1566953601239OT9MQ_PNG/xX7Wv642gXMoTI0DAv0hRymS.png"
+        },
+        {
+          "id": "11781400",
+          "name": "크리스피크림도넛 롯데백화점본점",
+          "category": [
+            "도넛"
+          ],
+          "road_address": "을지로 30 롯데백화점 본점 지하1층",
+          "coordinates": {
+            "longitude": 126.9818622,
+            "latitude": 37.5645836
+          },
+          "tel": "02-772-3636",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20261107_258/1793983157008Vvuvg_JPEG/86158252-D8AA-4DA1-8CAA-164085B626B8.jpg"
+        },
+        {
+          "id": "1579501314",
+          "name": "커피빈 종로구청앞점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "종로3길 34",
+          "coordinates": {
+            "longitude": 126.9794119,
+            "latitude": 37.5718398
+          },
+          "tel": "02-739-6151",
+          "thumbnail_url": "https://naverbooking-phinf.pstatic.net/20251022_97/1761108177316uttWn_JPEG/%B7%CE%B0%ED_%B3%D7%C0%CC%B9%F6_%B4%EB%C7%A5_%B7%CE%B0%ED_%C0%CC%B9%CC%C1%F6-02.jpg"
+        },
+        {
+          "id": "2031472463",
+          "name": "더커피 스타필드 에비뉴 그랑서울점",
+          "category": [
+            "카페,디저트"
+          ],
+          "road_address": "종로 33 스타필드 에비뉴 그랑서울 B1",
+          "coordinates": {
+            "longitude": 126.9817698,
+            "latitude": 37.5704324
+          },
+          "tel": "0507-1363-2087",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20251014_35/1760399634448t8BFt_JPEG/%B4%D9%BF%EE%B7%CE%B5%E5.jpg"
+        },
+        {
+          "id": "2019658976",
+          "name": "더정 우롱티프로젝트 종로그랑서울점",
+          "category": [
+            "카페,디저트"
+          ],
+          "road_address": "종로 33 지하1층 B106호",
+          "coordinates": {
+            "longitude": 126.9814392,
+            "latitude": 37.57096
+          },
+          "tel": "0507-1402-0648",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20251025_53/1761356538122Nw1SR_PNG/IMG_1155.png"
+        },
+        {
+          "id": "37542796",
+          "name": "다만프레르 SFC점",
+          "category": [
+            "홍차전문점"
+          ],
+          "road_address": "세종대로 136 파이넨스빌딩 지하1층",
+          "coordinates": {
+            "longitude": 126.9782701,
+            "latitude": 37.5684246
+          },
+          "tel": "02-6730-1323",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20180821_215/1534813993881O94bS_PNG/ktYhh_CTWabv0WfpEsNeiEFs.png"
+        },
+        {
+          "id": "34677836",
+          "name": "폴 바셋 롯데백화점 본점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "남대문로 81 롯데백화점 본점 지하 1층",
+          "coordinates": {
+            "longitude": 126.9817026,
+            "latitude": 37.5645786
+          },
+          "tel": "02-726-4250",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20250122_231/1737527881448uu03E_JPEG/%C6%FA%B9%D9%BC%C2_%B7%CE%B0%ED.jpg"
+        },
+        {
+          "id": "1282557369",
+          "name": "배스킨라빈스 시청역점",
+          "category": [
+            "아이스크림"
+          ],
+          "road_address": "서소문로 141 1층",
+          "coordinates": {
+            "longitude": 126.9763969,
+            "latitude": 37.5642965
+          },
+          "tel": "0507-0288-8292",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20260623_223/1782201818025eoBwS_JPEG/1000052170.jpg"
+        },
+        {
+          "id": "1933738068",
+          "name": "스타벅스 세종대로점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "세종대로 135-5 (태평로1가)",
+          "coordinates": {
+            "longitude": 126.9764331,
+            "latitude": 37.5685951
+          },
+          "tel": "1522-3232",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20190828_93/1566953601239OT9MQ_PNG/xX7Wv642gXMoTI0DAv0hRymS.png"
+        },
+        {
+          "id": "1140346755",
+          "name": "뚜레쥬르 무교점",
+          "category": [
+            "베이커리"
+          ],
+          "road_address": "남대문로9길 40 114호, 115호 중 일부",
+          "coordinates": {
+            "longitude": 126.9800767,
+            "latitude": 37.5672057
+          },
+          "tel": "02-6031-8820",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20250812_90/1755010435510vShOp_JPEG/20250811_111246.jpg"
+        },
+        {
+          "id": "11493056",
+          "name": "던킨 북창점",
+          "category": [
+            "도넛"
+          ],
+          "road_address": "남대문로1길 60 문치과빌딩",
+          "coordinates": {
+            "longitude": 126.9777876,
+            "latitude": 37.5637345
+          },
+          "tel": "02-754-3494",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20150831_276/14409924612244iXlm_JPEG/11493056_0.jpg"
+        },
+        {
+          "id": "55416068",
+          "name": "매머드커피 소공점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "남대문로7길 13",
+          "coordinates": {
+            "longitude": 126.9811132,
+            "latitude": 37.5638154
+          },
+          "tel": "070-8871-4096",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20240415_262/1713160301177FCOBx_JPEG/IMG_0870.JPG"
+        },
+        {
+          "id": "1130895245",
+          "name": "매머드익스프레스 시청점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "세종대로 91",
+          "coordinates": {
+            "longitude": 126.9766305,
+            "latitude": 37.5645154
+          },
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20200512_172/1589242555266FgHW8_JPEG/wAexuhnlu9vnqw3fxpQIx6dT.jpeg.jpg"
+        },
+        {
+          "id": "1652129756",
+          "name": "부스틴 광화문점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "세종대로21길 52 1층",
+          "coordinates": {
+            "longitude": 126.9760391,
+            "latitude": 37.5687785
+          },
+          "tel": "0507-1332-9359",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20220831_204/1661930290788AazH7_PNG/KakaoTalk_20220821_182712202.png"
+        },
+        {
+          "id": "1889323833",
+          "name": "메가MGC커피 서울시청점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "다동길 34 1층",
+          "coordinates": {
+            "longitude": 126.9811834,
+            "latitude": 37.5678268
+          },
+          "tel": "0507-1361-0656",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20220401_291/1648799275395oEB3a_PNG/%B8%DE%B0%A1%C4%BF%C7%C7.png"
+        },
+        {
+          "id": "1516114509",
+          "name": "스타벅스 시청역11번출구점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "서소문로 129 (서소문동)",
+          "coordinates": {
+            "longitude": 126.9753836,
+            "latitude": 37.563755
+          },
+          "tel": "1522-3232",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20190828_93/1566953601239OT9MQ_PNG/xX7Wv642gXMoTI0DAv0hRymS.png"
+        },
+        {
+          "id": "11689904",
+          "name": "커피빈 무교점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "세종대로 136 서울파이낸스센터 B1",
+          "coordinates": {
+            "longitude": 126.978064,
+            "latitude": 37.568536
+          },
+          "tel": "02-753-2374",
+          "thumbnail_url": "https://naverbooking-phinf.pstatic.net/20251021_61/17610301905121OhD4_JPEG/%B7%CE%B0%ED_%B3%D7%C0%CC%B9%F6_%B4%EB%C7%A5_%B7%CE%B0%ED_%C0%CC%B9%CC%C1%F6-02.jpg"
+        },
+        {
+          "id": "1621403132",
+          "name": "아티제 종로그랑서울2점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "종로 33 B1F 132호,133호,134호",
+          "coordinates": {
+            "longitude": 126.9814392,
+            "latitude": 37.57096
+          },
+          "tel": "02-2158-7571",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20200302_19/1583113111634WXGFz_JPEG/EXc-yT63YThkEBqi3LDLloBp.JPG.jpg"
+        },
+        {
+          "id": "1771297209",
+          "name": "메가MGC커피 종로르메이에르점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "종로 19 르메이에르 종로타운 1층 109-1호",
+          "coordinates": {
+            "longitude": 126.9795064,
+            "latitude": 37.5709455
+          },
+          "tel": "0507-2085-1704",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20240315_191/1710487162464Yhogr_JPEG/KakaoTalk_20240315_161632297.jpg"
+        },
+        {
+          "id": "2055996139",
+          "name": "슈퍼말차 광화문SFC",
+          "category": [
+            "카페"
+          ],
+          "road_address": "세종대로 136 파이낸스빌딩 지하1층 113호",
+          "coordinates": {
+            "longitude": 126.9784418,
+            "latitude": 37.5684756
+          },
+          "tel": "070-4837-0690",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20260112_1/1768197750014owXg1_JPEG/SUPERMATCHA_IMG_Store_SFCmall_1_%281%29.jpg"
+        },
+        {
+          "id": "2030407213",
+          "name": "부흥당케이크",
+          "category": [
+            "케이크전문"
+          ],
+          "road_address": "남대문로 117 지하1층 6호",
+          "coordinates": {
+            "longitude": 126.9823232,
+            "latitude": 37.5677864
+          },
+          "tel": "0507-1408-3641",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20250528_245/1748360534381XNYKc_PNG/IMG_7133.png"
+        },
+        {
+          "id": "2070627172",
+          "name": "오늘온",
+          "category": [
+            "카페"
+          ],
+          "road_address": "을지로1길 15 1층 오늘온",
+          "coordinates": {
+            "longitude": 126.9797591,
+            "latitude": 37.5668349
+          },
+          "tel": "0507-1440-0455",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20261025_121/1792899084509f5p9R_JPEG/%B8%C1%B0%ED_%B0%A1%B5%E6_%BB%F7%B5%E5%C0%A7%C4%A1_%B1%A4%B0%ED_%C6%F7%BD%BA%C5%CD.jpg"
+        },
+        {
+          "id": "1020106910",
+          "name": "쇼토 롯데백화점본점",
+          "category": [
+            "베이커리"
+          ],
+          "road_address": "남대문로 81 롯데백화점본점 B1",
+          "coordinates": {
+            "longitude": 126.9814735,
+            "latitude": 37.5648991
+          },
+          "thumbnail_url": "https://naverbooking-phinf.pstatic.net/20250110_83/1736483410031bDrF1_JPEG/KakaoTalk_20241126_211219753.jpg"
+        },
+        {
+          "id": "1025986376",
+          "name": "뚜레쥬르 종로구청점",
+          "category": [
+            "베이커리"
+          ],
+          "road_address": "종로5길 34",
+          "coordinates": {
+            "longitude": 126.9805862,
+            "latitude": 37.5717866
+          },
+          "tel": "02-6747-8265",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20250813_266/17550484266608gyBG_JPEG/%B6%D1%B7%B9%C1%EA%B8%A3_%B7%CE%B0%ED_%B3%D7%C0%CC%B9%F6.jpg"
+        },
+        {
+          "id": "1832547079",
+          "name": "오로시젤라또 종로점",
+          "category": [
+            "아이스크림"
+          ],
+          "road_address": "종로5길 7 107, 108, 109호",
+          "coordinates": {
+            "longitude": 126.9805518,
+            "latitude": 37.5706324
+          },
+          "tel": "0507-1337-7487",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20240326_10/1711441383108XkTzX_JPEG/_S1A0406.jpg"
+        },
+        {
+          "id": "1714991428",
+          "name": "커피빈 무교CBTL점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "세종대로 136 파이낸스빌딩 지하2층",
+          "coordinates": {
+            "longitude": 126.9782701,
+            "latitude": 37.5684246
+          },
+          "tel": "02-3789-7750",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20251020_207/1760952614803nagkS_JPEG/%B7%CE%B0%ED_%B3%D7%C0%CC%B9%F6_%B4%EB%C7%A5_%B7%CE%B0%ED_%C0%CC%B9%CC%C1%F6-02.jpg"
+        },
+        {
+          "id": "38277148",
+          "name": "오설록 롯데백화점본점",
+          "category": [
+            "차"
+          ],
+          "road_address": "남대문로 81 롯데백화점 본점",
+          "coordinates": {
+            "longitude": 126.9814491,
+            "latitude": 37.565012
+          },
+          "tel": "02-726-4027",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20250314_284/174193538889035oT0_JPEG/20250314_154352.jpg"
+        },
+        {
+          "id": "1413698459",
+          "name": "해피베어데이 롯데백화점 본점",
+          "category": [
+            "카페,디저트"
+          ],
+          "road_address": "남대문로 81 B1",
+          "coordinates": {
+            "longitude": 126.9815271,
+            "latitude": 37.5649407
+          },
+          "tel": "0507-1350-3064",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20260422_96/1776845484355OpvnI_PNG/%B8%F0%B9%D9%C0%CF%C4%BF%B9%F6.png"
+        },
+        {
+          "id": "1216353164",
+          "name": "카페 소포라",
+          "category": [
+            "카페,디저트"
+          ],
+          "road_address": "덕수궁길 114",
+          "coordinates": {
+            "longitude": 126.9740129,
+            "latitude": 37.5676181
+          },
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20250805_228/1754358423569IqXkp_JPEG/IMG_9964.jpeg"
+        },
+        {
+          "id": "1105473067",
+          "name": "바캉스커피",
+          "category": [
+            "카페,디저트"
+          ],
+          "road_address": "남대문로9길 12 9층(생활맥주건물)",
+          "coordinates": {
+            "longitude": 126.9817523,
+            "latitude": 37.5668689
+          },
+          "tel": "070-8803-2326",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20231205_112/17017672957146PhUU_JPEG/R0001772.jpeg"
+        },
+        {
+          "id": "36257137",
+          "name": "할리스 세종로점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "세종대로 161",
+          "coordinates": {
+            "longitude": 126.97638,
+            "latitude": 37.5707418
+          },
+          "tel": "02-720-5582",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20210302_125/161464487124061agC_JPEG/K15utTFWXeuNEny1JMXiV57W.jpg"
+        },
+        {
+          "id": "2005902449",
+          "name": "우지커피 종로르메이에르점",
+          "category": [
+            "카페,디저트"
+          ],
+          "road_address": "종로 19 제1층 108-1호",
+          "coordinates": {
+            "longitude": 126.9798606,
+            "latitude": 37.5708344
+          },
+          "tel": "0507-1382-1809",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20250924_39/1758675454573ASUEs_JPEG/1._%BF%EC%C1%F6%C4%BF%C7%C7_%BD%C9%BA%BC_%B5%B9%C3%E2%B0%A3%C6%C7.JPG"
+        },
+        {
+          "id": "1398357785",
+          "name": "복호두 광화문점",
+          "category": [
+            "호두과자"
+          ],
+          "road_address": "종로 19 1층 107-2호",
+          "coordinates": {
+            "longitude": 126.9795134,
+            "latitude": 37.5707814
+          }
+        },
+        {
+          "id": "73548053",
+          "name": "쌍쌍운종가",
+          "category": [
+            "카페"
+          ],
+          "road_address": "종로5길 19-10 쌍쌍운종가",
+          "coordinates": {
+            "longitude": 126.9803179,
+            "latitude": 37.5713879
+          },
+          "tel": "02-720-9302",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20240122_270/1705889054036VHbpc_JPEG/20240121_124004.jpg"
+        },
+        {
+          "id": "37402395",
+          "name": "포시즌스 호텔 서울 컨펙션즈 바이 포시즌스",
+          "category": [
+            "베이커리"
+          ],
+          "road_address": "새문안로 97 로비층",
+          "coordinates": {
+            "longitude": 126.9753817,
+            "latitude": 37.5707185
+          },
+          "tel": "02-6388-5500",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20161008_123/1475903279022J0yYr_JPEG/176958543776177_1.jpeg"
+        },
+        {
+          "id": "1462284548",
+          "name": "스타벅스 그랑서울점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "종로 33 (청진동)",
+          "coordinates": {
+            "longitude": 126.9812093,
+            "latitude": 37.5707867
+          },
+          "tel": "1522-3232",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20190828_93/1566953601239OT9MQ_PNG/xX7Wv642gXMoTI0DAv0hRymS.png"
+        },
+        {
+          "id": "31564561",
+          "name": "오뗄두스 SFC 점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "세종대로 136 서울 파이낸스 센터 B-202호",
+          "coordinates": {
+            "longitude": 126.9782701,
+            "latitude": 37.5684246
+          },
+          "tel": "070-4221-5705"
+        },
+        {
+          "id": "1069280985",
+          "name": "고려당 롯데백화점 본점",
+          "category": [
+            "베이커리"
+          ],
+          "road_address": "남대문로 81 롯데백화점 본점 지하 1층",
+          "coordinates": {
+            "longitude": 126.9812426,
+            "latitude": 37.5650803
+          },
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20260425_200/17771125544680mXOT_JPEG/0422_%B0%ED%B7%C1%B4%E7_%B7%D4%B5%A5%BA%BB%C1%A1_0108.jpg"
+        },
+        {
+          "id": "1381561233",
+          "name": "바나프레소 무교점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "남대문로9길 40",
+          "coordinates": {
+            "longitude": 126.9801284,
+            "latitude": 37.5670094
+          },
+          "tel": "070-8998-8971",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20261012_50/1791795171896POyKf_JPEG/samsung1080n.jpg"
+        },
+        {
+          "id": "1470968348",
+          "name": "더벤티 종로르메이에르점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "종로 19 르메이에르종로타운1 107-1호",
+          "coordinates": {
+            "longitude": 126.9795042,
+            "latitude": 37.5707452
+          },
+          "tel": "070-7766-0714",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20240103_297/1704241881526AIzwR_JPEG/1._%B4%F5%BA%A5%C6%BC_%C4%BF%C7%C7_BI.jpg"
+        },
+        {
+          "id": "2067740280",
+          "name": "섬타르 종로광화문점",
+          "category": [
+            "카페,디저트"
+          ],
+          "road_address": "종로 33 지하1층 B104호",
+          "coordinates": {
+            "longitude": 126.9814392,
+            "latitude": 37.57096
+          },
+          "tel": "02-2158-7548",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20251102_198/1762041635353RAlb6_JPEG/IMG_2362.jpeg"
+        },
+        {
+          "id": "1215433366",
+          "name": "빽다방 종로새문안점",
+          "category": [
+            "테이크아웃커피"
+          ],
+          "road_address": "새문안로 83 1층",
+          "coordinates": {
+            "longitude": 126.9739796,
+            "latitude": 37.5703543
+          },
+          "tel": "0507-1435-1782",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20250420_116/1745108455054sizd7_JPEG/IMG_0092.jpeg"
+        },
+        {
+          "id": "2027859645",
+          "name": "푸가 광화문점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "종로 19 르메이에르종로타운 115-2",
+          "coordinates": {
+            "longitude": 126.9798606,
+            "latitude": 37.5708344
+          },
+          "tel": "02-736-1318",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20260626_168/1782469166891LUmlQ_JPEG/KakaoTalk_20260626_191517442.jpg"
+        },
+        {
+          "id": "17902390",
+          "name": "가을",
+          "category": [
+            "카페"
+          ],
+          "road_address": "세종대로23길 21 2층 가을",
+          "coordinates": {
+            "longitude": 126.9752513,
+            "latitude": 37.5715273
+          },
+          "tel": "02-730-7537",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20191018_125/1571349882833pbVWK_JPEG/0CoTEslhp2ZExPABfJ4z5B9q.jpg"
+        },
+        {
+          "id": "2053577327",
+          "name": "밀도 롯데백화점 본점",
+          "category": [
+            "베이커리"
+          ],
+          "road_address": "남대문로 81 롯데백화점 본점 B1 밀도",
+          "coordinates": {
+            "longitude": 126.9813645,
+            "latitude": 37.5647504
+          },
+          "tel": "0507-1352-4026",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20261029_139/17932509763672nGcp_JPEG/%BD%BA%C5%A9%B8%B0%BC%A6_2026-10-29_141518.jpg"
+        },
+        {
+          "id": "2051608008",
+          "name": "박스커피 서울시청점",
+          "category": [
+            "카페,디저트"
+          ],
+          "road_address": "무교로 12 정오빌딩 1층",
+          "coordinates": {
+            "longitude": 126.9793533,
+            "latitude": 37.5670336
+          },
+          "tel": "02-420-0386",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20251204_289/17648264292878SHgp_PNG/%B9%DA%BD%BA%C4%BF%C7%C7%B7%CE%B0%ED.png"
+        },
+        {
+          "id": "1500625716",
+          "name": "카페그레이스",
+          "category": [
+            "카페,디저트"
+          ],
+          "road_address": "세종대로19길 16",
+          "coordinates": {
+            "longitude": 126.9763926,
+            "latitude": 37.5671196
+          },
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20191105_295/1572955805692n4loc_JPEG/GGlQ09mNJ1k1mo0NHjCNdWUg.jpg"
+        },
+        {
+          "id": "1631382577",
+          "name": "드림라이크커피",
+          "category": [
+            "카페"
+          ],
+          "road_address": "무교로 39 1층",
+          "coordinates": {
+            "longitude": 126.979193,
+            "latitude": 37.5695268
+          },
+          "tel": "02-737-2237",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20210419_90/16188142710139n1fK_JPEG/D3iMlCm1ytRQGIqJf0v8e0hy.jpg"
+        },
+        {
+          "id": "1011896219",
+          "name": "에슬로우커피 시청점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "남대문로9길 40 1층",
+          "coordinates": {
+            "longitude": 126.9804016,
+            "latitude": 37.5670122
+          },
+          "tel": "0507-2093-7368",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20230918_44/1695046384946WzI2I_JPEG/2023-09-18-22-50-48-320.jpg"
+        },
+        {
+          "id": "1431181473",
+          "name": "헤이키커피 광화문점",
+          "category": [
+            "카페,디저트"
+          ],
+          "road_address": "세종대로21길 63 1층",
+          "coordinates": {
+            "longitude": 126.9758085,
+            "latitude": 37.5691609
+          },
+          "tel": "0503-5260-9915",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20241001_79/1727787181587DNYGc_PNG/%C7%EC%C0%CC%C5%B0%B7%CE%B0%ED%C0%CC%B9%CC%C1%F6.png"
+        },
+        {
+          "id": "1250672826",
+          "name": "매머드익스프레스 광화문역점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "새문안로5길 14 1층 매머드커피",
+          "coordinates": {
+            "longitude": 126.9749689,
+            "latitude": 37.5714286
+          },
+          "tel": "0507-1498-8855",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20220525_222/1653440614158Wzo3V_JPEG/1653440596630-0.jpg"
+        },
+        {
+          "id": "483853439",
+          "name": "빌리엔젤 종각역점",
+          "category": [
+            "케이크전문"
+          ],
+          "road_address": "삼봉로 94",
+          "coordinates": {
+            "longitude": 126.9823505,
+            "latitude": 37.5718562
+          },
+          "tel": "02-2160-8488",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20190820_110/156629756193987PHf_JPEG/DPeClG3HoEl2wWnxykU-gF3i.jpg"
+        },
+        {
+          "id": "1542626449",
+          "name": "커피사피엔스 종로 르메이에르점",
+          "category": [
+            "카페"
+          ],
+          "road_address": "종로 19 1층 120-2호",
+          "coordinates": {
+            "longitude": 126.980159,
+            "latitude": 37.5707238
+          },
+          "tel": "0507-2093-4703",
+          "thumbnail_url": "https://ldb-phinf.pstatic.net/20250117_215/1737097924981VinEO_JPEG/%C4%BF%C7%C7%BB%E7%C7%C7%BF%A3%BD%BA-04.jpg"
+        }
+      ]
+    }
+  }
+}

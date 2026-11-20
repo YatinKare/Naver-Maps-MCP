@@ -1,0 +1,163 @@
+{
+  "label": "repaired-smoke-no-reuse",
+  "started_utc": "2026-11-19T18:38:42.236003+00:00",
+  "checkout_revision": "5e46dfaec355295c98f6cd7d841ea1fe8228410a",
+  "dirty": true,
+  "environment": {
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+    "cpu_count": 4
+  },
+  "rounds": 1,
+  "interval_seconds": 3,
+  "samples": [
+    {
+      "index": 1,
+      "workload": "keyword_page1",
+      "worker_state": "cold",
+      "wall_ms": 26536.708,
+      "http_status": 200,
+      "matched_payload_bytes": 48546,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "ok": true
+    },
+    {
+      "index": 2,
+      "workload": "keyword_page1",
+      "worker_state": "warm",
+      "wall_ms": 17421.873,
+      "http_status": 200,
+      "matched_payload_bytes": 48546,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "ok": true
+    },
+    {
+      "index": 3,
+      "workload": "keyword_page2",
+      "worker_state": "warm",
+      "wall_ms": 21554.983,
+      "http_status": 200,
+      "matched_payload_bytes": 48297,
+      "result_count": 70,
+      "ids_sha256": "b36eda5106e6708d092e3ca6c5f7dd2214043ff0de63641c2ff0bdd08c9829fe",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 4,
+      "workload": "coordinate_page1",
+      "worker_state": "warm",
+      "wall_ms": 21161.742,
+      "http_status": 200,
+      "matched_payload_bytes": 49216,
+      "result_count": 70,
+      "ids_sha256": "b06f78577f07db2cf2eec0a9d5f4832ac98801e10e99695e02df078d400b0eb2",
+      "ok": true
+    },
+    {
+      "index": 5,
+      "workload": "coordinate_page2",
+      "worker_state": "warm",
+      "wall_ms": 24929.345,
+      "http_status": 200,
+      "matched_payload_bytes": 47732,
+      "result_count": 70,
+      "ids_sha256": "c58c7a878ab4782afc14253a7408a41ae6813149c4367a54d96bc5e0a9e44fce",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    }
+  ],
+  "schema_version": 2,
+  "initial_worker_state": "cold",
+  "warm_state_assumption": "caller keeps worker alive between successful calls; interval below idle timeout",
+  "method": "real tools/call; monotonic time around HTTP through complete response body",
+  "artifacts": {
+    "gateway": {
+      "filename": "naver-performance-gateway",
+      "sha256": "8ce048f2eec2c76e37311ef5ecec73d835005924aee2ce4c2392ce9e3569ebe6"
+    },
+    "worker": {
+      "filename": "naver-maps-mcp-0.0.1-SNAPSHOT.jar",
+      "sha256": "86564551ec14838b63820d3faf23bd2111026f366688167c3c102246efdf0ee9"
+    }
+  },
+  "host_pressure_start": {
+    "cpu": "some avg10=1.64 avg60=2.95 avg300=1.67 total=8170914259\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+    "memory": "some avg10=0.00 avg60=0.00 avg300=0.52 total=1684875888\nfull avg10=0.00 avg60=0.00 avg300=0.46 total=1557668334",
+    "io": "some avg10=3.47 avg60=6.43 avg300=8.71 total=22141442633\nfull avg10=2.65 avg60=4.30 avg300=7.20 total=20991402006"
+  },
+  "discovery": {
+    "initialize": {
+      "wall_ms": 108.949,
+      "http_status": 200,
+      "matched_payload_bytes": 187
+    },
+    "tools_list": {
+      "wall_ms": 1.139,
+      "http_status": 200,
+      "matched_payload_bytes": 5221
+    },
+    "tools": [
+      "naver_map_coordinate_search",
+      "naver_map_search"
+    ]
+  },
+  "workload_sha256": "381a77231f5fa7b37f83e54d677b532d591bfff999d82396d130aec8aeabf539",
+  "all": {
+    "calls": 5,
+    "successes": 5,
+    "failures": 0,
+    "median_ms": 21554.983,
+    "p95_ms": 26536.708,
+    "p95_method": "nearest rank, successes only; inspect failures separately",
+    "p95_sample_warning": true
+  },
+  "warm": {
+    "calls": 4,
+    "successes": 4,
+    "failures": 0,
+    "median_ms": 21358.362,
+    "p95_ms": 24929.345,
+    "p95_method": "nearest rank, successes only; inspect failures separately",
+    "p95_sample_warning": true
+  },
+  "by_workload": {
+    "keyword_page1": {
+      "calls": 1,
+      "successes": 1,
+      "failures": 0,
+      "median_ms": 17421.873,
+      "p95_ms": 17421.873,
+      "p95_method": "nearest rank, successes only; inspect failures separately",
+      "p95_sample_warning": true
+    },
+    "keyword_page2": {
+      "calls": 1,
+      "successes": 1,
+      "failures": 0,
+      "median_ms": 21554.983,
+      "p95_ms": 21554.983,
+      "p95_method": "nearest rank, successes only; inspect failures separately",
+      "p95_sample_warning": true
+    },
+    "coordinate_page1": {
+      "calls": 1,
+      "successes": 1,
+      "failures": 0,
+      "median_ms": 21161.742,
+      "p95_ms": 21161.742,
+      "p95_method": "nearest rank, successes only; inspect failures separately",
+      "p95_sample_warning": true
+    },
+    "coordinate_page2": {
+      "calls": 1,
+      "successes": 1,
+      "failures": 0,
+      "median_ms": 24929.345,
+      "p95_ms": 24929.345,
+      "p95_method": "nearest rank, successes only; inspect failures separately",
+      "p95_sample_warning": true
+    }
+  }
+}

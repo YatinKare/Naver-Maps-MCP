@@ -82,6 +82,7 @@ func (l *requestLogger) LogToolOutcome(ctx context.Context, outcome mcpserver.To
 		WorkerColdStart:       outcome.WorkerColdStart,
 		WorkerStartupDuration: durationMilliseconds(outcome.WorkerStartupDuration),
 		SearchDuration:        durationMilliseconds(outcome.SearchDuration),
+		CaptureStagesMS:       outcome.CaptureStagesMS,
 		ResultCount:           outcome.ResultCount,
 		ResponseBytes:         outcome.ResponseBytes,
 		FailureCategory:       safeValue(outcome.FailureCategory, 40),
@@ -91,18 +92,19 @@ func (l *requestLogger) LogToolOutcome(ctx context.Context, outcome mcpserver.To
 }
 
 type toolOutcomeLogEntry struct {
-	Timestamp             string  `json:"timestamp"`
-	CorrelationID         string  `json:"correlation_id,omitempty"`
-	ToolName              string  `json:"tool_name"`
-	IsError               bool    `json:"is_error"`
-	DurationMS            float64 `json:"duration_ms"`
-	WorkerColdStart       bool    `json:"worker_cold_start"`
-	WorkerStartupDuration float64 `json:"worker_startup_ms"`
-	SearchDuration        float64 `json:"search_ms"`
-	ResultCount           *int    `json:"result_count,omitempty"`
-	ResponseBytes         int     `json:"response_bytes"`
-	FailureCategory       string  `json:"failure_category,omitempty"`
-	FailureStage          string  `json:"failure_stage,omitempty"`
+	Timestamp             string             `json:"timestamp"`
+	CorrelationID         string             `json:"correlation_id,omitempty"`
+	ToolName              string             `json:"tool_name"`
+	IsError               bool               `json:"is_error"`
+	DurationMS            float64            `json:"duration_ms"`
+	WorkerColdStart       bool               `json:"worker_cold_start"`
+	WorkerStartupDuration float64            `json:"worker_startup_ms"`
+	SearchDuration        float64            `json:"search_ms"`
+	CaptureStagesMS       map[string]float64 `json:"capture_stages_ms,omitempty"`
+	ResultCount           *int               `json:"result_count,omitempty"`
+	ResponseBytes         int                `json:"response_bytes"`
+	FailureCategory       string             `json:"failure_category,omitempty"`
+	FailureStage          string             `json:"failure_stage,omitempty"`
 }
 
 func durationMilliseconds(duration time.Duration) float64 {
