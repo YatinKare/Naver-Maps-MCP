@@ -53,8 +53,8 @@ compatibility.
 The worker opens NAVER's public place-results UI directly and reads its matching
 place-list data. It uses the UI pagination controls for later pages. Custom search
 URLs retain the Maps application/iframe flow and legacy response capture path.
-It returns NAVER's actual selected page (70
-places per page in the November 2026 verification), without combining ads,
+It returns NAVER's actual selected page (70 places per page in the November
+2026 verification), without combining ads,
 preloaded recommendations, or other pages.
 
 An active worker reuses one browser, with a fresh tab and request state between
@@ -69,7 +69,7 @@ Set `NAVER_MAP_SELENIUM_REUSE_BROWSER=false` to use a fresh browser for each
 search, `NAVER_MAP_SELENIUM_IDLE_TIMEOUT=PT45S` to change browser idle retention,
 or `NAVER_MAP_SELENIUM_LOAD_IMAGES=true` to load images in ephemeral headless
 captures. `NAVER_MAP_SELENIUM_PUBLIC_RESULTS=false` restores the full Maps UI
-navigation with EAGER loading. Coordinate captures require matching query,
+navigation with EAGER loading. Public-results coordinate captures require matching query,
 pagination, and center arguments before accepting hydrated data.
 When MCP request logging is enabled, `capture_stages_ms` distinguishes
 browser setup, navigation, input, response capture, and release. Successful
