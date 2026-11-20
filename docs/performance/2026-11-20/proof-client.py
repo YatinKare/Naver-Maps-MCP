@@ -10,6 +10,7 @@ from pathlib import Path
 repo = Path(__file__).resolve().parents[3] if 'docs/performance' in str(Path(__file__).resolve()) else Path('/home/yatink/projects/map-data-fetcher')
 spec = importlib.util.spec_from_file_location('live_benchmark', repo / 'scripts/benchmark-mcp.py')
 module = importlib.util.module_from_spec(spec)
+sys.dont_write_bytecode = True
 spec.loader.exec_module(module)
 client = module.MCP('http://127.0.0.1:13000/mcp', 120)
 print('NAVER Maps | actual HTTP MCP tools/call | isolated integration build', flush=True)

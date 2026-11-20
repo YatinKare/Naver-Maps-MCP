@@ -169,3 +169,46 @@ worker: Chrome/ChromeDriver were reaped without another NAVER request. This
 checks the configured 45-second idle timeout plus the reaper scheduling interval.
 The RSS values are individual process observations, not a physical-memory sum.
 The isolated measurement gateway was then stopped; production was untouched.
+
+
+## Combined PR validation and actual visual proof
+
+A local composition of #69 at `82fd224`, #70 at `8f9cbe3`, and #71's measured
+source/report commits `0407579`/`8243394` built successfully as Java `bootJar`
+and Go gateway. This local composition (`826dc29`) was not pushed or merged;
+its only source delta from #71 is the reviewed #69 runner/docs/browser-binary
+hook. The [integration record](integration-validation.json) preserves component
+commits, exact artifact hashes, and actual tool outcomes. The
+[portable preflight](integrated-preflight.txt) passed from `/tmp` and the live
+worker used that exact selected Chrome binary through #69's new hook.
+
+![Actual MCP client request, returned places, and wall-clock latency](mcp-live-proof.png)
+
+This is an actual terminal screenshot of `proof-client.py` initializing MCP,
+discovering both tools, and calling `naver_map_coordinate_search` page 2. It
+returned 70 places in **5.304 seconds**, with the same complete normalized
+response as that workload in the final optimized dataset. The screenshot's
+benchmark statistics are explicitly labeled as a separate recorded dataset.
+See the [unmodified actual response](mcp-proof-response.json),
+[terminal transcript](proof-transcript.txt), and [manual client](proof-client.py).
+The client prints only selected fields for two places; its saved response
+contains all 70 results. No reconstructed UI or mocked tool response is used.
+
+The preceding separate **cold** proof call also succeeded, but took **94.9 s**
+during screen recording and observed severe host I/O/memory pressure. Its
+[actual response](mcp-cold-response.json) and phase timing are retained in the
+integration record: worker startup 75.7 s, search 19.1 s. The recorder was stopped
+to reduce load. This outlier was outside the already completed fixed-workload
+comparison and is not silently substituted into or removed from that dataset.
+It demonstrates why the measured speedup is not a cold-start guarantee under
+host saturation. Screenshot-only proof avoids a continuously running recorder.
+
+All isolated gateway/worker/browser/display/recorder processes were stopped after
+validation. No deployment, default-branch push, PR merge, account login claim,
+credential disclosure, security bypass, or unit-test execution was involved.
+#68's capture fix is reviewable here with #70; #63's runner fix is in #69. The
+wider release resource/tunnel study in #52 and the queue feature in #54 are not
+claimed complete. Historical/non-reproducible issue/CI evidence is recorded in
+#69's `docs/error-issue-triage-2026-11-19.md`. No PR CI checks or GitHub reviews
+were configured/reported at final verification; the live/manual evidence above
+and independent Luna review are the available validation.

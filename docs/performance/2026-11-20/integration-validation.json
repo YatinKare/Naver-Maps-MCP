@@ -1,0 +1,63 @@
+{
+  "composition_commit": "826dc29230926c8f4f775e290f0859688af88601",
+  "components": {
+    "runner_pr69": "82fd224241b92089f31883b96abae98529d121d5",
+    "auth_pr70": "8f9cbe3a74d8679ca515afb6e48cb69f75ea19d5",
+    "capture_source": "0407579",
+    "capture_with_measured_reports": "8243394"
+  },
+  "method": "Local composition of the three unmerged PRs; no unit tests; actual HTTP MCP; no production change",
+  "checks": {
+    "java": "bootJar --offline --no-daemon --max-workers=1 passed",
+    "go": "GOMAXPROCS=2 go build -p 1 passed",
+    "runner": "--check from /tmp passed; exact Chrome forwarded to worker",
+    "actual_calls": [
+      {
+        "timestamp": "2026-11-20T05:56:29.015948601Z",
+        "tool_name": "naver_map_coordinate_search",
+        "is_error": false,
+        "duration_ms": 94845.17247,
+        "worker_cold_start": true,
+        "worker_startup_ms": 75732.779588,
+        "search_ms": 19067.330121,
+        "capture_stages_ms": {
+          "browser_shutdown": 1,
+          "browser_startup": 7920,
+          "page_navigation": 44,
+          "response_capture": 10762
+        },
+        "result_count": 70,
+        "response_bytes": 22733
+      },
+      {
+        "timestamp": "2026-11-20T05:57:08.938323769Z",
+        "correlation_id": "92f56e67195e9b04",
+        "tool_name": "naver_map_coordinate_search",
+        "is_error": false,
+        "duration_ms": 5289.247888,
+        "worker_cold_start": false,
+        "worker_startup_ms": 0,
+        "search_ms": 5271.069955,
+        "capture_stages_ms": {
+          "browser_shutdown": 0,
+          "browser_startup": 5,
+          "page_navigation": 7,
+          "response_capture": 5190
+        },
+        "result_count": 70,
+        "response_bytes": 22733
+      }
+    ]
+  },
+  "artifacts": {
+    "gateway": {
+      "filename": "naver-integrated-gateway",
+      "sha256": "33938c4a64120c1ae9cf2e5692ac6d1da5ab481a2b2df120aafe24387f873d3e"
+    },
+    "worker": {
+      "filename": "integrated-worker.jar",
+      "sha256": "cad9ec1ec9b05b387f0f287002f693379bf653162e24f88721f1f6531a5d8f16"
+    }
+  },
+  "note": "The first successful cold proof call occurred during screen recording and observed severe host I/O/memory pressure; it is retained separately from the completed fixed-workload comparison. Recorder stopped to reduce load. The next warm call passed in 5304.289 ms."
+}
