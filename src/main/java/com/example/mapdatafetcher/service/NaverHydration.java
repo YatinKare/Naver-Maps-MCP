@@ -30,6 +30,14 @@ final class NaverHydration {
       if (frameDisplay === null || !Number.isInteger(frameDisplay) || frameDisplay <= 0)
         return null;
 
+      const longitude = arguments[1], latitude = arguments[2];
+      const sameCoordinate = (actual, expected) => actual !== null && actual !== undefined
+        && String(actual).trim() !== '' && Number.isFinite(Number(actual))
+        && Math.abs(Number(actual) - Number(expected)) <= 0.0000001;
+      if (longitude !== null && latitude !== null
+          && (!sameCoordinate(frameUrl.searchParams.get('x'), longitude)
+              || !sameCoordinate(frameUrl.searchParams.get('y'), latitude))) return null;
+
       const cache = window.__APOLLO_STATE__;
       const root = cache && cache.ROOT_QUERY;
       if (!root || typeof root !== 'object') return null;
@@ -77,6 +85,8 @@ final class NaverHydration {
         const start = input.start === undefined ? 1 : Number(input.start);
         if (!Number.isInteger(start) || start !== 1) continue;
         if (Number(input.display) !== frameDisplay) continue;
+        if (longitude !== null && latitude !== null
+            && (!sameCoordinate(input.x, longitude) || !sameCoordinate(input.y, latitude))) continue;
 
         const placeList = resolveReference(root[key]);
         if (!placeList) continue;
@@ -104,13 +114,14 @@ final class NaverHydration {
    * Returns the ordered items for a query only when the active frame and Apollo cache agree.
    * Returns {@code null} when the frame is not ready, the cache is ambiguous, or references fail.
    */
-  static String read(ChromeDriver driver, String expectedQuery) {
+  static String read(ChromeDriver driver, String expectedQuery, Double longitude, Double latitude) {
     if (driver == null || expectedQuery == null || expectedQuery.isBlank()) {
       return null;
     }
     try {
       Object result =
-          ((JavascriptExecutor) driver).executeScript(READ_MATCHING_PLACE_ITEMS, expectedQuery);
+          ((JavascriptExecutor) driver)
+              .executeScript(READ_MATCHING_PLACE_ITEMS, expectedQuery, longitude, latitude);
       if (!(result instanceof String json)) {
         return null;
       }

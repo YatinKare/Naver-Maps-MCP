@@ -50,6 +50,32 @@ virtual telephone number when needed. MCP clients receive the result as both
 structured data matching the published output schema and JSON text for
 compatibility.
 
+The worker opens NAVER's public place-results UI directly and reads its matching
+place-list data. It uses the UI pagination controls for later pages. Custom search
+URLs retain the Maps application/iframe flow and legacy response capture path.
+It returns NAVER's actual selected page (70
+places per page in the November 2026 verification), without combining ads,
+preloaded recommendations, or other pages.
+
+An active worker reuses one browser, with a fresh tab and request state between
+searches. It closes the browser after 45 seconds idle or 64 successful searches;
+Java still follows the gateway's separate idle timeout. Failed captures discard
+the browser. Configured private login profiles retain their legitimate session
+state. No application result cache is used. Ephemeral headless capture skips
+image downloads; thumbnail URLs remain in structured results. Headed browsers
+and configured login profiles keep normal image settings.
+
+Set `NAVER_MAP_SELENIUM_REUSE_BROWSER=false` to use a fresh browser for each
+search, `NAVER_MAP_SELENIUM_IDLE_TIMEOUT=PT45S` to change browser idle retention,
+or `NAVER_MAP_SELENIUM_LOAD_IMAGES=true` to load images in ephemeral headless
+captures. `NAVER_MAP_SELENIUM_PUBLIC_RESULTS=false` restores the full Maps UI
+navigation with EAGER loading. Coordinate captures require matching query,
+pagination, and center arguments before accepting hydrated data.
+When MCP request logging is enabled, `capture_stages_ms` distinguishes
+browser setup, navigation, input, response capture, and release. Successful
+cleanup runs after response delivery; a following call waits for cleanup before
+acquiring the browser.
+
 Review counts and Naver-specific distance, indoor, and subway fields are not
 included. For example:
 

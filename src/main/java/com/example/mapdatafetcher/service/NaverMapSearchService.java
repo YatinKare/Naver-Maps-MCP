@@ -35,6 +35,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.util.UriUtils;
@@ -55,16 +56,22 @@ public class NaverMapSearchService {
   private final NaverMapSeleniumProperties properties;
   private final NaverBrowserSession session;
   private final NaverBrowserPool browsers;
+  private final boolean loadImages;
+  private final boolean publicResults;
 
   public NaverMapSearchService(
       ObjectMapper objectMapper,
       NaverMapSeleniumProperties properties,
       NaverBrowserSession session,
-      NaverBrowserPool browsers) {
+      NaverBrowserPool browsers,
+      @Value("${naver.map.selenium.load-images:false}") boolean loadImages,
+      @Value("${naver.map.selenium.public-results:true}") boolean publicResults) {
     this.objectMapper = objectMapper;
     this.properties = properties;
     this.session = session;
     this.browsers = browsers;
+    this.loadImages = loadImages;
+    this.publicResults = publicResults;
   }
 
   public synchronized JsonNode search(NaverMapSearchRequest request) {
@@ -80,10 +87,13 @@ public class NaverMapSearchService {
       int targetPage = request.page();
       stage = "page_navigation";
       timing.stage(stage);
-      driver.get(buildSearchUrl(request.q()));
+      driver.get(
+          usePublicResults()
+              ? buildPublicResultsUrl(request.q(), null, null)
+              : buildSearchUrl(request.q()));
       timing.stage("response_capture");
       session.checkPage(driver);
-      JsonNode result = captureSearchResults(driver, targetPage, request.q());
+      JsonNode result = captureSearchResults(driver, targetPage, request.q(), null, null);
       LOGGER.info("Naver keyword search completed for page {}", targetPage);
       succeeded = true;
       return result;
@@ -127,13 +137,31 @@ public class NaverMapSearchService {
       int targetPage = request.page();
       stage = "page_navigation";
       timing.stage(stage);
-      driver.get(buildCoordinateUrl(request.longitude(), request.latitude()));
-      session.checkPage(driver);
-      stage = "search_input";
-      timing.stage(stage);
-      submitSearchKeyword(driver, request.query());
+      if (usePublicResults()) {
+        driver.get(buildPublicResultsUrl(request.query(), request.longitude(), request.latitude()));
+      } else {
+        driver.get(buildCoordinateUrl(request.longitude(), request.latitude()));
+        // Preserve the old EAGER readiness boundary before entering a coordinate query.
+        new WebDriverWait(driver, ELEMENT_WAIT_TIMEOUT)
+            .until(
+                ignored ->
+                    Boolean.TRUE.equals(
+                        ((ChromeDriver) ignored)
+                            .executeScript(
+                                "return document.readyState === 'interactive' || document.readyState === 'complete'")));
+        session.checkPage(driver);
+        stage = "search_input";
+        timing.stage(stage);
+        submitSearchKeyword(driver, request.query());
+      }
       timing.stage("response_capture");
-      JsonNode result = captureSearchResults(driver, targetPage, request.query());
+      JsonNode result =
+          captureSearchResults(
+              driver,
+              targetPage,
+              request.query(),
+              usePublicResults() ? request.longitude() : null,
+              usePublicResults() ? request.latitude() : null);
       LOGGER.info("Naver coordinate search completed for page {}", targetPage);
       succeeded = true;
       return result;
@@ -188,7 +216,8 @@ public class NaverMapSearchService {
     session.configure(options);
     // Capture and input waits below provide explicit readiness; unrelated DOM resources need
     // not delay the start of network capture. No result is returned before matching data exists.
-    options.setPageLoadStrategy(PageLoadStrategy.NONE);
+    options.setPageLoadStrategy(
+        usePublicResults() ? PageLoadStrategy.NONE : PageLoadStrategy.EAGER);
     options.addArguments(
         "--disable-gpu",
         "--no-sandbox",
@@ -198,6 +227,13 @@ public class NaverMapSearchService {
 
     if (properties.headless()) {
       options.addArguments("--headless=new");
+      if (!loadImages && !session.hasPersistentProfile()) {
+        // Place metadata (including thumbnail URLs) comes from structured data. Skip raster
+        // downloads in the ephemeral capture browser, while normal/private login profiles keep
+        // their image settings for legitimate verification.
+        options.setExperimentalOption(
+            "prefs", Map.of("profile.managed_default_content_settings.images", 2));
+      }
     }
 
     LoggingPreferences loggingPreferences = new LoggingPreferences();
@@ -211,6 +247,25 @@ public class NaverMapSearchService {
 
   private String buildSearchUrl(String query) {
     return properties.searchUrl() + UriUtils.encodePathSegment(query, StandardCharsets.UTF_8);
+  }
+
+  private boolean usePublicResults() {
+    return publicResults && "https://map.naver.com/p/search/".equals(properties.searchUrl());
+  }
+
+  private String buildPublicResultsUrl(String query, Double longitude, Double latitude) {
+    var builder =
+        UriComponentsBuilder.fromUriString("https://pcmap.place.naver.com/place/list")
+            .queryParam("query", "{query}")
+            .queryParam("display", 70);
+    if (longitude != null && latitude != null) {
+      builder
+          .queryParam("x", longitude)
+          .queryParam("y", latitude)
+          .queryParam("clientX", longitude)
+          .queryParam("clientY", latitude);
+    }
+    return builder.encode().buildAndExpand(query).toUriString();
   }
 
   private String buildCoordinateUrl(Double longitude, Double latitude) {
@@ -244,13 +299,15 @@ public class NaverMapSearchService {
                 .orElse(null));
   }
 
-  private JsonNode captureSearchResults(ChromeDriver driver, int targetPage, String expectedQuery)
+  private JsonNode captureSearchResults(
+      ChromeDriver driver, int targetPage, String expectedQuery, Double longitude, Double latitude)
       throws Exception {
     JsonNode firstPageResponse;
     try {
       firstPageResponse =
           objectMapper.readTree(
-              waitForSearchResponseBody(driver, properties.responseUrlKeyword(), 0, expectedQuery));
+              waitForSearchResponseBody(
+                  driver, properties.responseUrlKeyword(), 0, expectedQuery, longitude, latitude));
     } catch (CaptureException exception) {
       throw exception;
     } catch (Exception exception) {
@@ -263,7 +320,7 @@ public class NaverMapSearchService {
 
     try {
       switchToSearchIframe(driver);
-      return capturePaginatedItems(driver, targetPage);
+      return capturePaginatedItems(driver, targetPage, expectedQuery, longitude, latitude);
     } catch (CaptureException exception) {
       throw exception;
     } catch (Exception exception) {
@@ -271,7 +328,9 @@ public class NaverMapSearchService {
     }
   }
 
-  private JsonNode capturePaginatedItems(ChromeDriver driver, int targetPage) throws Exception {
+  private JsonNode capturePaginatedItems(
+      ChromeDriver driver, int targetPage, String expectedQuery, Double longitude, Double latitude)
+      throws Exception {
     By targetSelector = By.linkText(String.valueOf(targetPage));
     WebDriverWait wait = new WebDriverWait(driver, SEARCH_RESPONSE_TIMEOUT);
     wait.ignoring(StaleElementReferenceException.class);
@@ -311,7 +370,12 @@ public class NaverMapSearchService {
         return extractGraphqlItems(
             parseGraphqlResponse(
                 waitForSearchResponseBody(
-                    driver, properties.graphqlResponseUrlKeyword(), targetPage)));
+                    driver,
+                    properties.graphqlResponseUrlKeyword(),
+                    targetPage,
+                    expectedQuery,
+                    longitude,
+                    latitude)));
       } catch (CaptureException exception) {
         if (attempt > 0 || !"request_aborted".equals(exception.category())) {
           throw exception;
@@ -340,6 +404,7 @@ public class NaverMapSearchService {
 
   private void switchToSearchIframe(ChromeDriver driver) {
     driver.switchTo().defaultContent();
+    if (isPublicResultsDocument(driver)) return;
     WebDriverWait wait = new WebDriverWait(driver, ELEMENT_WAIT_TIMEOUT);
     wait.until(
         ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("iframe#searchIframe")));
@@ -441,12 +506,12 @@ public class NaverMapSearchService {
   }
 
   private String waitForSearchResponseBody(
-      ChromeDriver driver, String responseUrlKeyword, int targetPage) throws Exception {
-    return waitForSearchResponseBody(driver, responseUrlKeyword, targetPage, null);
-  }
-
-  private String waitForSearchResponseBody(
-      ChromeDriver driver, String responseUrlKeyword, int targetPage, String expectedQuery)
+      ChromeDriver driver,
+      String responseUrlKeyword,
+      int targetPage,
+      String expectedQuery,
+      Double longitude,
+      Double latitude)
       throws Exception {
     Instant deadline = Instant.now().plus(SEARCH_RESPONSE_TIMEOUT);
     Set<String> finishedRequestIds = new HashSet<>();
@@ -483,7 +548,8 @@ public class NaverMapSearchService {
           if (targetPage > 0 && requestUrl.contains(responseUrlKeyword)) {
             JsonNode payload =
                 objectMapper.readTree(params.path("request").path("postData").asText("null"));
-            int index = matchingPageOperation(payload, targetPage);
+            int index =
+                matchingPageOperation(payload, targetPage, expectedQuery, longitude, latitude);
             if (index >= 0) {
               matchingOperations.put(requestId, index);
               LOGGER.info("Observed GraphQL request for page {}", targetPage);
@@ -549,6 +615,8 @@ public class NaverMapSearchService {
       }
 
       for (Map.Entry<String, ResponseCandidate> entry : candidates.entrySet()) {
+        // The public results UI is accepted only through correlated hydration below.
+        if (targetPage == 0 && usePublicResults()) break;
         String requestId = entry.getKey();
         ResponseCandidate candidate = entry.getValue();
         candidate.finished = finishedRequestIds.contains(requestId);
@@ -602,7 +670,7 @@ public class NaverMapSearchService {
       }
 
       if (targetPage == 0) {
-        JsonNode hydrated = readHydratedFirstPage(driver, expectedQuery);
+        JsonNode hydrated = readHydratedFirstPage(driver, expectedQuery, longitude, latitude);
         if (hydrated != null) {
           checkHydrationResponseStatus(driver);
           var envelope = objectMapper.createObjectNode();
@@ -650,18 +718,21 @@ public class NaverMapSearchService {
         "timeout", failureStage, "Timed out while waiting for Naver search response", null);
   }
 
-  private JsonNode readHydratedFirstPage(ChromeDriver driver, String expectedQuery)
+  private JsonNode readHydratedFirstPage(
+      ChromeDriver driver, String expectedQuery, Double longitude, Double latitude)
       throws Exception {
     driver.switchTo().defaultContent();
     try {
-      List<WebElement> frames = driver.findElements(By.cssSelector("iframe#searchIframe"));
-      if (frames.isEmpty()) {
-        session.checkPage(driver);
-        return null;
+      if (!isPublicResultsDocument(driver)) {
+        List<WebElement> frames = driver.findElements(By.cssSelector("iframe#searchIframe"));
+        if (frames.isEmpty()) {
+          session.checkPage(driver);
+          return null;
+        }
+        driver.switchTo().frame(frames.get(0));
       }
-      driver.switchTo().frame(frames.get(0));
       session.checkPage(driver);
-      String body = NaverHydration.read(driver, expectedQuery);
+      String body = NaverHydration.read(driver, expectedQuery, longitude, latitude);
       return body == null ? null : objectMapper.readTree(body);
     } catch (NoSuchFrameException | StaleElementReferenceException exception) {
       // The frame is still navigating; the existing bounded capture loop will observe it again.
@@ -669,6 +740,12 @@ public class NaverMapSearchService {
     } finally {
       driver.switchTo().defaultContent();
     }
+  }
+
+  private boolean isPublicResultsDocument(ChromeDriver driver) {
+    return Boolean.TRUE.equals(
+        driver.executeScript(
+            "return location.hostname === 'pcmap.place.naver.com' && location.pathname.endsWith('/list')"));
   }
 
   private void checkHydrationResponseStatus(ChromeDriver driver) throws Exception {
@@ -690,32 +767,55 @@ public class NaverMapSearchService {
     }
   }
 
-  private int matchingPageOperation(JsonNode payload, int targetPage) {
+  private int matchingPageOperation(
+      JsonNode payload, int targetPage, String expectedQuery, Double longitude, Double latitude) {
     if (payload == null) {
       return -1;
     }
     if (!payload.isArray()) {
-      return hasPageOffset(payload.path("variables"), targetPage) ? 0 : -1;
+      return hasPageOffset(
+              payload.path("variables"), targetPage, expectedQuery, longitude, latitude)
+          ? 0
+          : -1;
     }
     for (int index = 0; index < payload.size(); index++) {
-      if (hasPageOffset(payload.get(index).path("variables"), targetPage)) {
+      if (hasPageOffset(
+          payload.get(index).path("variables"), targetPage, expectedQuery, longitude, latitude)) {
         return index;
       }
     }
     return -1;
   }
 
-  private boolean hasPageOffset(JsonNode node, int targetPage) {
+  private boolean hasPageOffset(
+      JsonNode node, int targetPage, String expectedQuery, Double longitude, Double latitude) {
     int display = node.path("display").asInt(0);
-    if (display > 0 && node.path("start").asInt(-1) == (targetPage - 1) * display + 1) {
+    if (display > 0
+        && (!usePublicResults() || display == 70)
+        && node.path("start").asInt(-1) == (targetPage - 1) * display + 1
+        && expectedQuery != null
+        && expectedQuery.equals(node.path("query").asText())
+        && (longitude == null
+            || latitude == null
+            || (matchesCoordinate(node.path("x"), longitude)
+                && matchesCoordinate(node.path("y"), latitude)))) {
       return true;
     }
     for (JsonNode child : node) {
-      if (hasPageOffset(child, targetPage)) {
+      if (hasPageOffset(child, targetPage, expectedQuery, longitude, latitude)) {
         return true;
       }
     }
     return false;
+  }
+
+  private boolean matchesCoordinate(JsonNode value, double expected) {
+    try {
+      double actual = Double.parseDouble(value.asText());
+      return Double.isFinite(actual) && Math.abs(actual - expected) <= 0.0000001;
+    } catch (NumberFormatException exception) {
+      return false;
+    }
   }
 
   private String safeResponsePath(String url) {

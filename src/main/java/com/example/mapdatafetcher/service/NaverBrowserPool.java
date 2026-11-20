@@ -167,7 +167,11 @@ public class NaverBrowserPool {
         for (String origin : NAVER_ORIGINS) {
           released.executeCdpCommand(
               "Storage.clearDataForOrigin",
-              Map.of("origin", origin, "storageTypes", "cookies,local_storage"));
+              Map.of(
+                  "origin",
+                  origin,
+                  "storageTypes",
+                  "cookies,local_storage,indexeddb,websql,service_workers,cache_storage"));
         }
       }
       released.manage().logs().get(LogType.PERFORMANCE).getAll();

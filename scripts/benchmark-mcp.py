@@ -203,6 +203,8 @@ def main():
                 ids = {str(p["id"]) for p in places if p.get("id")}
                 sample["result_count"] = len(places)
                 sample["ids_sha256"] = hashlib.sha256("\n".join(sorted(ids)).encode()).hexdigest()
+                sample["result_sha256"] = hashlib.sha256(
+                    json.dumps(places, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
                 ok = len(places) >= 10 and len(ids) == len(places)
                 key = name.split("_page")[0]
                 if name.endswith("page1"):
