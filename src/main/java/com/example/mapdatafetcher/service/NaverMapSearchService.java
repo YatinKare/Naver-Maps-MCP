@@ -52,10 +52,15 @@ public class NaverMapSearchService {
 
   private final ObjectMapper objectMapper;
   private final NaverMapSeleniumProperties properties;
+  private final NaverBrowserSession session;
 
-  public NaverMapSearchService(ObjectMapper objectMapper, NaverMapSeleniumProperties properties) {
+  public NaverMapSearchService(
+      ObjectMapper objectMapper,
+      NaverMapSeleniumProperties properties,
+      NaverBrowserSession session) {
     this.objectMapper = objectMapper;
     this.properties = properties;
+    this.session = session;
   }
 
   public JsonNode search(NaverMapSearchRequest request) {
@@ -63,11 +68,13 @@ public class NaverMapSearchService {
     ChromeDriver driver = null;
     String stage = "browser_startup";
     try {
+      session.beforeSearch();
       driver = createDriver();
       driver.executeCdpCommand("Network.enable", Map.of());
       int targetPage = request.page();
       stage = "page_navigation";
       driver.get(buildSearchUrl(request.q()));
+      session.checkPage(driver);
       JsonNode result = captureSearchResults(driver, targetPage);
       LOGGER.info("Naver keyword search completed for page {}", targetPage);
       return result;
@@ -79,6 +86,9 @@ public class NaverMapSearchService {
           exception);
       throw exception;
     } catch (Exception exception) {
+      if (driver != null) {
+        session.checkPage(driver);
+      }
       CaptureException failure = captureFailure(stage, exception);
       LOGGER.warn(
           "Naver keyword search failed: category={}, stage={}",
@@ -96,11 +106,13 @@ public class NaverMapSearchService {
     ChromeDriver driver = null;
     String stage = "browser_startup";
     try {
+      session.beforeSearch();
       driver = createDriver();
       driver.executeCdpCommand("Network.enable", Map.of());
       int targetPage = request.page();
       stage = "page_navigation";
       driver.get(buildCoordinateUrl(request.longitude(), request.latitude()));
+      session.checkPage(driver);
       stage = "search_input";
       submitSearchKeyword(driver, request.query());
       JsonNode result = captureSearchResults(driver, targetPage);
@@ -114,6 +126,9 @@ public class NaverMapSearchService {
           exception);
       throw exception;
     } catch (Exception exception) {
+      if (driver != null) {
+        session.checkPage(driver);
+      }
       CaptureException failure = captureFailure(stage, exception);
       LOGGER.warn(
           "Naver coordinate search failed: category={}, stage={}",
@@ -158,6 +173,7 @@ public class NaverMapSearchService {
     if (chromeBinary != null && !chromeBinary.isBlank()) {
       options.setBinary(chromeBinary);
     }
+    session.configure(options);
     options.setPageLoadStrategy(PageLoadStrategy.EAGER);
     options.addArguments(
         "--disable-gpu",
@@ -467,6 +483,11 @@ public class NaverMapSearchService {
           }
         } else if ("Network.responseReceived".equals(method)) {
           String url = params.path("response").path("url").asText();
+          session.checkResponse(
+              url,
+              params.path("response").path("status").asInt(-1),
+              url.contains(responseUrlKeyword),
+              "Document".equals(params.path("type").asText()));
           if (!url.isBlank()) {
             String responsePath = safeResponsePath(url);
             String normalizedResponsePath = responsePath.toLowerCase(java.util.Locale.ROOT);
@@ -576,6 +597,7 @@ public class NaverMapSearchService {
       }
     }
 
+    session.checkPage(driver);
     long finishedCount =
         candidates.values().stream().filter(candidate -> candidate.finished).count();
     long failedCount = candidates.values().stream().filter(candidate -> candidate.failed).count();

@@ -1,0 +1,68 @@
+{
+  "source_report": "runs/latency-2026-11-19/repaired-smoke.json (parent integration branch)",
+  "source_report_sha256": "68e8d06d733ffaf6cbac7b22a250d0c050579f7b8d605c3e44b61459c2b4d45c",
+  "label": "repaired-smoke-no-reuse",
+  "started_utc": "2026-11-19T18:38:42.236003+00:00",
+  "checkout_revision": "5e46dfaec355295c98f6cd7d841ea1fe8228410a",
+  "dirty": true,
+  "artifacts": {
+    "gateway": {
+      "filename": "naver-performance-gateway",
+      "sha256": "8ce048f2eec2c76e37311ef5ecec73d835005924aee2ce4c2392ce9e3569ebe6"
+    },
+    "worker": {
+      "filename": "naver-maps-mcp-0.0.1-SNAPSHOT.jar",
+      "sha256": "86564551ec14838b63820d3faf23bd2111026f366688167c3c102246efdf0ee9"
+    }
+  },
+  "samples": [
+    {
+      "index": 1,
+      "workload": "keyword_page1",
+      "worker_state": "cold",
+      "http_status": 200,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "ok": true
+    },
+    {
+      "index": 2,
+      "workload": "keyword_page1",
+      "worker_state": "warm",
+      "http_status": 200,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "ok": true
+    },
+    {
+      "index": 3,
+      "workload": "keyword_page2",
+      "worker_state": "warm",
+      "http_status": 200,
+      "result_count": 70,
+      "ids_sha256": "b36eda5106e6708d092e3ca6c5f7dd2214043ff0de63641c2ff0bdd08c9829fe",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 4,
+      "workload": "coordinate_page1",
+      "worker_state": "warm",
+      "http_status": 200,
+      "result_count": 70,
+      "ids_sha256": "b06f78577f07db2cf2eec0a9d5f4832ac98801e10e99695e02df078d400b0eb2",
+      "ok": true
+    },
+    {
+      "index": 5,
+      "workload": "coordinate_page2",
+      "worker_state": "warm",
+      "http_status": 200,
+      "result_count": 70,
+      "ids_sha256": "c58c7a878ab4782afc14253a7408a41ae6813149c4367a54d96bc5e0a9e44fce",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    }
+  ],
+  "scope": "Actual parent tools/call integration; browser reuse disabled. Timing analysis and final screenshots belong to parent. No upstream 401/403/429 observed."
+}

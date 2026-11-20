@@ -1,0 +1,13 @@
+{
+  "jsonrpc": "2.0",
+  "id": 3,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "The private Chrome profile is not configured correctly. The operator must check its absolute path and owner-only permissions. See docs/AUTH-RECOVERY.md."
+      }
+    ],
+    "isError": true
+  }
+}
