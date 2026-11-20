@@ -1,0 +1,84 @@
+{
+  "utc": "2026-11-20T05:50:52.961807+00:00",
+  "gateway_pid": 2264808,
+  "processes": [
+    {
+      "pid": 2264808,
+      "ppid": 2264807,
+      "name": "naver-performan",
+      "rss_kib": 18436
+    },
+    {
+      "pid": 2264880,
+      "ppid": 2264808,
+      "name": "java",
+      "rss_kib": 313064
+    },
+    {
+      "pid": 2264976,
+      "ppid": 2264880,
+      "name": "chromedriver",
+      "rss_kib": 23464
+    },
+    {
+      "pid": 2265007,
+      "ppid": 2264976,
+      "name": "chrome",
+      "rss_kib": 287184
+    },
+    {
+      "pid": 2265017,
+      "ppid": 2265007,
+      "name": "chrome",
+      "rss_kib": 77464
+    },
+    {
+      "pid": 2265018,
+      "ppid": 2265007,
+      "name": "chrome",
+      "rss_kib": 78368
+    },
+    {
+      "pid": 2265041,
+      "ppid": 2265017,
+      "name": "chrome",
+      "rss_kib": 110128
+    },
+    {
+      "pid": 2265043,
+      "ppid": 2265007,
+      "name": "chrome",
+      "rss_kib": 125944
+    },
+    {
+      "pid": 2265051,
+      "ppid": 2265018,
+      "name": "chrome",
+      "rss_kib": 54264
+    },
+    {
+      "pid": 2265090,
+      "ppid": 2265018,
+      "name": "chrome",
+      "rss_kib": 147024
+    },
+    {
+      "pid": 2266959,
+      "ppid": 2265018,
+      "name": "chrome",
+      "rss_kib": 116308
+    },
+    {
+      "pid": 2267025,
+      "ppid": 2265018,
+      "name": "chrome",
+      "rss_kib": 78308
+    },
+    {
+      "pid": 2267190,
+      "ppid": 2265017,
+      "name": "chrome",
+      "rss_kib": 55268
+    }
+  ]
+}

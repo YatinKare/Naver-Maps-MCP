@@ -1,0 +1,368 @@
+{
+  "label": "repaired-full-maps-fresh-browser",
+  "started_utc": "2026-11-20T05:37:25.655702+00:00",
+  "checkout_revision": "0407579169b440de408611bfd5c2e5ef828319eb",
+  "dirty": false,
+  "environment": {
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+    "cpu_count": 4
+  },
+  "rounds": 5,
+  "interval_seconds": 3,
+  "samples": [
+    {
+      "index": 1,
+      "workload": "keyword_page1",
+      "worker_state": "cold",
+      "wall_ms": 26779.801,
+      "http_status": 200,
+      "matched_payload_bytes": 48546,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "result_sha256": "418ac54aca61fdaa18f40b8ab729de8bdcc743b4e0d0fbd8d813c3c55533ead0",
+      "ok": true
+    },
+    {
+      "index": 2,
+      "workload": "keyword_page1",
+      "worker_state": "warm",
+      "wall_ms": 15851.942,
+      "http_status": 200,
+      "matched_payload_bytes": 48546,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "result_sha256": "418ac54aca61fdaa18f40b8ab729de8bdcc743b4e0d0fbd8d813c3c55533ead0",
+      "ok": true
+    },
+    {
+      "index": 3,
+      "workload": "keyword_page2",
+      "worker_state": "warm",
+      "wall_ms": 19700.192,
+      "http_status": 200,
+      "matched_payload_bytes": 48297,
+      "result_count": 70,
+      "ids_sha256": "b36eda5106e6708d092e3ca6c5f7dd2214043ff0de63641c2ff0bdd08c9829fe",
+      "result_sha256": "5f5e2dd805570cb546911715008f97a7deff0c53302d191101c1172e800e1130",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 4,
+      "workload": "coordinate_page1",
+      "worker_state": "warm",
+      "wall_ms": 20226.391,
+      "http_status": 200,
+      "matched_payload_bytes": 47793,
+      "result_count": 70,
+      "ids_sha256": "15dca0ece95d444c50ef125f7f26299516710fb17baacbbf168d0ef0658361f2",
+      "result_sha256": "5577d54468dad9604fd00e4672f5bb8ea19d64ccd51ad3cc3dd38d9b8e3989c4",
+      "ok": true
+    },
+    {
+      "index": 5,
+      "workload": "coordinate_page2",
+      "worker_state": "warm",
+      "wall_ms": 25579.065,
+      "http_status": 200,
+      "matched_payload_bytes": 48074,
+      "result_count": 70,
+      "ids_sha256": "9937d17ff13a948a7f35ce3ba0e97b2c42cfb4c951b60172b3805c3970e7920f",
+      "result_sha256": "1e5b16b0885d58c2a13130a37885774fe7f33a5cd3fd40c79706f8bc1f83b2ef",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 6,
+      "workload": "keyword_page1",
+      "worker_state": "warm",
+      "wall_ms": 17119.681,
+      "http_status": 200,
+      "matched_payload_bytes": 48546,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "result_sha256": "418ac54aca61fdaa18f40b8ab729de8bdcc743b4e0d0fbd8d813c3c55533ead0",
+      "ok": true
+    },
+    {
+      "index": 7,
+      "workload": "keyword_page2",
+      "worker_state": "warm",
+      "wall_ms": 20976.301,
+      "http_status": 200,
+      "matched_payload_bytes": 48298,
+      "result_count": 70,
+      "ids_sha256": "b36eda5106e6708d092e3ca6c5f7dd2214043ff0de63641c2ff0bdd08c9829fe",
+      "result_sha256": "5f5e2dd805570cb546911715008f97a7deff0c53302d191101c1172e800e1130",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 8,
+      "workload": "coordinate_page1",
+      "worker_state": "warm",
+      "wall_ms": 21754.644,
+      "http_status": 200,
+      "matched_payload_bytes": 49217,
+      "result_count": 70,
+      "ids_sha256": "b06f78577f07db2cf2eec0a9d5f4832ac98801e10e99695e02df078d400b0eb2",
+      "result_sha256": "89fb24f1a6d3662209224dc31efca23fe831f562d8a6a2ed37df500f7a4772c4",
+      "ok": true
+    },
+    {
+      "index": 9,
+      "workload": "coordinate_page2",
+      "worker_state": "warm",
+      "wall_ms": 24568.346,
+      "http_status": 200,
+      "matched_payload_bytes": 48075,
+      "result_count": 70,
+      "ids_sha256": "9937d17ff13a948a7f35ce3ba0e97b2c42cfb4c951b60172b3805c3970e7920f",
+      "result_sha256": "1e5b16b0885d58c2a13130a37885774fe7f33a5cd3fd40c79706f8bc1f83b2ef",
+      "new_ids_vs_page1": 42,
+      "ok": true
+    },
+    {
+      "index": 10,
+      "workload": "keyword_page1",
+      "worker_state": "warm",
+      "wall_ms": 22209.404,
+      "http_status": 200,
+      "matched_payload_bytes": 48547,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "result_sha256": "418ac54aca61fdaa18f40b8ab729de8bdcc743b4e0d0fbd8d813c3c55533ead0",
+      "ok": true
+    },
+    {
+      "index": 11,
+      "workload": "keyword_page2",
+      "worker_state": "warm",
+      "wall_ms": 23755.686,
+      "http_status": 200,
+      "matched_payload_bytes": 48298,
+      "result_count": 70,
+      "ids_sha256": "b36eda5106e6708d092e3ca6c5f7dd2214043ff0de63641c2ff0bdd08c9829fe",
+      "result_sha256": "5f5e2dd805570cb546911715008f97a7deff0c53302d191101c1172e800e1130",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 12,
+      "workload": "coordinate_page1",
+      "worker_state": "warm",
+      "wall_ms": 29738.808,
+      "http_status": 200,
+      "matched_payload_bytes": 49217,
+      "result_count": 70,
+      "ids_sha256": "b06f78577f07db2cf2eec0a9d5f4832ac98801e10e99695e02df078d400b0eb2",
+      "result_sha256": "89fb24f1a6d3662209224dc31efca23fe831f562d8a6a2ed37df500f7a4772c4",
+      "ok": true
+    },
+    {
+      "index": 13,
+      "workload": "coordinate_page2",
+      "worker_state": "warm",
+      "wall_ms": 30930.255,
+      "http_status": 200,
+      "matched_payload_bytes": 47733,
+      "result_count": 70,
+      "ids_sha256": "c58c7a878ab4782afc14253a7408a41ae6813149c4367a54d96bc5e0a9e44fce",
+      "result_sha256": "239157e051ddfaab3eb965088b894cbee9a45f00d7ff53a27ee515aab143a589",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 14,
+      "workload": "keyword_page1",
+      "worker_state": "warm",
+      "wall_ms": 20699.436,
+      "http_status": 200,
+      "matched_payload_bytes": 48547,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "result_sha256": "418ac54aca61fdaa18f40b8ab729de8bdcc743b4e0d0fbd8d813c3c55533ead0",
+      "ok": true
+    },
+    {
+      "index": 15,
+      "workload": "keyword_page2",
+      "worker_state": "warm",
+      "wall_ms": 23303.166,
+      "http_status": 200,
+      "matched_payload_bytes": 48298,
+      "result_count": 70,
+      "ids_sha256": "b36eda5106e6708d092e3ca6c5f7dd2214043ff0de63641c2ff0bdd08c9829fe",
+      "result_sha256": "5f5e2dd805570cb546911715008f97a7deff0c53302d191101c1172e800e1130",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 16,
+      "workload": "coordinate_page1",
+      "worker_state": "warm",
+      "wall_ms": 31567.364,
+      "http_status": 200,
+      "matched_payload_bytes": 49217,
+      "result_count": 70,
+      "ids_sha256": "b06f78577f07db2cf2eec0a9d5f4832ac98801e10e99695e02df078d400b0eb2",
+      "result_sha256": "89fb24f1a6d3662209224dc31efca23fe831f562d8a6a2ed37df500f7a4772c4",
+      "ok": true
+    },
+    {
+      "index": 17,
+      "workload": "coordinate_page2",
+      "worker_state": "warm",
+      "wall_ms": 29440.658,
+      "http_status": 200,
+      "matched_payload_bytes": 48075,
+      "result_count": 70,
+      "ids_sha256": "9937d17ff13a948a7f35ce3ba0e97b2c42cfb4c951b60172b3805c3970e7920f",
+      "result_sha256": "1e5b16b0885d58c2a13130a37885774fe7f33a5cd3fd40c79706f8bc1f83b2ef",
+      "new_ids_vs_page1": 42,
+      "ok": true
+    },
+    {
+      "index": 18,
+      "workload": "keyword_page1",
+      "worker_state": "warm",
+      "wall_ms": 17704.377,
+      "http_status": 200,
+      "matched_payload_bytes": 48547,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "result_sha256": "418ac54aca61fdaa18f40b8ab729de8bdcc743b4e0d0fbd8d813c3c55533ead0",
+      "ok": true
+    },
+    {
+      "index": 19,
+      "workload": "keyword_page2",
+      "worker_state": "warm",
+      "wall_ms": 19650.415,
+      "http_status": 200,
+      "matched_payload_bytes": 48298,
+      "result_count": 70,
+      "ids_sha256": "b36eda5106e6708d092e3ca6c5f7dd2214043ff0de63641c2ff0bdd08c9829fe",
+      "result_sha256": "5f5e2dd805570cb546911715008f97a7deff0c53302d191101c1172e800e1130",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 20,
+      "workload": "coordinate_page1",
+      "worker_state": "warm",
+      "wall_ms": 23492.088,
+      "http_status": 200,
+      "matched_payload_bytes": 49217,
+      "result_count": 70,
+      "ids_sha256": "b06f78577f07db2cf2eec0a9d5f4832ac98801e10e99695e02df078d400b0eb2",
+      "result_sha256": "89fb24f1a6d3662209224dc31efca23fe831f562d8a6a2ed37df500f7a4772c4",
+      "ok": true
+    },
+    {
+      "index": 21,
+      "workload": "coordinate_page2",
+      "worker_state": "warm",
+      "wall_ms": 31432.492,
+      "http_status": 200,
+      "matched_payload_bytes": 47733,
+      "result_count": 70,
+      "ids_sha256": "c58c7a878ab4782afc14253a7408a41ae6813149c4367a54d96bc5e0a9e44fce",
+      "result_sha256": "239157e051ddfaab3eb965088b894cbee9a45f00d7ff53a27ee515aab143a589",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    }
+  ],
+  "schema_version": 2,
+  "initial_worker_state": "cold",
+  "warm_state_assumption": "caller keeps worker alive between successful calls; interval below idle timeout",
+  "method": "real tools/call; monotonic time around HTTP through complete response body",
+  "artifacts": {
+    "gateway": {
+      "filename": "naver-performance-gateway",
+      "sha256": "8ce048f2eec2c76e37311ef5ecec73d835005924aee2ce4c2392ce9e3569ebe6"
+    },
+    "worker": {
+      "filename": "final-worker.jar",
+      "sha256": "d43c1051598b8cb2f71e543f0a19ea1736969b8d32a61b1715c9eecd7f984e70"
+    }
+  },
+  "host_pressure_start": {
+    "cpu": "some avg10=0.35 avg60=2.51 avg300=3.44 total=8382691698\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+    "memory": "some avg10=1.84 avg60=3.31 avg300=3.33 total=1705944133\nfull avg10=1.84 avg60=2.89 avg300=2.73 total=1575106152",
+    "io": "some avg10=25.12 avg60=22.35 avg300=23.17 total=22784202651\nfull avg10=24.43 avg60=18.46 avg300=17.78 total=21573313706"
+  },
+  "discovery": {
+    "initialize": {
+      "wall_ms": 18.665,
+      "http_status": 200,
+      "matched_payload_bytes": 187
+    },
+    "tools_list": {
+      "wall_ms": 2.573,
+      "http_status": 200,
+      "matched_payload_bytes": 5221
+    },
+    "tools": [
+      "naver_map_coordinate_search",
+      "naver_map_search"
+    ]
+  },
+  "workload_sha256": "381a77231f5fa7b37f83e54d677b532d591bfff999d82396d130aec8aeabf539",
+  "all": {
+    "calls": 21,
+    "successes": 21,
+    "failures": 0,
+    "median_ms": 23303.166,
+    "p95_ms": 31432.492,
+    "p95_method": "nearest rank, successes only; inspect failures separately",
+    "p95_sample_warning": false
+  },
+  "warm": {
+    "calls": 20,
+    "successes": 20,
+    "failures": 0,
+    "median_ms": 22756.285,
+    "p95_ms": 31432.492,
+    "p95_method": "nearest rank, successes only; inspect failures separately",
+    "p95_sample_warning": false
+  },
+  "by_workload": {
+    "keyword_page1": {
+      "calls": 5,
+      "successes": 5,
+      "failures": 0,
+      "median_ms": 17704.377,
+      "p95_ms": 22209.404,
+      "p95_method": "nearest rank, successes only; inspect failures separately",
+      "p95_sample_warning": true
+    },
+    "keyword_page2": {
+      "calls": 5,
+      "successes": 5,
+      "failures": 0,
+      "median_ms": 20976.301,
+      "p95_ms": 23755.686,
+      "p95_method": "nearest rank, successes only; inspect failures separately",
+      "p95_sample_warning": true
+    },
+    "coordinate_page1": {
+      "calls": 5,
+      "successes": 5,
+      "failures": 0,
+      "median_ms": 23492.088,
+      "p95_ms": 31567.364,
+      "p95_method": "nearest rank, successes only; inspect failures separately",
+      "p95_sample_warning": true
+    },
+    "coordinate_page2": {
+      "calls": 5,
+      "successes": 5,
+      "failures": 0,
+      "median_ms": 29440.658,
+      "p95_ms": 31432.492,
+      "p95_method": "nearest rank, successes only; inspect failures separately",
+      "p95_sample_warning": true
+    }
+  }
+}

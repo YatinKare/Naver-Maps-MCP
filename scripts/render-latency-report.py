@@ -54,9 +54,9 @@ def main():
         for name, data in (("before", before), ("after", after)):
             for sample in data["samples"]:
                 writer.writerow(dict(sample, version=name))
-    html = '<figure style="margin:0"><img style="width:100%;height:auto" src="' + str(
+    html = '<!doctype html><html><meta charset="utf-8"><figure style="margin:0"><img style="width:100%;height:auto" src="' + str(
         (args.output / "latency-comparison.png").resolve()) + '" alt="Recorded live MCP wall-clock latency"></figure>'
-    (args.output / "latency-chart.html").write_text(html)
+    (args.output / "latency-chart.html").write_text(html + '</html>')
     print(json.dumps({"median_reduction_percent": reductions[0],
                       "p95_reduction_percent": reductions[1],
                       "chart": str(args.output / "latency-comparison.png")}, indent=2))
