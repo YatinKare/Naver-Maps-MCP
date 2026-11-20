@@ -59,5 +59,15 @@
       "sha256": "cad9ec1ec9b05b387f0f287002f693379bf653162e24f88721f1f6531a5d8f16"
     }
   },
-  "note": "The first successful cold proof call occurred during screen recording and observed severe host I/O/memory pressure; it is retained separately from the completed fixed-workload comparison. Recorder stopped to reduce load. The next warm call passed in 5304.289 ms."
+  "note": "The first successful cold proof call occurred during screen recording and observed severe host I/O/memory pressure; it is retained separately from the completed fixed-workload comparison. Recorder stopped to reduce load. The next warm call passed in 5304.289 ms.",
+  "final_stack": {
+    "order": [
+      69,
+      70,
+      71
+    ],
+    "runner_head": "82fd224241b92089f31883b96abae98529d121d5",
+    "auth_head": "5872ea2f5d3c2aeef1e0d3720234b3e688e26431",
+    "runtime_source_diff_from_composition": "empty for src, gateway, tests; verified after rebase"
+  }
 }

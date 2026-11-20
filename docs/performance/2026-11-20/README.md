@@ -2,7 +2,7 @@
 
 This directory records real HTTP MCP calls on Yatin's Ubuntu host. The deployed
 v0.1.1 service was left unchanged. PRs #69 (runner), #70 (session recovery), and
-#71 (capture/performance) are reviewable separately; #71 is stacked on #70.
+#71 (capture/performance) form the review/merge stack **#69 → #70 → #71**.
 
 ## Recorded results
 
@@ -212,3 +212,16 @@ claimed complete. Historical/non-reproducible issue/CI evidence is recorded in
 #69's `docs/error-issue-triage-2026-11-19.md`. No PR CI checks or GitHub reviews
 were configured/reported at final verification; the live/manual evidence above
 and independent Luna review are the available validation.
+
+
+## Final conflict-free PR stack
+
+After validation, a read-only merge simulation identified the adjacent
+ChromeOptions insertions in #69 and #70 as a conflict. #70 was rebased onto
+#69, retaining both the selected-browser and session hooks; #71 was rebased
+onto the updated #70. The historical measurement/component SHAs above are
+retained as recorded evidence, rather than rewritten. The resulting runtime
+source under `src`, `gateway`, and `tests` has **no diff** from the exact local
+composition `826dc29` used for the successful combined build and MCP proof.
+This branch reorganization required no new NAVER load or unit tests. Review
+and merge #69 first, #70 second, #71 last; none has been merged.
