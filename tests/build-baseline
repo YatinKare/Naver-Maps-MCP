@@ -12,13 +12,19 @@ die() {
 }
 
 [[ -n "$GO_BIN" ]] || die "Go is required; set GO_BIN to the Go executable"
-[[ -x "$GO_BIN" ]] || die "Go binary is not executable: $GO_BIN"
+GO_BIN="$(command -v -- "$GO_BIN" 2>/dev/null || true)"
+[[ -f "$GO_BIN" && -x "$GO_BIN" ]] || die 'Go binary is not executable; set GO_BIN to an installed Go executable'
+GO_BIN="$(cd -- "$(dirname -- "$GO_BIN")" && pwd -P)/$(basename -- "$GO_BIN")"
 
 printf '%s\n' 'Building Java application JAR...'
-bash "$REPO_ROOT/gradlew" bootJar
+(
+  cd "$REPO_ROOT"
+  bash ./gradlew --no-daemon --max-workers=1 bootJar
+)
 
 printf '%s\n' 'Building statically linked Linux gateway binary...'
 mkdir -p "$(dirname -- "$GATEWAY_OUTPUT")"
+GATEWAY_OUTPUT="$(cd -- "$(dirname -- "$GATEWAY_OUTPUT")" && pwd -P)/$(basename -- "$GATEWAY_OUTPUT")"
 (
   cd "$REPO_ROOT/gateway"
   CGO_ENABLED=0 GOOS=linux GOARCH=amd64 "$GO_BIN" build \

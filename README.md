@@ -90,8 +90,41 @@ Build the Java worker and Go server, then run the integration script:
 
 ```bash
 bash tests/build-baseline
+bash tests/run-script --check
 bash tests/run-script
 ```
+
+The developer runner supports Linux x86-64 with a readable `/proc` filesystem.
+Install Java 17 or newer, Go (for the build), Chrome or Chromium, a ChromeDriver
+with the same browser major version, `curl`, `jq`, GNU coreutils, and procps.
+Java is selected from `JAVA_BIN`, then `JAVA_HOME/bin/java`, then `PATH`;
+ChromeDriver is selected from `CHROMEDRIVER_BIN` or `PATH`. The browser is
+selected from `CHROME_BIN` or found on `PATH` as `google-chrome`,
+`google-chrome-stable`, `chromium`, or `chromium-browser`. The runner passes
+that exact browser path to the worker as `NAVER_MAP_SELENIUM_CHROME_BINARY`,
+so preflight and searches use the same installation. The worker also accepts
+that environment variable directly; an unset/blank value keeps Selenium’s
+default browser discovery.
+
+`--check` validates dependencies and build artifacts without starting a gateway
+or contacting NAVER. Both scripts can be invoked by absolute path from another
+directory. For custom installations or existing artifacts:
+
+```bash
+JAVA_BIN=/opt/jdk/bin/java CHROMEDRIVER_BIN=/opt/chromedriver \
+  CHROME_BIN=/opt/chrome/chrome GATEWAY_BIN=/opt/naver/bin/naver-maps-mcp \
+  bash tests/run-script --check '노원역 맛집' /opt/naver/lib/naver-maps-mcp.jar
+```
+
+Use `GO_BIN` and `GATEWAY_OUTPUT` to override the build helper's Go executable
+and gateway destination. The Java build uses one Gradle worker and disables
+persistent daemons. The runner accepts `GATEWAY_BIN`, a JAR as its second
+positional argument, `PORT` (worker, default 8080), `GATEWAY_PORT` (default 3000),
+and `RUNS_DIR` (default `runs/baseline`) for local isolation. Set
+`READY_TIMEOUT_SECONDS`, `REQUEST_TIMEOUT_SECONDS`, `GATEWAY_JAVA_IDLE_TIMEOUT`,
+and `IDLE_WAIT_SECONDS` when the environment needs different timeouts.
+Run the full script only when live NAVER requests are appropriate; it stops on
+failure and does not automatically retry rate-limited searches.
 
 The script verifies the configured authentication mode, MCP initialization, tool
 discovery, keyword search, coordinate search, page 2 for both tools, lazy Java

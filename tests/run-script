@@ -5,11 +5,15 @@ set -euo pipefail
 # time is not included in the startup measurement.
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 REPO_ROOT="$(cd -- "$SCRIPT_DIR/.." && pwd -P)"
-RUNS_DIR="$REPO_ROOT/runs/baseline"
-LOCAL_BIN="/home/yatink/.local/bin"
-LOCAL_JDK="/home/yatink/.local/jdk-17/usr/lib/jvm/java-17-openjdk-amd64"
-JAVA_BIN="${JAVA_BIN:-$LOCAL_BIN/java}"
-CHROMEDRIVER_BIN="${CHROMEDRIVER_BIN:-$LOCAL_BIN/chromedriver}"
+RUNS_DIR="${RUNS_DIR:-$REPO_ROOT/runs/baseline}"
+CHECK_ONLY=false
+if [[ "${1:-}" == "--check" ]]; then
+  CHECK_ONLY=true
+  shift
+fi
+JAVA_BIN="${JAVA_BIN:-${JAVA_HOME:+$JAVA_HOME/bin/java}}"
+CHROMEDRIVER_BIN="${CHROMEDRIVER_BIN:-chromedriver}"
+CHROME_BIN="${CHROME_BIN:-}"
 PORT="${PORT:-8080}"
 GATEWAY_PORT="${GATEWAY_PORT:-3000}"
 GATEWAY_AUTH_MODE="${GATEWAY_AUTH_MODE:-none}"
@@ -29,9 +33,6 @@ MCP_PROTOCOL_VERSION="${MCP_PROTOCOL_VERSION:-2025-11-25}"
 MCP_URL="${MCP_URL:-http://127.0.0.1:$GATEWAY_PORT/mcp}"
 EXTERNAL_MCP_URL="${EXTERNAL_MCP_URL:-}"
 MCP_LOGGING_CHECK="${MCP_LOGGING_CHECK:-false}"
-
-export JAVA_HOME="${JAVA_HOME:-$LOCAL_JDK}"
-export PATH="$(dirname -- "$JAVA_BIN"):$LOCAL_BIN:$PATH"
 
 GATEWAY_PID=""
 WORK_DIR=""
@@ -54,6 +55,29 @@ require_command() {
   command -v "$1" >/dev/null 2>&1 || die "missing command: $1"
 }
 
+resolve_executable() {
+  local configured="$1" label="$2" resolved
+  resolved="$(command -v -- "$configured" 2>/dev/null || true)"
+  [[ -n "$resolved" && -f "$resolved" && -x "$resolved" ]] \
+    || die "$label executable not found: $configured"
+  printf '%s/%s\n' "$(cd -- "$(dirname -- "$resolved")" && pwd -P)" "$(basename -- "$resolved")"
+}
+
+resolve_chrome() {
+  if [[ -n "$CHROME_BIN" ]]; then
+    resolve_executable "$CHROME_BIN" 'Chrome/Chromium (set CHROME_BIN)'
+    return
+  fi
+  local candidate
+  for candidate in google-chrome google-chrome-stable chromium chromium-browser; do
+    if command -v "$candidate" >/dev/null 2>&1; then
+      resolve_executable "$candidate" 'Chrome/Chromium'
+      return
+    fi
+  done
+  die 'Chrome/Chromium not found; install a supported browser and add it to PATH'
+}
+
 resolve_jar() {
   if [[ -n "$JAR_PATH" ]]; then
     [[ -f "$JAR_PATH" ]] || die "JAR not found: $JAR_PATH"
@@ -68,8 +92,7 @@ resolve_jar() {
 }
 
 resolve_gateway() {
-  [[ -x "$GATEWAY_BIN" ]] || die "gateway binary not found or not executable: $GATEWAY_BIN; run tests/build-baseline first"
-  printf '%s\n' "$(cd -- "$(dirname -- "$GATEWAY_BIN")" && pwd -P)/$(basename -- "$GATEWAY_BIN")"
+  resolve_executable "$GATEWAY_BIN" 'gateway (run tests/build-baseline or set GATEWAY_BIN)'
 }
 
 system_snapshot() {
@@ -447,20 +470,31 @@ validate_tool_outcome_logs() {
 }
 
 main() {
-  require_command jq
-  require_command curl
-  require_command free
-  require_command ps
-  [[ -x "$JAVA_BIN" ]] || die "Java binary not found: $JAVA_BIN"
-  [[ -x "$CHROMEDRIVER_BIN" ]] || die "ChromeDriver binary not found: $CHROMEDRIVER_BIN"
-  [[ -x /usr/bin/google-chrome ]] || die "Google Chrome not found at /usr/bin/google-chrome"
-
-  local java_version chrome_version driver_version
-  java_version="$($JAVA_BIN -version 2>&1 | awk '/version/ {print; exit}')"
-  chrome_version="$(/usr/bin/google-chrome --version | awk '{print $3}')"
-  driver_version="$($CHROMEDRIVER_BIN --version | awk '{print $2}')"
-  [[ "$java_version" == *'17.'* ]] || die "Java 17 is required: $java_version"
-  [[ "${chrome_version%%.*}" == "${driver_version%%.*}" ]] || die "Chrome/ChromeDriver major versions differ: $chrome_version vs $driver_version"
+  local command_name
+  for command_name in uname jq curl free ps awk basename cat cut date dirname find grep head \
+    mkdir mktemp nproc rm sed seq sleep tr wc; do
+    require_command "$command_name"
+  done
+  [[ "$(uname -s)" == Linux && "$(uname -m)" == x86_64 ]] \
+    || die 'the integration runner supports Linux x86-64 only'
+  [[ -r /proc/loadavg && -r /proc/meminfo ]] || die 'Linux /proc must be mounted and readable'
+  JAVA_BIN="$(resolve_executable "${JAVA_BIN:-java}" 'Java (set JAVA_BIN or JAVA_HOME)')"
+  CHROMEDRIVER_BIN="$(resolve_executable "$CHROMEDRIVER_BIN" 'ChromeDriver (set CHROMEDRIVER_BIN)')"
+  local chrome_bin java_version chrome_version driver_version
+  chrome_bin="$(resolve_chrome)"
+  java_version="$("$JAVA_BIN" -version 2>&1)" || die "could not run Java: $JAVA_BIN"
+  [[ "$java_version" =~ version[[:space:]]+\"([0-9]+) ]] \
+    || die "could not determine Java version: $java_version"
+  (( BASH_REMATCH[1] >= 17 )) || die "Java 17 or newer is required: $java_version"
+  chrome_version="$("$chrome_bin" --version)" || die "could not run browser: $chrome_bin"
+  driver_version="$("$CHROMEDRIVER_BIN" --version)" || die "could not run ChromeDriver: $CHROMEDRIVER_BIN"
+  [[ "$chrome_version" =~ ([0-9]+)\.[0-9]+\.[0-9]+\.[0-9]+ ]] \
+    || die "could not determine Chrome/Chromium version: $chrome_version"
+  local chrome_major="${BASH_REMATCH[1]}"
+  [[ "$driver_version" =~ ([0-9]+)\.[0-9]+\.[0-9]+\.[0-9]+ ]] \
+    || die "could not determine ChromeDriver version: $driver_version"
+  [[ "$chrome_major" == "${BASH_REMATCH[1]}" ]] \
+    || die "Chrome/ChromeDriver major versions differ: $chrome_version vs $driver_version"
 
   local jar_path jar_name output_file started ready_ms request_started request_exit
   local http_code total_seconds samples request_meta request_error run_status response_file
@@ -472,6 +506,16 @@ main() {
   jar_path="$(resolve_jar)"
   gateway_bin="$(resolve_gateway)"
   jar_name="$(basename -- "$jar_path")"
+  printf 'Java: %s\nChrome: %s\nChromeDriver: %s\n' \
+    "${java_version%%$'\n'*}" "$chrome_version" "$driver_version"
+  printf 'Java executable: %s\nChrome executable: %s\nChromeDriver executable: %s\n' \
+    "$JAVA_BIN" "$chrome_bin" "$CHROMEDRIVER_BIN"
+  printf 'Application JAR: %s\nGateway executable: %s\n' "$jar_path" "$gateway_bin"
+  if [[ "$CHECK_ONLY" == true ]]; then
+    printf '%s\n' 'Preflight passed; no gateway or NAVER requests started'
+    return 0
+  fi
+
   output_file="$RUNS_DIR/$(date -u +%Y%m%dT%H%M%SZ).json"
   mkdir -p "$REPO_ROOT/artifacts"
   WORK_DIR="$(mktemp -d "$REPO_ROOT/artifacts/.baseline.XXXXXX")"
@@ -479,9 +523,6 @@ main() {
   trap cleanup EXIT INT TERM
 
   mkdir -p "$RUNS_DIR"
-  printf '%s\n' "Java: $($JAVA_BIN -version 2>&1 | head -n 1)"
-  printf '%s\n' "Chrome: $(/usr/bin/google-chrome --version)"
-  printf '%s\n' "ChromeDriver: $($CHROMEDRIVER_BIN --version)"
 
   local before_snapshot
   before_snapshot="$(snapshot before_start)"
@@ -496,6 +537,7 @@ main() {
     GATEWAY_JAVA_BIN="$JAVA_BIN" \
     GATEWAY_JAVA_JAR="$jar_path" \
     GATEWAY_JAVA_CHROMEDRIVER="$CHROMEDRIVER_BIN" \
+    NAVER_MAP_SELENIUM_CHROME_BINARY="$chrome_bin" \
     GATEWAY_JAVA_HEADLESS=true \
     GATEWAY_JAVA_IDLE_TIMEOUT="$GATEWAY_JAVA_IDLE_TIMEOUT" \
     "$gateway_bin" \
