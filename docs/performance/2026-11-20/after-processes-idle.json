@@ -1,0 +1,18 @@
+{
+  "utc": "2026-11-20T05:51:50.915088+00:00",
+  "gateway_pid": 2264808,
+  "processes": [
+    {
+      "pid": 2264808,
+      "ppid": 2264807,
+      "name": "naver-performan",
+      "rss_kib": 18436
+    },
+    {
+      "pid": 2264880,
+      "ppid": 2264808,
+      "name": "java",
+      "rss_kib": 312928
+    }
+  ]
+}

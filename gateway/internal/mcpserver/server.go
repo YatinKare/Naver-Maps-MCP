@@ -160,6 +160,7 @@ type ToolOutcome struct {
 	WorkerColdStart       bool
 	WorkerStartupDuration time.Duration
 	SearchDuration        time.Duration
+	CaptureStagesMS       map[string]float64
 	ResultCount           *int
 	ResponseBytes         int
 	FailureCategory       string
@@ -344,6 +345,7 @@ func applySearchMetadata(outcome *ToolOutcome, metadata worker.SearchMetadata, r
 	outcome.WorkerColdStart = metadata.WorkerColdStart
 	outcome.WorkerStartupDuration = metadata.WorkerStartupDuration
 	outcome.SearchDuration = metadata.SearchDuration
+	outcome.CaptureStagesMS = metadata.CaptureStagesMS
 	outcome.ResponseBytes = len(rawJSON)
 }
 

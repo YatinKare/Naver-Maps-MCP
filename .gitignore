@@ -6,3 +6,4 @@ out/
 artifacts/*
 !artifacts/.gitkeep
 runs/baseline/*.json
+runs/latency-*/
