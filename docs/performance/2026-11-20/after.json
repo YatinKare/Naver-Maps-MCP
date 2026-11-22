@@ -1,0 +1,394 @@
+{
+  "label": "optimized-public-results-reused-browser",
+  "started_utc": "2026-11-20T05:47:21.608663+00:00",
+  "checkout_revision": "0407579169b440de408611bfd5c2e5ef828319eb",
+  "dirty": false,
+  "environment": {
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+    "cpu_count": 4
+  },
+  "rounds": 5,
+  "interval_seconds": 3,
+  "samples": [
+    {
+      "index": 1,
+      "workload": "keyword_page1",
+      "worker_state": "cold",
+      "wall_ms": 14182.266,
+      "http_status": 200,
+      "matched_payload_bytes": 48546,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "result_sha256": "418ac54aca61fdaa18f40b8ab729de8bdcc743b4e0d0fbd8d813c3c55533ead0",
+      "ok": true
+    },
+    {
+      "index": 2,
+      "workload": "keyword_page1",
+      "worker_state": "warm",
+      "wall_ms": 2716.279,
+      "http_status": 200,
+      "matched_payload_bytes": 48546,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "result_sha256": "418ac54aca61fdaa18f40b8ab729de8bdcc743b4e0d0fbd8d813c3c55533ead0",
+      "ok": true
+    },
+    {
+      "index": 3,
+      "workload": "keyword_page2",
+      "worker_state": "warm",
+      "wall_ms": 7023.894,
+      "http_status": 200,
+      "matched_payload_bytes": 48297,
+      "result_count": 70,
+      "ids_sha256": "b36eda5106e6708d092e3ca6c5f7dd2214043ff0de63641c2ff0bdd08c9829fe",
+      "result_sha256": "5f5e2dd805570cb546911715008f97a7deff0c53302d191101c1172e800e1130",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 4,
+      "workload": "coordinate_page1",
+      "worker_state": "warm",
+      "wall_ms": 3255.535,
+      "http_status": 200,
+      "matched_payload_bytes": 49328,
+      "result_count": 70,
+      "ids_sha256": "af9a73ac0e1d453b61df7127f8d277dbc3c6252eccb76daef4d9593723e1d743",
+      "result_sha256": "cb9de88088ed29b4b905e4b25b92d2960380a4c1999606331ed61d8c9ce6659c",
+      "ok": true
+    },
+    {
+      "index": 5,
+      "workload": "coordinate_page2",
+      "worker_state": "warm",
+      "wall_ms": 5359.687,
+      "http_status": 200,
+      "matched_payload_bytes": 47620,
+      "result_count": 70,
+      "ids_sha256": "d4a1c53e277af2307f3f8b90256d9f848a67ff93f525dad877ecff38eee51997",
+      "result_sha256": "1a2c62673fb20ee63ce07bb4b859b5d324d64de7a7e23af94328d306009ba58b",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 6,
+      "workload": "keyword_page1",
+      "worker_state": "warm",
+      "wall_ms": 3089.314,
+      "http_status": 200,
+      "matched_payload_bytes": 48546,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "result_sha256": "418ac54aca61fdaa18f40b8ab729de8bdcc743b4e0d0fbd8d813c3c55533ead0",
+      "ok": true
+    },
+    {
+      "index": 7,
+      "workload": "keyword_page2",
+      "worker_state": "warm",
+      "wall_ms": 5857.734,
+      "http_status": 200,
+      "matched_payload_bytes": 48298,
+      "result_count": 70,
+      "ids_sha256": "b36eda5106e6708d092e3ca6c5f7dd2214043ff0de63641c2ff0bdd08c9829fe",
+      "result_sha256": "5f5e2dd805570cb546911715008f97a7deff0c53302d191101c1172e800e1130",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 8,
+      "workload": "coordinate_page1",
+      "worker_state": "warm",
+      "wall_ms": 3117.334,
+      "http_status": 200,
+      "matched_payload_bytes": 49329,
+      "result_count": 70,
+      "ids_sha256": "af9a73ac0e1d453b61df7127f8d277dbc3c6252eccb76daef4d9593723e1d743",
+      "result_sha256": "cb9de88088ed29b4b905e4b25b92d2960380a4c1999606331ed61d8c9ce6659c",
+      "ok": true
+    },
+    {
+      "index": 9,
+      "workload": "coordinate_page2",
+      "worker_state": "warm",
+      "wall_ms": 6871.818,
+      "http_status": 200,
+      "matched_payload_bytes": 47621,
+      "result_count": 70,
+      "ids_sha256": "d4a1c53e277af2307f3f8b90256d9f848a67ff93f525dad877ecff38eee51997",
+      "result_sha256": "1a2c62673fb20ee63ce07bb4b859b5d324d64de7a7e23af94328d306009ba58b",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 10,
+      "workload": "keyword_page1",
+      "worker_state": "warm",
+      "wall_ms": 3465.145,
+      "http_status": 200,
+      "matched_payload_bytes": 48547,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "result_sha256": "418ac54aca61fdaa18f40b8ab729de8bdcc743b4e0d0fbd8d813c3c55533ead0",
+      "ok": true
+    },
+    {
+      "index": 11,
+      "workload": "keyword_page2",
+      "worker_state": "warm",
+      "wall_ms": 6254.828,
+      "http_status": 200,
+      "matched_payload_bytes": 48298,
+      "result_count": 70,
+      "ids_sha256": "b36eda5106e6708d092e3ca6c5f7dd2214043ff0de63641c2ff0bdd08c9829fe",
+      "result_sha256": "5f5e2dd805570cb546911715008f97a7deff0c53302d191101c1172e800e1130",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 12,
+      "workload": "coordinate_page1",
+      "worker_state": "warm",
+      "wall_ms": 2928.29,
+      "http_status": 200,
+      "matched_payload_bytes": 49329,
+      "result_count": 70,
+      "ids_sha256": "af9a73ac0e1d453b61df7127f8d277dbc3c6252eccb76daef4d9593723e1d743",
+      "result_sha256": "cb9de88088ed29b4b905e4b25b92d2960380a4c1999606331ed61d8c9ce6659c",
+      "ok": true
+    },
+    {
+      "index": 13,
+      "workload": "coordinate_page2",
+      "worker_state": "warm",
+      "wall_ms": 8270.02,
+      "http_status": 200,
+      "matched_payload_bytes": 47621,
+      "result_count": 70,
+      "ids_sha256": "d4a1c53e277af2307f3f8b90256d9f848a67ff93f525dad877ecff38eee51997",
+      "result_sha256": "1a2c62673fb20ee63ce07bb4b859b5d324d64de7a7e23af94328d306009ba58b",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 14,
+      "workload": "keyword_page1",
+      "worker_state": "warm",
+      "wall_ms": 3420.848,
+      "http_status": 200,
+      "matched_payload_bytes": 48547,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "result_sha256": "418ac54aca61fdaa18f40b8ab729de8bdcc743b4e0d0fbd8d813c3c55533ead0",
+      "ok": true
+    },
+    {
+      "index": 15,
+      "workload": "keyword_page2",
+      "worker_state": "warm",
+      "wall_ms": 7631.026,
+      "http_status": 200,
+      "matched_payload_bytes": 48298,
+      "result_count": 70,
+      "ids_sha256": "b36eda5106e6708d092e3ca6c5f7dd2214043ff0de63641c2ff0bdd08c9829fe",
+      "result_sha256": "5f5e2dd805570cb546911715008f97a7deff0c53302d191101c1172e800e1130",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 16,
+      "workload": "coordinate_page1",
+      "worker_state": "warm",
+      "wall_ms": 3369.957,
+      "http_status": 200,
+      "matched_payload_bytes": 49329,
+      "result_count": 70,
+      "ids_sha256": "af9a73ac0e1d453b61df7127f8d277dbc3c6252eccb76daef4d9593723e1d743",
+      "result_sha256": "cb9de88088ed29b4b905e4b25b92d2960380a4c1999606331ed61d8c9ce6659c",
+      "ok": true
+    },
+    {
+      "index": 17,
+      "workload": "coordinate_page2",
+      "worker_state": "warm",
+      "wall_ms": 4580.367,
+      "http_status": 200,
+      "matched_payload_bytes": 47621,
+      "result_count": 70,
+      "ids_sha256": "d4a1c53e277af2307f3f8b90256d9f848a67ff93f525dad877ecff38eee51997",
+      "result_sha256": "1a2c62673fb20ee63ce07bb4b859b5d324d64de7a7e23af94328d306009ba58b",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 18,
+      "workload": "keyword_page1",
+      "worker_state": "warm",
+      "wall_ms": 2891.784,
+      "http_status": 200,
+      "matched_payload_bytes": 48547,
+      "result_count": 70,
+      "ids_sha256": "b8ad418d88b7bb20a61e879ea4e83382ed835497db84aa79c76dc796eb326814",
+      "result_sha256": "418ac54aca61fdaa18f40b8ab729de8bdcc743b4e0d0fbd8d813c3c55533ead0",
+      "ok": true
+    },
+    {
+      "index": 19,
+      "workload": "keyword_page2",
+      "worker_state": "warm",
+      "wall_ms": 5967.881,
+      "http_status": 200,
+      "matched_payload_bytes": 48298,
+      "result_count": 70,
+      "ids_sha256": "b36eda5106e6708d092e3ca6c5f7dd2214043ff0de63641c2ff0bdd08c9829fe",
+      "result_sha256": "5f5e2dd805570cb546911715008f97a7deff0c53302d191101c1172e800e1130",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    },
+    {
+      "index": 20,
+      "workload": "coordinate_page1",
+      "worker_state": "warm",
+      "wall_ms": 3022.018,
+      "http_status": 200,
+      "matched_payload_bytes": 49329,
+      "result_count": 70,
+      "ids_sha256": "af9a73ac0e1d453b61df7127f8d277dbc3c6252eccb76daef4d9593723e1d743",
+      "result_sha256": "cb9de88088ed29b4b905e4b25b92d2960380a4c1999606331ed61d8c9ce6659c",
+      "ok": true
+    },
+    {
+      "index": 21,
+      "workload": "coordinate_page2",
+      "worker_state": "warm",
+      "wall_ms": 4717.159,
+      "http_status": 200,
+      "matched_payload_bytes": 47621,
+      "result_count": 70,
+      "ids_sha256": "d4a1c53e277af2307f3f8b90256d9f848a67ff93f525dad877ecff38eee51997",
+      "result_sha256": "1a2c62673fb20ee63ce07bb4b859b5d324d64de7a7e23af94328d306009ba58b",
+      "new_ids_vs_page1": 70,
+      "ok": true
+    }
+  ],
+  "schema_version": 2,
+  "initial_worker_state": "cold",
+  "warm_state_assumption": "caller keeps worker alive between successful calls; interval below idle timeout",
+  "method": "real tools/call; monotonic time around HTTP through complete response body",
+  "artifacts": {
+    "gateway": {
+      "filename": "naver-performance-gateway",
+      "sha256": "8ce048f2eec2c76e37311ef5ecec73d835005924aee2ce4c2392ce9e3569ebe6"
+    },
+    "worker": {
+      "filename": "final-worker.jar",
+      "sha256": "d43c1051598b8cb2f71e543f0a19ea1736969b8d32a61b1715c9eecd7f984e70"
+    }
+  },
+  "host_pressure_start": {
+    "cpu": "some avg10=0.34 avg60=4.77 avg300=6.47 total=8430932013\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+    "memory": "some avg10=0.33 avg60=0.78 avg300=1.06 total=1711003414\nfull avg10=0.29 avg60=0.54 avg300=0.78 total=1578708885",
+    "io": "some avg10=5.37 avg60=12.69 avg300=14.58 total=22870065138\nfull avg10=4.79 avg60=9.72 avg300=10.93 total=21638101864"
+  },
+  "discovery": {
+    "initialize": {
+      "wall_ms": 57.652,
+      "http_status": 200,
+      "matched_payload_bytes": 187
+    },
+    "tools_list": {
+      "wall_ms": 1.75,
+      "http_status": 200,
+      "matched_payload_bytes": 5221
+    },
+    "tools": [
+      "naver_map_coordinate_search",
+      "naver_map_search"
+    ]
+  },
+  "workload_sha256": "381a77231f5fa7b37f83e54d677b532d591bfff999d82396d130aec8aeabf539",
+  "all": {
+    "calls": 21,
+    "successes": 21,
+    "failures": 0,
+    "median_ms": 4580.367,
+    "p95_ms": 8270.02,
+    "p95_method": "nearest rank, successes only; inspect failures separately",
+    "p95_sample_warning": false
+  },
+  "warm": {
+    "calls": 20,
+    "successes": 20,
+    "failures": 0,
+    "median_ms": 4022.756,
+    "p95_ms": 7631.026,
+    "p95_method": "nearest rank, successes only; inspect failures separately",
+    "p95_sample_warning": false
+  },
+  "by_workload": {
+    "keyword_page1": {
+      "calls": 5,
+      "successes": 5,
+      "failures": 0,
+      "median_ms": 3089.314,
+      "p95_ms": 3465.145,
+      "p95_method": "nearest rank, successes only; inspect failures separately",
+      "p95_sample_warning": true
+    },
+    "keyword_page2": {
+      "calls": 5,
+      "successes": 5,
+      "failures": 0,
+      "median_ms": 6254.828,
+      "p95_ms": 7631.026,
+      "p95_method": "nearest rank, successes only; inspect failures separately",
+      "p95_sample_warning": true
+    },
+    "coordinate_page1": {
+      "calls": 5,
+      "successes": 5,
+      "failures": 0,
+      "median_ms": 3117.334,
+      "p95_ms": 3369.957,
+      "p95_method": "nearest rank, successes only; inspect failures separately",
+      "p95_sample_warning": true
+    },
+    "coordinate_page2": {
+      "calls": 5,
+      "successes": 5,
+      "failures": 0,
+      "median_ms": 5359.687,
+      "p95_ms": 8270.02,
+      "p95_method": "nearest rank, successes only; inspect failures separately",
+      "p95_sample_warning": true
+    }
+  },
+  "comparison": {
+    "baseline_label": "repaired-full-maps-fresh-browser",
+    "comparable": true,
+    "reasons": [],
+    "target_verified": true,
+    "median_ms_reduction_percent": 82.32,
+    "p95_ms_reduction_percent": 75.72,
+    "by_workload": {
+      "keyword_page1": {
+        "median_ms_reduction_percent": 82.55,
+        "p95_ms_reduction_percent": 84.4
+      },
+      "keyword_page2": {
+        "median_ms_reduction_percent": 70.18,
+        "p95_ms_reduction_percent": 67.88
+      },
+      "coordinate_page1": {
+        "median_ms_reduction_percent": 86.73,
+        "p95_ms_reduction_percent": 89.32
+      },
+      "coordinate_page2": {
+        "median_ms_reduction_percent": 81.79,
+        "p95_ms_reduction_percent": 73.69
+      }
+    }
+  }
+}

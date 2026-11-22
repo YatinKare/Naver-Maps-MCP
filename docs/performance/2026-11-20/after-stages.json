@@ -1,0 +1,380 @@
+[
+  {
+    "timestamp": "2026-11-20T05:47:36.697613568Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_search",
+    "is_error": false,
+    "duration_ms": 14166.337491,
+    "worker_cold_start": true,
+    "worker_startup_ms": 7243.417862,
+    "search_ms": 6906.669827,
+    "capture_stages_ms": {
+      "browser_shutdown": 1,
+      "browser_startup": 1229,
+      "page_navigation": 44,
+      "response_capture": 5336
+    },
+    "result_count": 70,
+    "response_bytes": 23180
+  },
+  {
+    "timestamp": "2026-11-20T05:47:42.422644078Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_search",
+    "is_error": false,
+    "duration_ms": 2705.996782,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 2660.573606,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 5,
+      "page_navigation": 7,
+      "response_capture": 2579
+    },
+    "result_count": 70,
+    "response_bytes": 23180
+  },
+  {
+    "timestamp": "2026-11-20T05:47:52.447565202Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_search",
+    "is_error": false,
+    "duration_ms": 7003.417585,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 6949.853284,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 3,
+      "page_navigation": 4,
+      "response_capture": 6898
+    },
+    "result_count": 70,
+    "response_bytes": 23057
+  },
+  {
+    "timestamp": "2026-11-20T05:47:58.694636126Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_coordinate_search",
+    "is_error": false,
+    "duration_ms": 3224.623213,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 3178.732214,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 4,
+      "page_navigation": 8,
+      "response_capture": 3118
+    },
+    "result_count": 70,
+    "response_bytes": 23573
+  },
+  {
+    "timestamp": "2026-11-20T05:48:07.075374759Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_coordinate_search",
+    "is_error": false,
+    "duration_ms": 5336.482239,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 5300.532623,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 12,
+      "page_navigation": 13,
+      "response_capture": 5192
+    },
+    "result_count": 70,
+    "response_bytes": 22733
+  },
+  {
+    "timestamp": "2026-11-20T05:48:13.181621328Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_search",
+    "is_error": false,
+    "duration_ms": 3077.110708,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 3051.979334,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 9,
+      "page_navigation": 9,
+      "response_capture": 3011
+    },
+    "result_count": 70,
+    "response_bytes": 23180
+  },
+  {
+    "timestamp": "2026-11-20T05:48:22.036571144Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_search",
+    "is_error": false,
+    "duration_ms": 5839.571196,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 5804.308146,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 13,
+      "page_navigation": 12,
+      "response_capture": 5749
+    },
+    "result_count": 70,
+    "response_bytes": 23057
+  },
+  {
+    "timestamp": "2026-11-20T05:48:28.153621058Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_coordinate_search",
+    "is_error": false,
+    "duration_ms": 3091.839351,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 3054.11828,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 4,
+      "page_navigation": 4,
+      "response_capture": 3027
+    },
+    "result_count": 70,
+    "response_bytes": 23573
+  },
+  {
+    "timestamp": "2026-11-20T05:48:38.031459227Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_coordinate_search",
+    "is_error": false,
+    "duration_ms": 6848.331101,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 6827.26209,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 7,
+      "page_navigation": 8,
+      "response_capture": 6790
+    },
+    "result_count": 70,
+    "response_bytes": 22733
+  },
+  {
+    "timestamp": "2026-11-20T05:48:44.504452596Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_search",
+    "is_error": false,
+    "duration_ms": 3446.061979,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 3423.538763,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 8,
+      "page_navigation": 7,
+      "response_capture": 3389
+    },
+    "result_count": 70,
+    "response_bytes": 23180
+  },
+  {
+    "timestamp": "2026-11-20T05:48:53.767231776Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_search",
+    "is_error": false,
+    "duration_ms": 6240.296203,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 6202.76166,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 6,
+      "page_navigation": 4,
+      "response_capture": 6178
+    },
+    "result_count": 70,
+    "response_bytes": 23057
+  },
+  {
+    "timestamp": "2026-11-20T05:48:59.727028652Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_coordinate_search",
+    "is_error": false,
+    "duration_ms": 2916.492467,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 2896.752291,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 6,
+      "page_navigation": 6,
+      "response_capture": 2861
+    },
+    "result_count": 70,
+    "response_bytes": 23573
+  },
+  {
+    "timestamp": "2026-11-20T05:49:10.996157528Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_coordinate_search",
+    "is_error": false,
+    "duration_ms": 8250.997239,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 8230.901441,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 2,
+      "page_navigation": 4,
+      "response_capture": 8203
+    },
+    "result_count": 70,
+    "response_bytes": 22733
+  },
+  {
+    "timestamp": "2026-11-20T05:49:17.429775879Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_search",
+    "is_error": false,
+    "duration_ms": 3409.663151,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 3373.143005,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 4,
+      "page_navigation": 4,
+      "response_capture": 3348
+    },
+    "result_count": 70,
+    "response_bytes": 23180
+  },
+  {
+    "timestamp": "2026-11-20T05:49:28.058427308Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_search",
+    "is_error": false,
+    "duration_ms": 7614.50593,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 7586.997512,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 6,
+      "page_navigation": 10,
+      "response_capture": 7557
+    },
+    "result_count": 70,
+    "response_bytes": 23057
+  },
+  {
+    "timestamp": "2026-11-20T05:49:34.426882495Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_coordinate_search",
+    "is_error": false,
+    "duration_ms": 3349.752501,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 3324.233153,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 6,
+      "page_navigation": 10,
+      "response_capture": 3293
+    },
+    "result_count": 70,
+    "response_bytes": 23573
+  },
+  {
+    "timestamp": "2026-11-20T05:49:42.013832559Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_coordinate_search",
+    "is_error": false,
+    "duration_ms": 4564.120857,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 4546.207425,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 5,
+      "page_navigation": 5,
+      "response_capture": 4523
+    },
+    "result_count": 70,
+    "response_bytes": 22733
+  },
+  {
+    "timestamp": "2026-11-20T05:49:47.903760255Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_search",
+    "is_error": false,
+    "duration_ms": 2868.185449,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 2848.454206,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 5,
+      "page_navigation": 6,
+      "response_capture": 2822
+    },
+    "result_count": 70,
+    "response_bytes": 23180
+  },
+  {
+    "timestamp": "2026-11-20T05:49:56.876693055Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_search",
+    "is_error": false,
+    "duration_ms": 5941.710488,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 5925.932763,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 6,
+      "page_navigation": 5,
+      "response_capture": 5896
+    },
+    "result_count": 70,
+    "response_bytes": 23057
+  },
+  {
+    "timestamp": "2026-11-20T05:50:02.911686773Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_coordinate_search",
+    "is_error": false,
+    "duration_ms": 3006.155431,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 2988.664647,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 6,
+      "page_navigation": 5,
+      "response_capture": 2959
+    },
+    "result_count": 70,
+    "response_bytes": 23573
+  },
+  {
+    "timestamp": "2026-11-20T05:50:10.638016343Z",
+    "correlation_id": "92f56e67195e9b04",
+    "tool_name": "naver_map_coordinate_search",
+    "is_error": false,
+    "duration_ms": 4705.890652,
+    "worker_cold_start": false,
+    "worker_startup_ms": 0,
+    "search_ms": 4686.443642,
+    "capture_stages_ms": {
+      "browser_shutdown": 0,
+      "browser_startup": 4,
+      "page_navigation": 5,
+      "response_capture": 4663
+    },
+    "result_count": 70,
+    "response_bytes": 22733
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "label": "EXCLUDED: installed gateway with legacy snapshot worker, host under memory/IO pressure",
+  "started_utc": "2026-11-19T18:16:24.067037+00:00",
+  "revision": "fa6205234001527f0e4d0a4f59edbb351bc401c5",
+  "dirty": true,
+  "environment": {
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+    "cpu_count": 4
+  },
+  "rounds": 3,
+  "interval_seconds": 3,
+  "samples": [
+    {
+      "index": 1,
+      "workload": "keyword_page1",
+      "cold": true,
+      "ok": false,
+      "error": "TimeoutError",
+      "wall_ms": 120100.15
+    }
+  ],
+  "method": "real tools/call; monotonic time around HTTP through complete response body",
+  "discovery": {
+    "initialize": {
+      "wall_ms": 191.933,
+      "http_status": 200,
+      "response_bytes": 190
+    },
+    "tools_list": {
+      "wall_ms": 1.815,
+      "http_status": 200,
+      "response_bytes": 5221
+    },
+    "tools": [
+      "naver_map_coordinate_search",
+      "naver_map_search"
+    ]
+  },
+  "all": {
+    "calls": 1,
+    "successes": 0,
+    "failures": 1,
+    "median_ms": null,
+    "p95_ms": null,
+    "p95_method": "nearest rank, successes only; inspect failures separately"
+  },
+  "warm": {
+    "calls": 0,
+    "successes": 0,
+    "failures": 0,
+    "median_ms": null,
+    "p95_ms": null,
+    "p95_method": "nearest rank, successes only; inspect failures separately"
+  },
+  "by_workload": {},
+  "excluded_from_release_baseline": true,
+  "artifact_notes": "Gateway v0.1.1 was paired with old snapshot worker by mistake; not a release or before/after baseline. Preserved as a failed diagnostic only.",
+  "gateway_sha256": "f8901e168530a8d7e12dfcfa31c79b9cadd67987de23ba09a7dc3c5a8e49792a",
+  "worker_sha256": "cef1854d34e8740781d005a074e27742d70f5e4b511f5710a91c4e5046d2e90f"
+}

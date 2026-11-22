@@ -160,6 +160,7 @@ type ToolOutcome struct {
 	WorkerColdStart       bool
 	WorkerStartupDuration time.Duration
 	SearchDuration        time.Duration
+	CaptureStagesMS       map[string]float64
 	ResultCount           *int
 	ResponseBytes         int
 	FailureCategory       string
@@ -344,6 +345,7 @@ func applySearchMetadata(outcome *ToolOutcome, metadata worker.SearchMetadata, r
 	outcome.WorkerColdStart = metadata.WorkerColdStart
 	outcome.WorkerStartupDuration = metadata.WorkerStartupDuration
 	outcome.SearchDuration = metadata.SearchDuration
+	outcome.CaptureStagesMS = metadata.CaptureStagesMS
 	outcome.ResponseBytes = len(rawJSON)
 }
 
@@ -371,6 +373,16 @@ func searchFailureResult(searchType string, page int, err error) *mcp.CallToolRe
 		message = fmt.Sprintf("Could not find Naver result page %d. Try an earlier page.", page)
 	} else if category == "timeout" {
 		message = fmt.Sprintf("Naver Maps %s search timed out. Please retry the same search.", searchType)
+	} else if category == "rate_limited" {
+		message = "Naver Maps rate limited this search. Pause requests for at least 60 seconds; do not retry repeatedly."
+	} else if category == "access_denied" {
+		message = "Naver Maps denied this request (HTTP 403). Inspect the browser session before retrying; sign in or complete verification only if Naver requests it."
+	} else if category == "login_required" {
+		message = "Naver requires sign-in for this session. The operator must sign in using the configured private Chrome profile, close the login browser, then retry. See docs/AUTH-RECOVERY.md."
+	} else if category == "verification_required" {
+		message = "Naver requires human verification. The operator must complete it in the configured private Chrome profile and close the login browser before retrying. See docs/AUTH-RECOVERY.md."
+	} else if category == "session_configuration" {
+		message = "The private Chrome profile is not configured correctly. The operator must check its absolute path and owner-only permissions. See docs/AUTH-RECOVERY.md."
 	}
 	return &mcp.CallToolResult{
 		Content: []mcp.Content{

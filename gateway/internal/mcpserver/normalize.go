@@ -79,8 +79,8 @@ func normalizeNaverPlace(fields map[string]json.RawMessage) normalizedPlace {
 		ID:           rawText(fields, "id"),
 		Name:         rawText(fields, "name"),
 		RoadAddress:  rawText(fields, "roadAddress"),
-		Tel:          firstRawText(fields, "tel", "virtualTel"),
-		ThumbnailURL: rawText(fields, "thumUrl"),
+		Tel:          firstRawText(fields, "tel", "phone", "virtualTel", "virtualPhone"),
+		ThumbnailURL: firstRawText(fields, "thumUrl", "imageUrl"),
 		Homepage:     rawText(fields, "homePage"),
 		MenuInfo:     rawText(fields, "menuInfo"),
 	}

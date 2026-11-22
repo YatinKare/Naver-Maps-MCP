@@ -1,0 +1,36 @@
+NAVER Maps | actual HTTP MCP tools/call | isolated integration build
+UTC: 2026-11-20T05:57:03.592897+00:00
+Endpoint: http://127.0.0.1:13000/mcp
+Discovered: naver_map_coordinate_search, naver_map_search
+
+> tools/call naver_map_coordinate_search
+{"query": "카페", "longitude": 126.9784, "latitude": 37.5667, "page": 2}
+
+HTTP 200 | success | returned 70 places
+End-to-end response body received in 5.304 seconds
+
+First 2 places (selected fields from the actual response):
+{
+  "id": "37870852",
+  "name": "커피미업 소공점",
+  "road_address": "소공로 100",
+  "coordinates": {
+    "longitude": 126.9799088,
+    "latitude": 37.5637426
+  },
+  "tel": "070-4115-4535"
+}
+{
+  "id": "1438566956",
+  "name": "파란만잔 광화문점",
+  "road_address": "세종대로21길 58 1층",
+  "coordinates": {
+    "longitude": 126.9761976,
+    "latitude": 37.5689289
+  },
+  "tel": "02-730-3035"
+}
+All response IDs SHA256: d4a1c53e277af2307f3f8b90256d9f848a67ff93f525dad877ecff38eee51997
+
+Recorded response: mcp-proof-response.json
+PRs #69 runner | #70 session | #71 capture/performance | no deployment or merge
